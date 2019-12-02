@@ -1,0 +1,36 @@
+Arguments: 
+  /opt/node-v10.16.3-linux-x64/bin/node /home/exiou/.yarn/bin/yarn.js init
+
+PATH: 
+  /home/exiou/.yarn/bin:/home/exiou/.config/yarn/global/node_modules/.bin:/opt/node-v10.16.3-linux-x64/bin:/opt/node-v10.16.3-linux-x64/bin:/home/exiou/.yarn/bin:/home/exiou/.config/yarn/global/node_modules/.bin:/opt/node-v10.16.3-linux-x64/bin:/opt/node-v10.16.3-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/exiou/android-studio-ide-183.5692245-linux/android-studio/bin:/home/exiou/android-studio-ide-183.5692245-linux/android-studio/bin:/home/exiou/android-studio-ide-183.5692245-linux/android-studio/bin:/home/exiou/android-studio-ide-183.5692245-linux/android-studio/bin
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  10.16.3
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/home/exiou/.yarn/lib/cli.js:136824:13)
+      at Interface.emit (events.js:198:13)
+      at Interface._ttyWrite (readline.js:801:16)
+      at ReadStream.onkeypress (readline.js:184:10)
+      at ReadStream.emit (events.js:198:13)
+      at emitKeys (internal/readline.js:424:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1075:36)
+      at ReadStream.emit (events.js:198:13)
+      at addChunk (_stream_readable.js:288:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
