@@ -1,0 +1,19 @@
+{
+    "processador1":{
+        "modelo":"Core i5-9400F",
+        "preco":1000,
+        "fabricante":"Intel",
+        "nucleo":8,
+        "frequencia":3.6,
+        "consumo":120
+    },
+
+    "processador2":{
+        "modelo":"Core i3-9100F",
+        "preco":1234,
+        "fabricante":"Intel",
+        "nucleo":8,
+        "frequencia":3.6,
+        "consumo":120
+    }
+}

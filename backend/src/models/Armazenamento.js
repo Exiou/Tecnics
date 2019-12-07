@@ -2,6 +2,7 @@ const mongoose = require('mongoose'); // Importar mongoose
 
 // Criar o esquema do banco de dados
 const MemoriaSchema = new mongoose.Schema({
+    modelo:String,
     preco: Number,
     fabricante: String,
     capacidade: Number,

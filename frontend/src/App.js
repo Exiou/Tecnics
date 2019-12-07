@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css'
 
-
+import api from './services/api'
 
 class App extends Component {
+
+    
     constructor(props) {
         super(props)
 
@@ -18,6 +20,8 @@ class App extends Component {
         this.setState({ labelText })
     }
 
+
+
     render() {
         return (
             <>
@@ -28,6 +32,7 @@ class App extends Component {
                     <div>
                         
                     </div>
+
                     <div>
 
                     </div>
