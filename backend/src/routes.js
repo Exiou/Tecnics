@@ -8,6 +8,6 @@ const routes = express.Router()
 routes.post('/build', BuildController.store);
 
 routes.get('/processadores', ProcessadorController.index);
-routes.get('/processadores/:modelo', ProcessadorController.show);
+routes.get('/processadores/:id', ProcessadorController.show);
 
 module.exports = routes; // Exportar routes

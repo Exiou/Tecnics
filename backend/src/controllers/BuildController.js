@@ -4,6 +4,8 @@ module.exports = {
     async store(req, res){
         const { processador_id } = req.headers;
 
+        //completar 
+
         const build = await Computador.create({
             processador: processador_id
         })

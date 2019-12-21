@@ -1,38 +1,20 @@
 const Processador = require('../models/Processador')
-const fs = require('fs') // USA FS NISSO AUQI AMANHA E NOIS
 
 module.exports = {
     async index(req, res){
 
-        fs.readFile("./src/uploads/processadores.json" , 'utf-8' , (err, data) => {
-            if(err){
-                console.log(`Erro: ${err}`)
-            }else{
-                console.log('deu certo')
-                const processadores = JSON.parse(data)
+        const processadores = await Processador.find()
 
-                
+        return res.json(processadores)
 
-                return res.json(processadores)
-            }
-        })
 
     },
 
     async show(req, res){
 
-        fs.readFile("./src/uploads/processadores.json" , 'utf-8' , (err, data) => {
-            if(err){
-                console.log(`Erro: ${err}`)
-            }else{
-                console.log('deu certo')
-                const processadores = JSON.parse(data)
+        const processadores = await Processador.findById(req.params.id)
 
-                const { modelo }  = req.params
-
-                return res.json(processadores[`${modelo}`])
-            }
-        })
+        return res.json(processadores)
 
     }
 }
