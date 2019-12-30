@@ -16,7 +16,7 @@ const ProcessadorSchema = new mongoose.Schema({
 });
 
 ProcessadorSchema.virtual('imagem_url').get(function() {
-    return `http://192.168.1.108:3333/arquivos/processadores/${this.imagem}`
+    return `http://192.168.15.9:3333/arquivos/processadores/${this.imagem}`
 })
 
 module.exports = mongoose.model('Processador', ProcessadorSchema);
