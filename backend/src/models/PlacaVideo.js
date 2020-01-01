@@ -1,4 +1,5 @@
 const mongoose = require('mongoose'); // Importar mongoose
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 // Criar o esquema do banco de dados
 const PlacaVideoSchema = new mongoose.Schema({
@@ -14,6 +15,13 @@ const PlacaVideoSchema = new mongoose.Schema({
         virtuals: true,
     },
 });
+
+PlacaVideoSchema.plugin(mongoosePaginate)
+
+mongoosePaginate.paginate.options = { 
+    page:  1,
+    limit: 10
+};
 
 PlacaVideoSchema.virtual('imagem_url').get(function() {
     return `http://192.168.15.9:3333/arquivos/placas-video/${this.imagem}`
