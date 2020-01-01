@@ -1,48 +1,18 @@
 import React, { Component } from 'react';
-import './App.css'
+import Routes from './routes'
 
 import api from './services/api'
 
-class App extends Component {
+import './styles.css'
 
-    
-    constructor(props) {
-        super(props)
+import Header from './components/Header'
+import Main from './pages/main'
 
-        this.state = {
-            labelText: '',
-        }
-
-        this.setLabelText = this.setLabelText.bind(this)
-    }
-
-    setLabelText(labelText){
-        this.setState({ labelText })
-    }
-
-
-
-    render() {
-        return (
-            <>
-                <header>
-                    
-                </header>
-                <section>
-                    <div>
-                        
-                    </div>
-
-                    <div>
-
-                    </div>
-                </section>
-                <footer>
-                    
-                </footer>
-            </>
-        );
-    }
-}
+const App = () => (
+    <div className="App">
+        <Header />
+        <Routes />
+    </div>
+)
 
 export default App

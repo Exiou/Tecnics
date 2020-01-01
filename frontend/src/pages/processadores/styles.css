@@ -1,0 +1,33 @@
+.processador-info{
+    max-width: 700px;
+    margin: 20px auto 0;
+    padding: 20px;
+    background: #FFF;
+    border-radius: 5px;
+    border: 2px solid #da552f;
+}
+
+.processador-info h1 {
+    font-size: 32px;
+}
+
+.processador-info p{
+    font-size: 16px;
+    color:#666;
+    margin-top: 5px;
+    line-height: 24px;
+}
+
+.processador-info p a img{
+    height: auto;
+    max-width: 75%;
+    border-radius: 10px;
+    border: 2px solid #da552f;
+    padding: 5px;
+    background: none;
+    margin-top: 10px;
+    color: #da552f;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
