@@ -18,11 +18,6 @@ const PlacaVideoSchema = new mongoose.Schema({
 
 PlacaVideoSchema.plugin(mongoosePaginate)
 
-mongoosePaginate.paginate.options = { 
-    page:  1,
-    limit: 10
-};
-
 PlacaVideoSchema.virtual('imagem_url').get(function() {
     return `http://192.168.15.9:3333/arquivos/placas-video/${this.imagem}`
 })
