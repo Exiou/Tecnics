@@ -9,7 +9,12 @@ const PlacaVideoSchema = new mongoose.Schema({
     fabricante: String,
     memoria: Number,
     consumo: Number,
-    cor: String
+    cor: String,
+    lojas:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Loja'
+    }],
+    urlProduto:[String]
 }, {
     toJSON: {
         virtuals: true,

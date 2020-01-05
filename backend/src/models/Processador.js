@@ -9,7 +9,12 @@ const ProcessadorSchema = new mongoose.Schema({
     fabricante: String,
     nucleo: Number,
     frequencia: Number,
-    consumo: Number
+    consumo: Number,
+    lojas:[{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Loja'
+        }],
+    urlProduto:[String]
 }, {
     toJSON: {
         virtuals: true,
