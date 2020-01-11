@@ -12,7 +12,7 @@ const LojaSchema = new mongoose.Schema({
 })
 
 LojaSchema.virtual('imagem_url').get(function() {
-    return `http://192.168.15.9:3333/arquivos/lojas/${this.imagem}`
+    return `http://192.168.1.102:3333/arquivos/lojas/${this.imagem}`
 })
 
 module.exports = mongoose.model('Loja', LojaSchema);

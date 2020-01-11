@@ -24,7 +24,7 @@ const PlacaVideoSchema = new mongoose.Schema({
 PlacaVideoSchema.plugin(mongoosePaginate)
 
 PlacaVideoSchema.virtual('imagem_url').get(function() {
-    return `http://192.168.15.9:3333/arquivos/placas-video/${this.imagem}`
+    return `http://192.168.1.102:3333/arquivos/placas-video/${this.imagem}`
 })
 
 

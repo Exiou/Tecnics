@@ -14,9 +14,18 @@ module.exports = {
                 limit = 10
         }
 
-        const processadores = await Processador.paginate({}, { page, limit })
+        const options = {
+            page,
+            limit,
+            select: {
+                lojas:0,
+                urlProduto:0
+            }
+        }
 
-        return res.json(processadores) PESQUISA AMANHA SE DA PRA FILTRAR OS CAMPOS AQUI VALEU
+        const processadores = await Processador.paginate({}, options)
+
+        return res.json(processadores)
 
     }catch(err){
         return res.send(`Deu erro, ${err}`)
@@ -27,10 +36,15 @@ module.exports = {
     },
 
     async show(req, res){
+        try{
 
-        const processadores = await Processador.findById(req.params.id).populate('lojas').exec()
+            const processadores = await Processador.findById(req.params.id).populate('lojas').exec()
 
-        return res.json(processadores)
+            return res.json(processadores)
 
+        }catch(err){
+            return res.send(`Deu erro, ${err}`)
+            
+        }
     }
 }
