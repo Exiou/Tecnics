@@ -11,9 +11,9 @@ const ProcessadorSchema = new mongoose.Schema({
     frequencia: Number,
     consumo: Number,
     lojas:[{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Loja'
-        }],
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Loja'
+    }],
     urlProduto:[String]
 }, {
     toJSON: {
