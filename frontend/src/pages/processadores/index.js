@@ -21,7 +21,7 @@ export default class Processadores extends Component{
 
         return (
             <div className="processador-info">
-                <h1>{processadores.modelo}</h1>
+                <h1>{processadores.fabricante} {processadores.nome}</h1>
                 <p>Preço: {processadores.preco}</p>
 
                 <p>

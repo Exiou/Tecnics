@@ -27,8 +27,8 @@ export default class Main extends Component {
             <div className="processador-list">
                 {processadores.map(processador => (
                     <article key={processador._id}>
-                        <strong>{processador.modelo}</strong>
-                        <p>Preço: {processador.preco}</p>
+                        <strong>{processador.fabricante} {processador.nome}</strong>
+                        <p>Preço: {processador.preco[0]}</p>
 
                         <img src={processador.imagem_url} alt={processador.imagem}/>
 
