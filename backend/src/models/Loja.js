@@ -4,7 +4,6 @@ const LojaSchema = new mongoose.Schema({
     nome:String,
     imagem:String,
     urlSite:String,
-    produtosAnunciados:Number
 }, {
     toJSON: {
         virtuals: true
