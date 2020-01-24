@@ -3,7 +3,7 @@ const mongoosePaginate = require('mongoose-paginate-v2')
 
 // Criar o esquema do banco de dados
 const ProcessadorSchema = new mongoose.Schema({
-    imagem:String,
+    imagem: String,
     nome: String,
     modelo: String,
     fabricante: String,
