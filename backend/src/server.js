@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors');
 const path = require('path');
+const helmet = require('helmet')
 
 const routes = require('./routes')
 
@@ -12,6 +13,11 @@ mongoose.connect('mongodb+srv://tccetec:tccetec@cluster0-rmowr.gcp.mongodb.net/p
     useUnifiedTopology: true,
 })
 
+app.use(helmet({
+    hidePoweredBy: {
+        setTo: 'PHP/7.1.7'
+    }
+}))
 app.use(cors());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
