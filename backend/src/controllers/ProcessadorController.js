@@ -41,7 +41,6 @@ module.exports = {
                     thread: 0,
                     litografia: 0,
                     lojas: 0,
-                    urlProduto: 0
                 },
                 sort: ordenar
             }
@@ -61,7 +60,7 @@ module.exports = {
     async show(req, res){
         try{
 
-            const processadores = await Processador.findById(req.params.id).populate('lojas').exec()
+            const processadores = await Processador.findById(req.params.id).populate('lojas.idLoja').exec()
 
             return res.json(processadores)
 
@@ -70,5 +69,113 @@ module.exports = {
             return res.status(400).send(`Ocorreu um erro na requisição: ${err}`)
             
         }
+    },
+
+    async store(req, res){
+        try{
+
+            const jsonProdutos = JSON.parse(req.body.jsonProdutos)
+            const idLoja = req.headers.idloja
+
+            let processadores = []
+            
+            const numDocumentos = await Processador.estimatedDocumentCount()
+            
+            for(let i = 0; i < numDocumentos;i++){
+                    
+                if(jsonProdutos[i]){
+                    
+                    var verificaModelo = await Processador.countDocuments({ modelo: `${jsonProdutos[i].modelo}` })
+                    var verificaIdLoja = await Processador.countDocuments({
+                        $and: [
+                            { modelo: `${jsonProdutos[i].modelo}`},
+                            { lojas: { $elemMatch: { idLoja: { $eq: `${idLoja}`} } } }
+                        ]
+                    })
+
+                    if(verificaModelo == 0){
+                        
+                        processadores.push(
+                            await Processador.create({
+                                imagem: jsonProdutos[i].imagem,
+                                nome: jsonProdutos[i].nome,
+                                modelo: jsonProdutos[i].modelo,
+                                fabricante: jsonProdutos[i].fabricante,
+                                serie: jsonProdutos[i].serie,
+                                familia: jsonProdutos[i].familia,
+                                socket: jsonProdutos[i].socket,
+                                graficos_integrados: jsonProdutos[i].graficos_integrados,
+                                nucleo: jsonProdutos[i].nucleo,
+                                frequencia: jsonProdutos[i].frequencia,
+                                frequencia_turbo: jsonProdutos[i].frequencia_turbo,
+                                consumo: jsonProdutos[i].consumo,
+                                arquitetura: jsonProdutos[i].arquitetura,
+                                thread: jsonProdutos[i].thread,
+                                litografia: jsonProdutos[i].litografia,
+                                cooler_incluso: jsonProdutos[i].cooler_incluso,
+                                multithreading: jsonProdutos[i].multithreading,
+                                suporte_ecc: jsonProdutos[i].suporte_ecc,
+                                virtualizacao: jsonProdutos[i].virtualizacao,
+                                lojas: [{
+                                    idLoja,
+                                    preco: jsonProdutos[i].preco,
+                                    urlProduto: jsonProdutos[i].urlProduto
+                                }]                            
+                            })
+                        )
+                        console.log('cadastrou')
+                        
+                    }else if(verificaModelo == 1 && verificaIdLoja == 0){
+
+                        processadores.push(
+                            await Processador.findOneAndUpdate(
+                                {
+                                    $and: [
+                                        { modelo: `${jsonProdutos[i].modelo}`},
+                                        { lojas: { $elemMatch: { idLoja: { $ne: `${idLoja}`} } } }
+                                    ]
+                                },
+                                { 
+                                    $push: { 
+                                        lojas: [{
+                                            idLoja,
+                                            preco: jsonProdutos[i].preco,
+                                            urlProduto: jsonProdutos[i].urlProduto
+                                        }]
+                                    }
+                                },
+                                {new: true}
+                            )
+                        )
+                        console.log('atualizou')
+
+                    }else if(verificaModelo == 1 && verificaIdLoja == 1){
+                        processadores.push('produto ja cadastrado pela loja')
+                    }else{
+                        processadores.push('algo está errado no banco de dados')
+                    }
+
+                }
+
+            }
+                
+            
+            
+            return res.json(processadores)
+
+
+            
+
+
+            /*const processadores = await Processador.create(jsonProdutos)
+
+            return res.json(processadores)*/
+
+        }catch(err){
+            
+            return res.status(400).send(`Ocorreu um erro na requisição: ${err}`)
+
+        }
+
     }
 }

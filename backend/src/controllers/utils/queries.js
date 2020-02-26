@@ -1,11 +1,11 @@
-const parseStringAsArray = require('../../utils/parseStringAsArray')
+const parseStringAsArray = require('./parseStringAsArray')
 
 exports.queryProcessador = (buscar,precoMin,precoMax,nucleoMin,nucleoMax,freqMin,freqMax,consumoMin,consumoMax,cooler,multithreading,ecc,virtualizacao,fabricante,serie,familia,socket,graficos) => {
     query = {
         $and: [
             { nome: { $regex: `${buscar}`, $options: 'i' } },
-            { preco: { $gte: precoMin }},
-            { preco: { $lte: precoMax }},
+            { lojas: { $elemMatch: { preco: { $gte: precoMin }}}},
+            { lojas: { $elemMatch: { preco: { $lte: precoMax }}}},
             { nucleo: { $gte: nucleoMin }},
             { nucleo: { $lte: nucleoMax }},
             { frequencia: { $gte: freqMin }},

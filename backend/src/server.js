@@ -11,6 +11,7 @@ const app = express()
 mongoose.connect('mongodb+srv://tccetec:tccetec@cluster0-rmowr.gcp.mongodb.net/produtos?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false
 })
 
 app.use(helmet({
