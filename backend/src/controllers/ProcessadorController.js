@@ -10,7 +10,7 @@ module.exports = {
             const {
                 page,
                 limit = 10,
-                precoMin = 299.9,
+                precoMin = 0,
                 precoMax = 3322.24,
                 nucleoMin = 2,
                 nucleoMax = 8,
@@ -36,13 +36,8 @@ module.exports = {
             const options = {
                 page,
                 limit,
-                select: {
-                    arquitetura: 0,
-                    thread: 0,
-                    litografia: 0,
-                    lojas: 0,
-                },
-                sort: ordenar
+                select: '-arquitetura -thread -litografia -lojas.idLoja -lojas.urlProduto -lojas._id',
+                sort: `lojas.preco ${ordenar}`
             }
 
             const processadores = await Processador.paginate(query, options)
@@ -137,11 +132,14 @@ module.exports = {
                                 },
                                 { 
                                     $push: { 
-                                        lojas: [{
-                                            idLoja,
-                                            preco: jsonProdutos[i].preco,
-                                            urlProduto: jsonProdutos[i].urlProduto
-                                        }]
+                                        lojas: {
+                                            $each:[{
+                                                idLoja,
+                                                preco: jsonProdutos[i].preco,
+                                                urlProduto: jsonProdutos[i].urlProduto
+                                            }],
+                                            $sort: { preco: 1 }
+                                        }
                                     }
                                 },
                                 {new: true}
@@ -158,24 +156,67 @@ module.exports = {
                 }
 
             }
-                
-            
-            
+
             return res.json(processadores)
-
-
-            
-
-
-            /*const processadores = await Processador.create(jsonProdutos)
-
-            return res.json(processadores)*/
 
         }catch(err){
             
             return res.status(400).send(`Ocorreu um erro na requisição: ${err}`)
 
         }
+    },
 
+    async update(req, res){
+        try{
+
+            const { jsonProdutos } = req.body
+            const idLoja = req.headers.idloja
+
+            let processadores = []
+            
+            const numDocumentos = await Processador.estimatedDocumentCount()
+            
+            for(let i = 0; i < numDocumentos;i++){
+
+                if(jsonProdutos[i]){
+
+                    processadores.push(await Processador.findOneAndUpdate(
+                            { $and: [
+                                { _id: jsonProdutos[i].idProduto },
+                                { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
+                            ]},
+                            { $set: {
+                                'lojas.$.preco': jsonProdutos[i].preco,
+                                'lojas.$.urlProduto': jsonProdutos[i].urlProduto
+                            }},
+                            { new: true, omitUndefined: true }
+                        )
+                    )
+
+                }
+
+            }
+
+            res.send(processadores)
+            
+
+        }catch(err){
+
+            return res.status(400).send(`Ocorreu um erro na requisição: ${err}`)
+
+        }
+    },
+
+    async destroy(req, res){
+        try{
+
+            
+
+        }catch(err){
+
+            return res.status(400).send(`Ocorreu um erro na requisição: ${err}`)
+
+        }
     }
+
 }
