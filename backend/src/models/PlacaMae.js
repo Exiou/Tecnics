@@ -1,38 +1,71 @@
 const mongoose = require('mongoose'); // Importar mongoose
 
+const r_string = {
+    type: String,
+    required: true 
+} 
+const r_number = {
+    type: Number,
+    required: true 
+} 
+const r_boolean = {
+    type: Boolean,
+  required: true 
+} 
+
 // Criar o esquema do banco de dados
 const PlacaMaeSchema = new mongoose.Schema({
-    imagem: String,
-    nome: String,
-    modelo:String,
-    preco: [Number],
-    fabricante: String,
-    socket: String,
-    formato: String,
-    chipset: String,
-    crossfire: String,
-    portas_sata_3gb: Number,
-    portas_sata_6gb: Number,
-    portas_sata_express: Number,
-    portas_m2: Number,
-    portas_msata: Number,
-    slots_ram: Number,
-    ram_max: Number,
-    tipo_memoria: String,
-    slots_pcie_x16: Number,
-    slots_pcie_x4: Number,
-    slots_pcie_x1: Number,
-    slots_pci: Number,
-    portas_ethernet: Number,
-    usb_2: Number,
-    usb_3: Number,
-    usb_31: Number,
-    usb_typec: Boolean,
-    video_onboard: Boolean,
-    suporte_ecc: Boolean,
-    cor: String,
-    rede_wireless: Boolean,
-    bluetooth: Boolean
+    imagem: r_string,
+    nome: r_string,
+    modelo:r_string,
+    fabricante: r_string,
+    socket: r_string,
+    formato: r_string,
+    chipset: r_string,
+    crossfire: r_string,
+    tipo_memoria: r_string,
+    cor: r_string,
+    portas_sata_3gb: r_number,
+    portas_sata_6gb: r_number,
+    portas_sata_express: r_number,
+    portas_m2: r_number,
+    portas_msata: r_number,
+    slots_ram: r_number,
+    ram_max: r_number,
+    slots_pcie_x16: r_number,
+    slots_pcie_x4: r_number,
+    slots_pcie_x1: r_number,
+    slots_pci: r_number,
+    portas_ethernet: r_number,
+    usb_2: r_number,
+    usb_3: r_number,
+    usb_31: r_number,
+    usb_typec: r_boolean,
+    video_onboard: r_boolean,
+    suporte_ecc: r_boolean,
+    rede_wireless: r_boolean,
+    bluetooth: r_boolean,
+    lojas:[
+        {
+            idLoja: {
+                type:mongoose.Schema.Types.ObjectId,
+                ref:'Loja'
+            },
+            preco: r_number,
+            urlProduto:r_string
+        }
+    ]
+}, {
+    toJSON: {
+        virtuals: true,
+    },
 });
+
+PlacaMaeSchema.plugin(mongoosePaginate)
+
+PlacaMaeSchema.virtual('imagem_url').get(function() {
+    return `http://192.168.1.102:3333/arquivos/placas-mae/${this.imagem}`
+})
+
 
 module.exports = mongoose.model('PlacaMae', PlacaMaeSchema);
