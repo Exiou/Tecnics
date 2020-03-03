@@ -169,37 +169,26 @@ module.exports = {
     async update(req, res){
         try{
 
-            const { jsonProdutos } = req.body
+            const { preco, urlProduto } = req.body
             const idLoja = req.headers.idloja
+            const { id } = req.params
 
-            let processadores = []
-            
-            const numDocumentos = await Processador.estimatedDocumentCount()
-            
-            for(let i = 0; i < numDocumentos;i++){
 
-                if(jsonProdutos[i]){
 
-                    processadores.push(await Processador.findOneAndUpdate(
-                            { $and: [
-                                { _id: jsonProdutos[i].idProduto },
-                                { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
-                            ]},
-                            { $set: {
-                                'lojas.$.preco': jsonProdutos[i].preco,
-                                'lojas.$.urlProduto': jsonProdutos[i].urlProduto
-                            }},
-                            { new: true, omitUndefined: true }
-                        )
-                    )
-
-                }
-
-            }
-
+            const processadores = await Processador.findOneAndUpdate(
+                { $and: [
+                    { _id: id },
+                    { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
+                ]},
+                { $set: {
+                    'lojas.$.preco': preco,
+                    'lojas.$.urlProduto': urlProduto
+                }},
+                { new: true, omitUndefined: true }
+            )
+                    
             res.send(processadores)
             
-
         }catch(err){
 
             return res.status(400).send(`Ocorreu um erro na requisição: ${err}`)
@@ -210,7 +199,35 @@ module.exports = {
     async destroy(req, res){
         try{
 
-            
+            const idLoja = req.headers.idloja
+            const { id } = req.params
+
+            const numArrayLojas = await Processador.countDocuments( { $and: [ { _id: id }, { 'lojas.1': {$exists: true} } ] } )
+
+            if (numArrayLojas == 0){
+
+                var processadores = await Processador.deleteOne(
+                    { $and: [
+                        { _id: id },
+                        { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
+                    ]}
+                )
+
+            }else if (numArrayLojas == 1){
+                
+                var processadores = await Processador.findOneAndUpdate(
+                    { _id: id },
+                    { $pull: { lojas: { idLoja: idLoja } } },
+                    { new: true, omitUndefined: true }
+                )
+
+            }else{
+
+                var processadores = 'algo está errado no banco de dados'
+
+            }
+
+            res.send(processadores)
 
         }catch(err){
 

@@ -8,8 +8,8 @@ const PlacaVideoController = require('./controllers/PlacaVideoController')
 routes.get('/processadores', ProcessadorController.index);
 routes.get('/processadores/:id', ProcessadorController.show);
 routes.post('/processadores', multer(uploadConfig('processadores')).array('files'), ProcessadorController.store)
-routes.put('/processadores', ProcessadorController.update)
-routes.delete('/processadores', ProcessadorController.destroy)
+routes.put('/processadores/:id', ProcessadorController.update)
+routes.delete('/processadores/:id', ProcessadorController.destroy)
 
 routes.get('/placas-video', PlacaVideoController.index);
 routes.get('/placas-video/:id', PlacaVideoController.show);
