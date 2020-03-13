@@ -1,3 +1,5 @@
-# TCC-DS-Etec
+# TECNICS
 
 Site muito show
+
+![Site Logo](/tecnics.png)
