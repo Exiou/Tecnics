@@ -1,4 +1,5 @@
-const mongoose = require('mongoose'); // Importar mongoose
+const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 const r_string = {
     type: String,
@@ -13,7 +14,6 @@ const r_boolean = {
   required: true 
 } 
 
-// Criar o esquema do banco de dados
 const PlacaMaeSchema = new mongoose.Schema({
     imagem: r_string,
     nome: r_string,

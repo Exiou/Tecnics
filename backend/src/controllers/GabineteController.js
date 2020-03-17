@@ -1,69 +1,52 @@
-const PlacaVideo = require('../models/PlacaVideo')
+const Gabinete = require('../models/Gabinete')
 const Loja = require('../models/Loja')
 
-const { queryPlacaVideo } = require('./utils/queries')
+const { queryGabinete } = require('./utils/queries')
 
 module.exports = {
     async index(req, res){
         try{
 
-            const fabricanteFiltro = await (await PlacaVideo.find().distinct('fabricante')).toString(),
-                serieFiltro = await (await PlacaVideo.find().distinct('serie')).toString(),
-                chipsetFiltro = await (await PlacaVideo.find().distinct('chipset')).toString(),
-                interfaceFiltro = await (await PlacaVideo.find().distinct('interface')).toString(),
-                crossfireFiltro = await (await PlacaVideo.find().distinct('sli_crossfire')).toString(),
-                corFiltro = await (await PlacaVideo.find().distinct('cor')).toString()
+            const fabricanteFiltro = await (await Gabinete.find().distinct('fabricante')).toString(),
+                tipoFiltro = await (await Gabinete.find().distinct('tipo')).toString(),
+                corFiltro = await (await Gabinete.find().distinct('cor')).toString()
 
             const {
                 page = 1,
                 limit = 10,
                 precoMin = 0,
                 precoMax = 50000,
-                memoriaMin = 0,
-                memoriaMax = 50,
-                clockMin = 0,
-                clockMax = 100,
-                comprimentoMin = 0,
-                comprimentoMax = 10000,
-                dviMin = 0,
-                dviMax = 100,
-                hdmiMin = 0,
-                hdmiMax = 100,
-                mhdmiMin = 0,
-                mhdmiMax = 100,
-                displayMin = 0,
-                displayMax = 100,
-                mdisplayMin = 0,
-                mdisplayMax = 100,
-                slotMin = 0,
-                slotMax = 50,
-                consumoMin = 0,
-                consumoMax = 800,
-                fanless = 'true,false',
-                watercooler = 'true,false',
-                gsync = 'true,false',
+                baia_externa_525Min = 0,
+                baia_externa_525Max = 20,
+                baia_externa_350Min = 0,
+                baia_externa_350Max = 20,
+                baia_interna_350Min = 0,
+                baia_interna_350Max = 20,
+                baia_interna_250Min = 0,
+                baia_interna_250Max = 20,
+                fonte = 'true,false',
+                janela_lateral = 'true,false',
+                painel_frontal_usb3 = 'true,false',
+                filtro_removivel = 'true,false',
                 fabricante = fabricanteFiltro,
-                serie = serieFiltro,
-                chipset = chipsetFiltro,
-                interface = interfaceFiltro,
-                crossfire = crossfireFiltro,
+                tipo = tipoFiltro,
                 cor = corFiltro,
                 ordenar = '',
                 buscar = '',
             } = req.query
 
-            const query = queryPlacaVideo(precoMin,precoMax,memoriaMin,memoriaMax,clockMin,clockMax,comprimentoMin,comprimentoMax,dviMin,dviMax,hdmiMin,hdmiMax,mhdmiMin,mhdmiMax,displayMin,displayMax,mdisplayMin,mdisplayMax,slotMin,slotMax,consumoMin,consumoMax,fanless,watercooler,gsync,fabricante,serie,chipset,interface,crossfire,cor,buscar)
+            const query = queryGabinete(precoMin,precoMax,baia_externa_525Min,baia_externa_525Max,baia_externa_350Min,baia_externa_350Max,baia_interna_350Min,baia_interna_350Max,baia_interna_250Min,baia_interna_250Max,fonte,janela_lateral,painel_frontal_usb3,filtro_removivel,fabricante,tipo,cor,buscar)
 
             const options = {
                 page,
                 limit,
-                select: '-led_rgb -tipo_memoria -lojas.idLoja -lojas.urlProduto -lojas.-id',
+                select: '-slot_full_height -slot_half_height -potencia_fonte -peso -led_rgb -lojas.idLoja -lojas.urlProduto -lojas._id',
                 sort: `${ordenar}`
             }
 
-            const placasMae = await PlacaVideo.paginate(query, options)
+            const gabinetes = await Gabinete.paginate(query, options)
 
-            return res.json({ placasMae, filtros: { fabricanteFiltro, serieFiltro, chipsetFiltro, interfaceFiltro, crossfireFiltro, corFiltro } })
+            return res.json({ gabinetes, filtros: { fabricanteFiltro, tipoFiltro, corFiltro } })
 
         }catch(err){
             
@@ -75,9 +58,9 @@ module.exports = {
     async show(req, res){
         try{
 
-            const placasMae = await PlacaVideo.findById(req.params.id).populate('lojas.idLoja').exec()
+            const gabinetes = await Gabinete.findById(req.params.id).populate('lojas.idLoja').exec()
 
-            return res.json(placasMae)
+            return res.json(gabinetes)
 
         }catch(err){
 
@@ -92,14 +75,14 @@ module.exports = {
             const jsonProdutos = JSON.parse(req.body.jsonProdutos)
             const idLoja = req.headers.idloja
 
-            let placasVideo = []
+            let gabinetes = []
             
             for(let i = 0; i < jsonProdutos.length;i++){
                     
                 if(jsonProdutos[i]){
                     
-                    var verificaModelo = await PlacaVideo.countDocuments({ modelo: `${jsonProdutos[i].modelo}` })
-                    var verificaIdLoja = await PlacaVideo.countDocuments({
+                    var verificaModelo = await Gabinete.countDocuments({ modelo: `${jsonProdutos[i].modelo}` })
+                    var verificaIdLoja = await Gabinete.countDocuments({
                         $and: [
                             { modelo: `${jsonProdutos[i].modelo}`},
                             { lojas: { $elemMatch: { idLoja: { $eq: `${idLoja}`} } } }
@@ -108,33 +91,28 @@ module.exports = {
 
                     if(verificaModelo == 0){
                         
-                        placasVideo.push(
-                            await PlacaVideo.create({
+                        gabinetes.push(
+                            await Gabinete.create({
                                 imagem: jsonProdutos[i].imagem,
                                 nome: jsonProdutos[i].nome,
-                                modelo: jsonProdutos[i].modelo,
+                                modelo:jsonProdutos[i].modelo,    
                                 fabricante: jsonProdutos[i].fabricante,
-                                serie: jsonProdutos[i].serie,
-                                chipset: jsonProdutos[i].chipset,
-                                tipo_memoria: jsonProdutos[i].tipo_memoria,
-                                interface: jsonProdutos[i].interface,
-                                sli_crossfire: jsonProdutos[i].sli_crossfire,
+                                tipo: jsonProdutos[i].tipo,
                                 cor: jsonProdutos[i].cor,
-                                tamanho_memoria: jsonProdutos[i].tamanho_memoria,
-                                core_clock: jsonProdutos[i].core_clock,
-                                boost_clock: jsonProdutos[i].boost_clock,
-                                comprimento: jsonProdutos[i].comprimento,
-                                portas_dvi: jsonProdutos[i].portas_dvi,
-                                portas_hdmi: jsonProdutos[i].portas_hdmi,
-                                portas_mini_hdmi: jsonProdutos[i].portas_mini_hdmi,
-                                portas_display_port: jsonProdutos[i].portas_display_port,
-                                portas_mini_display_port: jsonProdutos[i].portas_mini_display_port,
-                                slots_ocupados: jsonProdutos[i].slots_ocupados,
-                                consumo: jsonProdutos[i].consumo,
-                                fanless: jsonProdutos[i].fanless,
-                                water_cooled: jsonProdutos[i].water_cooled,
-                                suporte_gsync: jsonProdutos[i].suporte_gsync,
                                 led_rgb: jsonProdutos[i].led_rgb,
+                                formato_placa_mae: jsonProdutos[i].formato_placa_mae,
+                                baia_externa_525: jsonProdutos[i].baia_externa_525,
+                                baia_externa_350: jsonProdutos[i].baia_externa_350,
+                                baia_interna_350: jsonProdutos[i].baia_interna_350,
+                                baia_interna_250: jsonProdutos[i].baia_interna_250,
+                                slot_full_height: jsonProdutos[i].slot_full_height,
+                                slot_half_height: jsonProdutos[i].slot_half_height,
+                                potencia_fonte: jsonProdutos[i].potencia_fonte,
+                                peso: jsonProdutos[i].peso,
+                                fonte: jsonProdutos[i].fonte,
+                                janela_lateral: jsonProdutos[i].janela_lateral,
+                                painel_frontal_usb3: jsonProdutos[i].painel_frontal_usb3,
+                                filtro_removivel: jsonProdutos[i].filtro_removivel,
                                 lojas: [{
                                     idLoja,
                                     preco: jsonProdutos[i].preco,
@@ -146,8 +124,8 @@ module.exports = {
                         
                     }else if(verificaModelo == 1 && verificaIdLoja == 0){
 
-                        placasVideo.push(
-                            await PlacaVideo.findOneAndUpdate(
+                        gabinetes.push(
+                            await Gabinete.findOneAndUpdate(
                                 {
                                     $and: [
                                         { modelo: `${jsonProdutos[i].modelo}`},
@@ -172,16 +150,16 @@ module.exports = {
                         console.log('atualizou')
 
                     }else if(verificaModelo == 1 && verificaIdLoja == 1){
-                        placasVideo.push('produto ja cadastrado pela loja')
+                        gabinetes.push('produto ja cadastrado pela loja')
                     }else{
-                        placasVideo.push('algo está errado no banco de dados')
+                        gabinetes.push('algo está errado no banco de dados')
                     }
 
                 }
 
             }
 
-            return res.json(placasVideo)
+            return res.json(gabinetes)
 
         }catch(err){
             
@@ -197,7 +175,7 @@ module.exports = {
             const idLoja = req.headers.idloja
             const { id } = req.params
 
-            await PlacaVideo.updateOne(
+            await Gabinete.updateOne(
                 { $and: [
                     { _id: id },
                     { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
@@ -209,7 +187,7 @@ module.exports = {
                 { omitUndefined: true }
             )
 
-            const placasVideo = await PlacaVideo.findOneAndUpdate(
+            const gabinetes = await Gabinete.findOneAndUpdate(
                 { $and: [
                     { _id: id },
                     { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
@@ -218,7 +196,7 @@ module.exports = {
                 { new: true }
             )
                     
-            res.send(placasVideo)
+            res.send(gabinetes)
             
         }catch(err){
 
@@ -233,11 +211,11 @@ module.exports = {
             const idLoja = req.headers.idloja
             const { id } = req.params
 
-            const numArrayLojas = await PlacaVideo.countDocuments( { $and: [ { _id: id }, { 'lojas.1': {$exists: true} } ] } )
+            const numArrayLojas = await Gabinete.countDocuments( { $and: [ { _id: id }, { 'lojas.1': {$exists: true} } ] } )
 
             if (numArrayLojas == 0){
 
-                var placasVideo = await PlacaVideo.deleteOne(
+                var gabinetes = await Gabinete.deleteOne(
                     { $and: [
                         { _id: id },
                         { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
@@ -246,7 +224,7 @@ module.exports = {
 
             }else if (numArrayLojas == 1){
                 
-                var placasVideo = await PlacaVideo.findOneAndUpdate(
+                var gabinetes = await Gabinete.findOneAndUpdate(
                     { _id: id },
                     { $pull: { lojas: { idLoja: idLoja } } },
                     { new: true, omitUndefined: true }
@@ -254,11 +232,11 @@ module.exports = {
 
             }else{
 
-                var placasVideo = 'algo está errado no banco de dados'
+                var gabinetes = 'algo está errado no banco de dados'
 
             }
 
-            res.send(placasVideo)
+            res.send(gabinetes)
 
         }catch(err){
 

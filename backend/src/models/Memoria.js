@@ -1,4 +1,5 @@
-const mongoose = require('mongoose'); // Importar mongoose
+const mongoose = require('mongoose'); 
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 const r_string = {
     type: String,
@@ -13,7 +14,6 @@ const r_boolean = {
   required: true 
 } 
 
-// Criar o esquema do banco de dados
 const MemoriaSchema = new mongoose.Schema({
     imagem: r_string,
     nome: r_string,
@@ -22,6 +22,7 @@ const MemoriaSchema = new mongoose.Schema({
     velocidade: r_string,
     tipo: r_string,
     capacidade: r_string,
+    modulo: r_string,
     cor: r_string,
     voltagem: r_number,
     cas_latency: r_number,

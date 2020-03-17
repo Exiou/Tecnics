@@ -1,69 +1,47 @@
-const PlacaVideo = require('../models/PlacaVideo')
+const Cooler = require('../models/Cooler')
 const Loja = require('../models/Loja')
 
-const { queryPlacaVideo } = require('./utils/queries')
+const { queryCooler } = require('./utils/queries')
 
 module.exports = {
     async index(req, res){
         try{
 
-            const fabricanteFiltro = await (await PlacaVideo.find().distinct('fabricante')).toString(),
-                serieFiltro = await (await PlacaVideo.find().distinct('serie')).toString(),
-                chipsetFiltro = await (await PlacaVideo.find().distinct('chipset')).toString(),
-                interfaceFiltro = await (await PlacaVideo.find().distinct('interface')).toString(),
-                crossfireFiltro = await (await PlacaVideo.find().distinct('sli_crossfire')).toString(),
-                corFiltro = await (await PlacaVideo.find().distinct('cor')).toString()
+            const fabricanteFiltro = await (await Cooler.find().distinct('fabricante')).toString(),
+                rolamentoFiltro = await (await Cooler.find().distinct('rolamento')).toString(),
+                socketFiltro = await (await Cooler.find().distinct('socket')).toString(),
+                radiadorFiltro = await (await Cooler.find().distinct('radiador')).toString(),
+                corFiltro = await (await Cooler.find().distinct('cor')).toString()
 
             const {
                 page = 1,
                 limit = 10,
                 precoMin = 0,
                 precoMax = 50000,
-                memoriaMin = 0,
-                memoriaMax = 50,
-                clockMin = 0,
-                clockMax = 100,
-                comprimentoMin = 0,
-                comprimentoMax = 10000,
-                dviMin = 0,
-                dviMax = 100,
-                hdmiMin = 0,
-                hdmiMax = 100,
-                mhdmiMin = 0,
-                mhdmiMax = 100,
-                displayMin = 0,
-                displayMax = 100,
-                mdisplayMin = 0,
-                mdisplayMax = 100,
-                slotMin = 0,
-                slotMax = 50,
-                consumoMin = 0,
-                consumoMax = 800,
+                alturaMin = 0,
+                alturaMax = 1000,
                 fanless = 'true,false',
-                watercooler = 'true,false',
-                gsync = 'true,false',
                 fabricante = fabricanteFiltro,
-                serie = serieFiltro,
-                chipset = chipsetFiltro,
-                interface = interfaceFiltro,
-                crossfire = crossfireFiltro,
+                rolamento = rolamentoFiltro,
+                socket = socketFiltro,
+                radiador = radiadorFiltro,
                 cor = corFiltro,
                 ordenar = '',
                 buscar = '',
             } = req.query
 
-            const query = queryPlacaVideo(precoMin,precoMax,memoriaMin,memoriaMax,clockMin,clockMax,comprimentoMin,comprimentoMax,dviMin,dviMax,hdmiMin,hdmiMax,mhdmiMin,mhdmiMax,displayMin,displayMax,mdisplayMin,mdisplayMax,slotMin,slotMax,consumoMin,consumoMax,fanless,watercooler,gsync,fabricante,serie,chipset,interface,crossfire,cor,buscar)
+            const query = queryCooler(precoMin,precoMax,alturaMin,alturaMax,fanless,fabricante,rolamento,socket,radiador,cor,buscar)
 
             const options = {
                 page,
                 limit,
-                select: '-led_rgb -tipo_memoria -lojas.idLoja -lojas.urlProduto -lojas.-id',
+                select: '-led_rgb -rpm_ventoinha -peso -water_cooled -lojas.idLoja -lojas.urlProduto -lojas._id',
                 sort: `${ordenar}`
             }
 
-            const placasMae = await PlacaVideo.paginate(query, options)
+            const coolers = await Cooler.paginate(query, options)
 
-            return res.json({ placasMae, filtros: { fabricanteFiltro, serieFiltro, chipsetFiltro, interfaceFiltro, crossfireFiltro, corFiltro } })
+            return res.json({ coolers, filtros: { fabricanteFiltro, rolamentoFiltro, socketFiltro, radiadorFiltro, corFiltro } })
 
         }catch(err){
             
@@ -75,9 +53,9 @@ module.exports = {
     async show(req, res){
         try{
 
-            const placasMae = await PlacaVideo.findById(req.params.id).populate('lojas.idLoja').exec()
+            const coolers = await Cooler.findById(req.params.id).populate('lojas.idLoja').exec()
 
-            return res.json(placasMae)
+            return res.json(coolers)
 
         }catch(err){
 
@@ -92,14 +70,14 @@ module.exports = {
             const jsonProdutos = JSON.parse(req.body.jsonProdutos)
             const idLoja = req.headers.idloja
 
-            let placasVideo = []
+            let coolers = []
             
             for(let i = 0; i < jsonProdutos.length;i++){
                     
                 if(jsonProdutos[i]){
                     
-                    var verificaModelo = await PlacaVideo.countDocuments({ modelo: `${jsonProdutos[i].modelo}` })
-                    var verificaIdLoja = await PlacaVideo.countDocuments({
+                    var verificaModelo = await Cooler.countDocuments({ modelo: `${jsonProdutos[i].modelo}` })
+                    var verificaIdLoja = await Cooler.countDocuments({
                         $and: [
                             { modelo: `${jsonProdutos[i].modelo}`},
                             { lojas: { $elemMatch: { idLoja: { $eq: `${idLoja}`} } } }
@@ -108,33 +86,22 @@ module.exports = {
 
                     if(verificaModelo == 0){
                         
-                        placasVideo.push(
-                            await PlacaVideo.create({
+                        coolers.push(
+                            await Cooler.create({
                                 imagem: jsonProdutos[i].imagem,
                                 nome: jsonProdutos[i].nome,
-                                modelo: jsonProdutos[i].modelo,
+                                modelo:jsonProdutos[i].modelo,    
                                 fabricante: jsonProdutos[i].fabricante,
-                                serie: jsonProdutos[i].serie,
-                                chipset: jsonProdutos[i].chipset,
-                                tipo_memoria: jsonProdutos[i].tipo_memoria,
-                                interface: jsonProdutos[i].interface,
-                                sli_crossfire: jsonProdutos[i].sli_crossfire,
+                                rolamento: jsonProdutos[i].rolamento,
+                                socket: jsonProdutos[i].socket,
+                                radiador: jsonProdutos[i].radiador,
                                 cor: jsonProdutos[i].cor,
-                                tamanho_memoria: jsonProdutos[i].tamanho_memoria,
-                                core_clock: jsonProdutos[i].core_clock,
-                                boost_clock: jsonProdutos[i].boost_clock,
-                                comprimento: jsonProdutos[i].comprimento,
-                                portas_dvi: jsonProdutos[i].portas_dvi,
-                                portas_hdmi: jsonProdutos[i].portas_hdmi,
-                                portas_mini_hdmi: jsonProdutos[i].portas_mini_hdmi,
-                                portas_display_port: jsonProdutos[i].portas_display_port,
-                                portas_mini_display_port: jsonProdutos[i].portas_mini_display_port,
-                                slots_ocupados: jsonProdutos[i].slots_ocupados,
-                                consumo: jsonProdutos[i].consumo,
+                                led_rgb: jsonProdutos[i].led_rgb,
+                                altura: jsonProdutos[i].altura,
+                                rpm_ventoinha: jsonProdutos[i].rpm_ventoinha,
+                                peso: jsonProdutos[i].peso,
                                 fanless: jsonProdutos[i].fanless,
                                 water_cooled: jsonProdutos[i].water_cooled,
-                                suporte_gsync: jsonProdutos[i].suporte_gsync,
-                                led_rgb: jsonProdutos[i].led_rgb,
                                 lojas: [{
                                     idLoja,
                                     preco: jsonProdutos[i].preco,
@@ -146,8 +113,8 @@ module.exports = {
                         
                     }else if(verificaModelo == 1 && verificaIdLoja == 0){
 
-                        placasVideo.push(
-                            await PlacaVideo.findOneAndUpdate(
+                        coolers.push(
+                            await Cooler.findOneAndUpdate(
                                 {
                                     $and: [
                                         { modelo: `${jsonProdutos[i].modelo}`},
@@ -172,16 +139,16 @@ module.exports = {
                         console.log('atualizou')
 
                     }else if(verificaModelo == 1 && verificaIdLoja == 1){
-                        placasVideo.push('produto ja cadastrado pela loja')
+                        coolers.push('produto ja cadastrado pela loja')
                     }else{
-                        placasVideo.push('algo está errado no banco de dados')
+                        coolers.push('algo está errado no banco de dados')
                     }
 
                 }
 
             }
 
-            return res.json(placasVideo)
+            return res.json(coolers)
 
         }catch(err){
             
@@ -197,7 +164,7 @@ module.exports = {
             const idLoja = req.headers.idloja
             const { id } = req.params
 
-            await PlacaVideo.updateOne(
+            await Cooler.updateOne(
                 { $and: [
                     { _id: id },
                     { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
@@ -209,7 +176,7 @@ module.exports = {
                 { omitUndefined: true }
             )
 
-            const placasVideo = await PlacaVideo.findOneAndUpdate(
+            const coolers = await Cooler.findOneAndUpdate(
                 { $and: [
                     { _id: id },
                     { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
@@ -218,7 +185,7 @@ module.exports = {
                 { new: true }
             )
                     
-            res.send(placasVideo)
+            res.send(coolers)
             
         }catch(err){
 
@@ -233,11 +200,11 @@ module.exports = {
             const idLoja = req.headers.idloja
             const { id } = req.params
 
-            const numArrayLojas = await PlacaVideo.countDocuments( { $and: [ { _id: id }, { 'lojas.1': {$exists: true} } ] } )
+            const numArrayLojas = await Cooler.countDocuments( { $and: [ { _id: id }, { 'lojas.1': {$exists: true} } ] } )
 
             if (numArrayLojas == 0){
 
-                var placasVideo = await PlacaVideo.deleteOne(
+                var coolers = await Cooler.deleteOne(
                     { $and: [
                         { _id: id },
                         { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
@@ -246,7 +213,7 @@ module.exports = {
 
             }else if (numArrayLojas == 1){
                 
-                var placasVideo = await PlacaVideo.findOneAndUpdate(
+                var coolers = await Cooler.findOneAndUpdate(
                     { _id: id },
                     { $pull: { lojas: { idLoja: idLoja } } },
                     { new: true, omitUndefined: true }
@@ -254,11 +221,11 @@ module.exports = {
 
             }else{
 
-                var placasVideo = 'algo está errado no banco de dados'
+                var coolers = 'algo está errado no banco de dados'
 
             }
 
-            res.send(placasVideo)
+            res.send(coolers)
 
         }catch(err){
 

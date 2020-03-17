@@ -1,4 +1,5 @@
-const mongoose = require('mongoose'); // Importar mongoose
+const mongoose = require('mongoose'); 
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 const r_string = {
     type: String,
@@ -13,16 +14,17 @@ const r_boolean = {
   required: true 
 } 
 
-// Criar o esquema do banco de dados
 const ArmazenamentoSchema = new mongoose.Schema({
     imagem: r_string,
     nome: r_string,
     modelo:r_string,
     fabricante: r_string,
+    serie: r_string,
     tipo: r_string,
     interface: r_string,
     formato: r_string,
     buffer_cache: r_string,
+    rpm: r_number,
     capacidade: r_number,
     intellipower: r_boolean,
     hibrido: r_boolean,

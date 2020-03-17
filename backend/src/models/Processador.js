@@ -1,6 +1,8 @@
-const mongoose = require('mongoose'); // Importar mongoose
+//importar dependências
+const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2')
 
+//atalhozinho pra colocar os campos como required (obrigatórios no cadastro)
 const r_string = {
     type: String,
     required: true 
@@ -51,10 +53,13 @@ const ProcessadorSchema = new mongoose.Schema({
     },
 });
 
+//usar plugin mongoosePaginate
 ProcessadorSchema.plugin(mongoosePaginate)
 
+//"virtualizar" as imagens no servidor local
 ProcessadorSchema.virtual('imagem_url').get(function() {
-    return `http://192.168.1.102:3333/arquivos/processadores/${this.imagem}`
+    return `http://192.168.1.104:3333/arquivos/processadores/${this.imagem}`
 })
 
+//exportar model
 module.exports = mongoose.model('Processador', ProcessadorSchema);

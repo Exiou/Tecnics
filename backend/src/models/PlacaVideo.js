@@ -1,4 +1,4 @@
-const mongoose = require('mongoose'); // Importar mongoose
+const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2')
 
 const r_string = {
@@ -14,7 +14,6 @@ const r_boolean = {
   required: true 
 } 
 
-// Criar o esquema do banco de dados
 const PlacaVideoSchema = new mongoose.Schema({
     imagem: r_string,
     nome: r_string,
@@ -26,6 +25,7 @@ const PlacaVideoSchema = new mongoose.Schema({
     interface: r_string,
     sli_crossfire: r_string,
     cor: r_string,   
+    led_rgb: r_string,
     tamanho_memoria: r_number,
     core_clock: r_number,
     boost_clock: r_number,
@@ -40,7 +40,6 @@ const PlacaVideoSchema = new mongoose.Schema({
     fanless: r_boolean,
     water_cooled: r_boolean,
     suporte_gsync: r_boolean,
-    led_rgb: r_boolean,
     lojas:[
         {
             idLoja: {

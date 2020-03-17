@@ -1,4 +1,5 @@
-const mongoose = require('mongoose'); // Importar mongoose
+const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 const r_string = {
     type: String,
@@ -13,18 +14,21 @@ const r_boolean = {
   required: true 
 } 
 
-// Criar o esquema do banco de dados
 const CoolerSchema = new mongoose.Schema({
     imagem: r_string,
     nome: r_string,
     modelo:r_string,
     fabricante: r_string,
     rolamento: r_string,
-    socket: r_string,
+    socket: [r_string],
     radiador: r_string,
     cor: r_string,
+    led_rgb: r_string,
     altura: r_number,
+    rpm_ventoinha: r_number,
+    peso: r_number,
     fanless: r_boolean,
+    water_cooled: r_boolean,
     lojas:[
         {
             idLoja: {

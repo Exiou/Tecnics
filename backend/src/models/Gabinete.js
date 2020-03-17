@@ -1,4 +1,5 @@
-const mongoose = require('mongoose'); // Importar mongoose
+const mongoose = require('mongoose'); 
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 const r_string = {
     type: String,
@@ -13,7 +14,6 @@ const r_boolean = {
   required: true 
 } 
 
-// Criar o esquema do banco de dados
 const GabineteSchema = new mongoose.Schema({
     imagem: r_string,
     nome: r_string,
@@ -21,6 +21,7 @@ const GabineteSchema = new mongoose.Schema({
     fabricante: r_string,
     tipo: r_string,
     cor: r_string,
+    led_rgb: r_string,
     formato_placa_mae: r_string,
     baia_externa_525: r_number,
     baia_externa_350: r_number,
@@ -28,6 +29,8 @@ const GabineteSchema = new mongoose.Schema({
     baia_interna_250: r_number,
     slot_full_height: r_number,
     slot_half_height: r_number,
+    potencia_fonte: r_number,
+    peso: r_number,
     fonte: r_boolean,
     janela_lateral: r_boolean,
     painel_frontal_usb3: r_boolean,

@@ -1,23 +1,24 @@
+//importar dependências
 const multer = require('multer')
 const path = require('path')
-const crypto = require('crypto')
+
 
 module.exports = (produto) => {
+    //configuração do multer
     const multerConfig = {
         storage: multer.diskStorage({
             destination: (req, file, cb) => {
-                cb(null, path.resolve(__dirname, '..','..','uploads',`${produto}`))
+                cb(null, path.resolve(__dirname, '..','..','uploads',`${produto}`)) //pasta onde será armazenada a imagem
             },
             filename: (req, file, cb) => {
-                crypto.randomBytes(16, (err, hash) => {
-                    if(err) cb(err)
 
-                    const fileName = `${file.originalname}`
+                const fileName = `${file.originalname}` //nome da imagem
 
-                    cb(null, fileName)
-                })
+                cb(null, fileName)
+            
             }
         }),
+        //formatos de imagem permitidos
         fileFilter: (req, file, cb) => {
             const allowedMimes = [
                 'image/jpeg',
