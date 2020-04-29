@@ -13,6 +13,15 @@ const FonteController = require('./controllers/FonteController')
 const ArmazenamentoController = require('./controllers/ArmazenamentoController')
 const CoolerController = require('./controllers/CoolerController')
 
+const UserController = require('./controllers/UserController')
+const SessionController = require('./controllers/SessionController')
+
+routes.get('/users', UserController.show)
+routes.post('/users', multer(uploadConfig('users')).single('file'), UserController.store)
+routes.put('/users/:idProduto', UserController.update)
+
+routes.post('/sessions', SessionController.store)
+
 //CRUD de cada produto
 routes.get('/processadores', ProcessadorController.index); //index (mostrar todos os produtos)
 routes.get('/processadores/:id', ProcessadorController.show); //show (mostrar apenas um produto selecionado)

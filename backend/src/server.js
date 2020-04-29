@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors');
 const path = require('path');
 const helmet = require('helmet')
+require('dotenv').config()
 
 //importar arquivos
 const routes = require('./routes')
@@ -12,7 +13,7 @@ const routes = require('./routes')
 const app = express()
 
 //conectar ao banco de dados no mongodb
-mongoose.connect('mongodb+srv://tccetec:tccetec@cluster0-rmowr.gcp.mongodb.net/produtos?retryWrites=true&w=majority', {
+mongoose.connect( process.env.MONGOOSE_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false

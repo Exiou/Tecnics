@@ -1,47 +1,58 @@
-.processador-list{
-    text-align: center;
-    max-width: 700px;
-    margin: 20px auto 0;
-    padding: 0 20px;
+header{
+    position: absolute;
+    width: 100%;
+    height: 131px;
+    top: 0px;
+
+    background: #1C1C1C;
 }
 
-.processador-list article {
-    background: #FFF;
-    border: 2px solid #da552f;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
+.menu {
+    position: absolute;
+width: 100%;
+height: 765px;
+left: 0px;
+top: 128px;
+
+background: #262626;
 }
 
-.processador-list article p{
-    font-size: 16px;
-    color:#999;
-    margin-top: 5px;
-    line-height: 24px;
+.tecnicsLogo{
+    position: absolute;
+width: 321px;
+height: 172px;
+left: 77px;
+top: -21px;
 }
 
-.processador-list article img{
-    height: auto;
-    max-width: 25%;
-    border-radius: 10px;
-    border: 2px solid #da552f;
-    padding: 5px;
-    background: none;
-    margin-top: 10px;
-    color: #da552f;
+.hamburgerButton {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    left: 1263px;
+    top: 43px;
+    background: #1C1C1C;
+    border: 0;
+    border-radius: 8px;
+    color: #FFF;
+
 }
 
-.processador-list article a{
-    height: 42px;
-    border-radius: 5px;
-    border: 2px solid #da552f;
-    background: none;
-    margin-top: 10px;
-    color: #da552f;
-    font-weight: bold;
-    font-size: 16px;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.hamburgerMenu {
+    position: absolute;
+left: 6.25%;
+right: 6.25%;
+top: 18.75%;
+bottom: 18.75%;
+border-radius: 15%;
+background: #25DE6D;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    height: 131px;
+    top: 893px;
+
+    background: #1C1C1C;
 }

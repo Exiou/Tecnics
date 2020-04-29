@@ -8,6 +8,7 @@ import Processadores from './pages/processadores'
 const Routes = () => (
     <BrowserRouter>
         <Switch>
+            <Route exact path="/" component={Main} />
             <Route exact path="/processadores" component={Main} />
             <Route path="/processadores/:id" component={Processadores} />
         </Switch>
