@@ -1,9 +1,11 @@
 //importar dependências
-const multer = require('multer')
-const path = require('path')
+import { Request } from 'express'
+
+import multer, { FileFilterCallback } from 'multer'
+import path from 'path'
 
 
-module.exports = (produto) => {
+export default function (produto: string) {
     //configuração do multer
     const multerConfig = {
         storage: multer.diskStorage({
@@ -19,7 +21,7 @@ module.exports = (produto) => {
             }
         }),
         //formatos de imagem permitidos
-        fileFilter: (req, file, cb) => {
+        fileFilter: (req: Request, file: Express.Multer.File, cb: FileFilterCallback) => {
             const allowedMimes = [
                 'image/jpeg',
                 'image/pjpeg',
