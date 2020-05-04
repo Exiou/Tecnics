@@ -3,13 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { promisify } from 'util'
 
-interface IUser extends Document {
-  nome: string
-  imagem: string
-  email: string
-  senha: string
-  favoritos?: string
-}
+import { IUser } from './interfaces/userInterface'
 
 const UserSchema = new Schema<IUser>({
   nome: String,
@@ -48,5 +42,7 @@ UserSchema.pre('remove', function(this: Document | any) {
     path.resolve(__dirname,'..','..','uploads','users',this.imagem)
   )
 })
+
+const UserModel = model<IUser>('User', UserSchema)
   
-export default model<IUser>('User', UserSchema)
+export default UserModel
