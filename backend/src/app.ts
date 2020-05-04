@@ -3,7 +3,6 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import path from 'path'
 import helmet from 'helmet'
-require('dotenv').config()
 
 import routes from './routes'
 
