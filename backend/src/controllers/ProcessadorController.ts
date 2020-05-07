@@ -4,7 +4,7 @@ import multer from 'multer'
 import uploadConfig from '../config/multer'
 
 import Processador from '../models/Processador'
-import Loja from '../models/Loja'
+import IProcessador from '../models/interfaces/processadorInterface'
 
 import getFilters from './utils/getFilters'
 import { queryProcessador } from './utils/queries'
@@ -20,8 +20,8 @@ class ProcessadorController {
     public initializeRoutes() {
         this.routes.get(`${this.path}`, this.index)
         this.routes.get(`${this.path}/:userid`, this.show)
-        this.routes.post(`${this.path}`, multer(uploadConfig('users')).single('file'), this.store)
-        this.routes.put(`${this.path}/:userid`, multer(uploadConfig('users')).single('file'), this.update)
+        this.routes.post(`${this.path}`, multer(uploadConfig('processadores')).array('files'), this.store)
+        this.routes.put(`${this.path}/:userid`, multer(uploadConfig('processadores')).single('file'), this.update)
         this.routes.delete(`${this.path}/:userid`, this.destroy)
     }
 
@@ -85,8 +85,61 @@ class ProcessadorController {
 
     public async store (req: Request, res: Response): Promise<Response> {
         try {
-            
-            return res.json('')
+
+            const jsonProdutos: IProcessador[] = JSON.parse(req.body.jsonProdutos)
+            const idLoja = req.headers.idloja?.toString()!
+
+            let processadores = []
+
+            for await (let produto of jsonProdutos){
+                if(produto.lojas){
+                    let verificaModelo = await Processador.countDocuments({ modelo: produto.modelo })
+                    let verificaIdLoja = await Processador.countDocuments({
+                        $and: [
+                            { modelo: `${produto.modelo}`},
+                            { lojas: { $elemMatch: { idLoja: { $eq: `${idLoja}`} } } }
+                        ]
+                    })
+                    
+                    produto.lojas[0].idLoja = idLoja
+
+                    if(verificaModelo == 0) processadores.push(await Processador.create(produto))
+
+                    else if(verificaModelo == 1 && verificaIdLoja == 0) {
+                        processadores.push(
+                            await Processador.findOneAndUpdate(
+                                {
+                                    $and: [
+                                        { modelo: produto.modelo },
+                                        { lojas: { $elemMatch: { idLoja: { $ne: idLoja} } } }
+                                    ]
+                                },
+                                {
+                                    $push: {
+                                        lojas: {
+                                            $each: [{
+                                                idLoja,
+                                                preco: produto.lojas[0].preco,
+                                                urlProduto: produto.lojas[0].urlProduto
+                                            }],
+                                            $sort: { preco: 1 }
+                                        }
+                                    }
+                                },
+                                { new: true }
+                            )
+                        )
+                    }
+
+                    else if(verificaModelo == 1 && verificaIdLoja == 1) processadores.push('produto já cadastrado pela loja')
+
+                    else{
+                        processadores.push('algo está errado no banco de dados')
+                    }
+                }
+            }
+
+            return res.json(processadores)
         } catch (err) {
             return res.send(`Ocorreu um erro na requisição: ${err}`)
         }
