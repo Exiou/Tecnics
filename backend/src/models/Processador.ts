@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose'
 import mongoosePaginate from 'mongoose-paginate-v2'
 
-import { IProcessador } from './interfaces/processadorInterface'
+import IProcessador from './interfaces/processadorInterface'
 
 const ProcessadorSchema = new Schema<IProcessador>({
     imagem: String,
@@ -38,7 +38,7 @@ const ProcessadorSchema = new Schema<IProcessador>({
 ProcessadorSchema.plugin(mongoosePaginate)
 
 ProcessadorSchema.virtual('imagem_url').get(function(this: any)  {
-    return `http://192.168.1.100:3333/arquivos/users/${this.imagem}`
+    return `http://192.168.1.100:3333/arquivos/processadores/${this.imagem}`
   })
 
 const ProcessadorModel = model<IProcessador>('Processador', ProcessadorSchema)

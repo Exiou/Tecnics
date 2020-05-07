@@ -2,7 +2,7 @@ import { Document } from 'mongoose'
 
 import { ILojas } from './lojaInterface'
 
-export interface IProcessador extends Document {
+export default interface IProcessador extends Document {
     imagem: string,
     nome: string,
     modelo: string,

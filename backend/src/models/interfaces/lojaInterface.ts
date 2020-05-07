@@ -1,4 +1,4 @@
-import { Document, Schema } from 'mongoose'
+import { Document } from 'mongoose'
 
 export interface ILoja extends Document {
     nome: string,
@@ -9,7 +9,7 @@ export interface ILoja extends Document {
 
 
 export interface ILojas {
-    idLoja: Schema.Types.ObjectId,
+    idLoja: string,
     preco: number,
     urlProduto: string
 }
