@@ -69,14 +69,27 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose-paginate-v2@^1.3.5":
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/@types/mongoose-paginate-v2/-/mongoose-paginate-v2-1.3.5.tgz#b0535918de08e690f621305949da0135a10ffec8"
-  integrity sha512-E0+zYtzI2cyJdYjJIehvx1DxpdnAnZFlhVcNf07kK/MuEexP39Pk1SWqMb6dklTsCwYDNV+Zwf9tHWT7H2JtDA==
+"@types/mongoose-paginate-v2@^1.3.6":
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/@types/mongoose-paginate-v2/-/mongoose-paginate-v2-1.3.6.tgz#9cddad48aab2048d619fab5995c9d49de7bde79c"
+  integrity sha512-CWQU9rQKat8bZ6LcSM9hkXTZn0S3v84kpzjPTa9rWLrhJ3vA6iQvGkr6f/ybys1BFZAbeFrge8qYSU5hPWLXpw==
   dependencies:
     "@types/mongoose" "*"
 
-"@types/mongoose@*", "@types/mongoose@^5.7.14":
+"@types/mongoose-paginate@^5.0.8":
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@types/mongoose-paginate/-/mongoose-paginate-5.0.8.tgz#6b925c3ccf1c45bfb116830c77471cc1ba045308"
+  integrity sha512-6Ybb8X+iBB1/CeScDhzn0q5ZXljHu2Zzg9Wp4nYI5V3Pjc02YuLq6GHHLQrljsA/hMytULnbwQovUYWeI3IxWA==
+
+"@types/mongoose@*":
+  version "5.7.15"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.7.15.tgz#ee989735177a513c362c7d552fb87c92d3b4efa4"
+  integrity sha512-hVTw3B0AaXhn0LG7ZUaJ1a+9fQDvmwfnIRwGlMq+DQk9bcUJB0ZjlLF17Pxm4Z7/fy1+4EJGFkJyzy3XDSMxVw==
+  dependencies:
+    "@types/mongodb" "*"
+    "@types/node" "*"
+
+"@types/mongoose@^5.7.14":
   version "5.7.14"
   resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.7.14.tgz#f0bc55e2cbb19c96cd7826c7fe7965d48f41bb58"
   integrity sha512-jdMhuIluxmPKP58juOvQEl1C0syqyG0LK19zP+FRha0gvlFUwttXr2uxX4pzTHcuu/V6omzia9iGeXCoTEOT+w==

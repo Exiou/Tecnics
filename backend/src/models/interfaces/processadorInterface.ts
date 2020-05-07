@@ -1,8 +1,6 @@
-import { Document, Schema } from 'mongoose'
+import { Document } from 'mongoose'
 
-export interface a {
-    paginate(): void
-}
+import { ILojas } from './lojaInterface'
 
 export interface IProcessador extends Document {
     imagem: string,
@@ -24,11 +22,6 @@ export interface IProcessador extends Document {
     multithreading: boolean,
     suporte_ecc: boolean,
     virtualizacao: boolean,
-    lojas: ILojas[]
-}
-
-export interface ILojas {
-    idLoja: Schema.Types.ObjectId,
-    preco: number,
-    urlProduto: string
+    lojas: ILojas[],
+    imagem_url: string
 }

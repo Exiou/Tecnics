@@ -4,6 +4,7 @@ import multer from 'multer'
 import uploadConfig from '../config/multer'
 
 import Processador from '../models/Processador'
+import Loja from '../models/Loja'
 
 import getFilters from './utils/getFilters'
 import { queryProcessador } from './utils/queries'
@@ -60,7 +61,7 @@ class ProcessadorController {
                 select: '',
                 sort: ordenar
             }
-
+            
             const processadores = await Processador.paginate(query, options)
 
             return res.json({ processadores, filters })
@@ -71,8 +72,12 @@ class ProcessadorController {
 
     public async show (req: Request, res: Response): Promise<Response> {
         try {
+
+            const { userid } = req.params
+
+            const processador =  await Processador.findOne({ _id: userid }).populate('lojas.idLoja')
             
-            return res.json('')
+            return res.json(processador)
         } catch (err) {
             return res.send(`Ocorreu um erro na requisição: ${err}`)
         }
