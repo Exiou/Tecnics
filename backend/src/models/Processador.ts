@@ -1,5 +1,8 @@
 import { Schema, model } from 'mongoose'
 import mongoosePaginate from 'mongoose-paginate-v2'
+import fs from 'fs'
+import path from 'path'
+import { promisify } from 'util'
 
 import IProcessador from './interfaces/processadorInterface'
 
@@ -39,7 +42,13 @@ ProcessadorSchema.plugin(mongoosePaginate)
 
 ProcessadorSchema.virtual('imagem_url').get(function(this: any)  {
     return `http://192.168.1.100:3333/arquivos/processadores/${this.imagem}`
-  })
+})
+
+ProcessadorSchema.pre('remove', function(this: Document | any) {
+return promisify(fs.unlink)(
+    path.resolve(__dirname,'..','..','uploads','processadores',this.imagem)
+)
+})
 
 const ProcessadorModel = model<IProcessador>('Processador', ProcessadorSchema)
 

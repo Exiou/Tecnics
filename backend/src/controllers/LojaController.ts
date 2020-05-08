@@ -195,12 +195,14 @@ class LojaController {
             let produto
 
             if (numArrayLojas == 0){
-                produto = await model.deleteOne(
+                produto = await model.findOne(
                     { $and: [
                         { _id: id },
                         { lojas: { $elemMatch: { idLoja: { $eq: idLoja }}}}
                     ]}
                 )
+
+                produto?.remove()
             }else if (numArrayLojas == 1){
                 produto = await model.findOneAndUpdate(
                     { _id: id },
