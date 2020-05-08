@@ -1,6 +1,20 @@
 //importa essa funçãozinha que transforma uma string em array
 import parseStringAsArray from './parseStringAsArray'
 
+export const queryLoja = (buscar: string,precoMin: number,precoMax: number,fabricante: string, idLoja: any) => {
+    let query = {
+        $and: [
+            { nome: { $regex: `${buscar}`, $options: 'i' } },
+            { lojas: { $elemMatch: { preco: { $gte: precoMin }}}},
+            { lojas: { $elemMatch: { preco: { $lte: precoMax }}}},
+            { fabricante: { $in: parseStringAsArray(fabricante) }},
+            { lojas: { $elemMatch: { idLoja: { $eq: idLoja } } } }
+        ]
+    }
+
+    return query
+}
+
 //filtros dos campos recebidos no req.query
 export const queryProcessador = (buscar: string,precoMin: number,precoMax: number,nucleoMin: number,nucleoMax: number,freqMin: number,freqMax:number,consumoMin:number,consumoMax:number,cooler:string,multithreading:string,ecc:string,virtualizacao:string,fabricante:string,serie:string,familia:string,socket:string,graficos:string) => {
     let query = {
