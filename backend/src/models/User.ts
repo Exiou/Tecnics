@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { promisify } from 'util'
 
-import { IUser } from './interfaces/userInterface'
+import IUser from './interfaces/userInterface'
 
 const UserSchema = new Schema<IUser>({
   nome: String,

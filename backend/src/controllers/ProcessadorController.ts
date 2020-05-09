@@ -4,7 +4,7 @@ import multer from 'multer'
 import uploadConfig from '../config/multer'
 
 import Processador from '../models/Processador'
-import IProcessador from '../models/interfaces/processadorInterface'
+import { IProcessador } from '../models/interfaces/produtoInterface'
 
 import getFilters from './utils/getFilters'
 import { queryProcessador } from './utils/queries'

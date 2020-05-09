@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { promisify } from 'util'
 
-import IProcessador from './interfaces/processadorInterface'
+import { IProcessador } from './interfaces/produtoInterface'
 
 const ProcessadorSchema = new Schema<IProcessador>({
     imagem: String,
