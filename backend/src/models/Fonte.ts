@@ -7,21 +7,21 @@ import { promisify } from 'util'
 import { IFonte } from './interfaces/produtoInterface'
 
 const FonteSchema = new Schema<IFonte>({
-    imagem: String,
-    nome: String,
-    modelo: String,
-    fabricante: String,
-    serie: String,
-    tipo: String,
-    modular: String,
-    certificado: String,
-    saida: String,
-    potencia: Number,
-    eficiencia: Number,
-    peso: Number,
-    conectores_pcie_6_pinos: Number,
-    conectores_pcie_6_2_pinos: Number,
-    fanless: Boolean,
+    imagem: { type: String, select: true},
+    nome: { type: String, select: true},
+    modelo: { type: String, select: true},
+    fabricante: { type: String, select: true},
+    serie: { type: String, select: true},
+    tipo: { type: String, select: true},
+    modular: { type: String, select: true},
+    certificado: { type: String, select: true},
+    saida: { type: String, select: true},
+    potencia: { type: Number, select: true},
+    eficiencia: { type: Number, select: true},
+    peso: { type: Number, select: true},
+    conectores_pcie_6_pinos: { type: Number, select: true},
+    conectores_pcie_6_2_pinos: { type: Number, select: true},
+    fanless: { type: Boolean, select: true},
     lojas:[
         {
             idLoja: {

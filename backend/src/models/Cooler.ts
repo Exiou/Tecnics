@@ -7,20 +7,20 @@ import { promisify } from 'util'
 import { ICooler } from './interfaces/produtoInterface'
 
 const CoolerSchema = new Schema<ICooler>({
-    imagem: String,
-    nome: String,
-    modelo: String,
-    fabricante: String,
-    rolamento: String,
-    socket: [String],
-    radiador: String,
-    cor: String,
-    led_rgb: String,
-    altura: Number,
-    rpm_ventoinha: Number,
-    peso: Number,
-    fanless: Boolean,
-    water_cooled: Boolean,
+    imagem: { type: String, select: true},
+    nome: { type: String, select: true},
+    modelo: { type: String, select: true},
+    fabricante: { type: String, select: true},
+    rolamento: { type: String, select: true},
+    socket: [{ type: String, select: true}],
+    radiador: { type: String, select: true},
+    cor: { type: String, select: true},
+    led_rgb: { type: String, select: true},
+    altura: { type: Number, select: true},
+    rpm_ventoinha: { type: Number, select: true},
+    peso: { type: Number, select: true},
+    fanless: { type: Boolean, select: true},
+    water_cooled: { type: Boolean, select: true},
     lojas:[
         {
             idLoja: {

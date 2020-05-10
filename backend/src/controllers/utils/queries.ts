@@ -1,10 +1,11 @@
 //importa essa funçãozinha que transforma uma string em array
 import parseStringAsArray from './parseStringAsArray'
 
-export const queryLoja = (buscar: string,precoMin: number,precoMax: number,fabricante: string, idLoja: any) => {
+export const queryLoja = (buscarNome: string,buscarModelo: string,precoMin: number,precoMax: number,fabricante: string, idLoja: any) => {
     let query = {
         $and: [
-            { nome: { $regex: `${buscar}`, $options: 'i' } },
+            { nome: { $regex: `${buscarNome}`, $options: 'i' } },
+            { modelo: { $regex: `${buscarModelo}`, $options: 'i' } },
             { lojas: { $elemMatch: { preco: { $gte: precoMin }}}},
             { lojas: { $elemMatch: { preco: { $lte: precoMax }}}},
             { fabricante: { $in: parseStringAsArray(fabricante) }},

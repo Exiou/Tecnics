@@ -7,20 +7,20 @@ import { promisify } from 'util'
 import { IMemoria } from './interfaces/produtoInterface'
 
 const MemoriaSchema = new Schema<IMemoria>({
-    imagem: String,
-    nome: String,
-    modelo: String,
-    fabricante: String,
-    velocidade: String,
-    tipo: String,
-    capacidade: String,
-    modulo: String,
-    cor: String,
-    voltagem: Number,
-    cas_latency: Number,
-    suporte_ecc: Boolean,
-    registrada: Boolean,
-    dissipador: Boolean,
+    imagem: { type: String, select: true},
+    nome: { type: String, select: true},
+    modelo: { type: String, select: true},
+    fabricante: { type: String, select: true},
+    velocidade: { type: String, select: true},
+    tipo: { type: String, select: true},
+    capacidade: { type: String, select: true},
+    modulo: { type: String, select: true},
+    cor: { type: String, select: true},
+    voltagem: { type: Number, select: true},
+    cas_latency: { type: Number, select: true},
+    suporte_ecc: { type: Number, select: true},
+    registrada: { type: Number, select: true},
+    dissipador: { type: Number, select: true},
     lojas:[
         {
             idLoja: {

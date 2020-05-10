@@ -6,6 +6,8 @@ import uploadConfig from '../config/multer'
 import switchModel from './utils/switchModel'
 import getFilters from './utils/getFilters'
 import { queryLoja } from './utils/queries'
+import { PaginateModel } from 'mongoose'
+import { IProduto } from '../models/interfaces/produtoInterface'
 
 class LojaController {
     public path = '/lojas'
@@ -28,7 +30,7 @@ class LojaController {
 
             const idLoja = req.headers.idloja
 
-            const model = (await switchModel(req.params.model))!
+            const model: PaginateModel<IProduto> = (await switchModel(req.params.model))!
 
             const filters = await getFilters(model, ['fabricante'])
 
@@ -39,15 +41,16 @@ class LojaController {
                 precoMax = 50000,
                 fabricante = filters.fabricante,
                 ordenar = '',
-                buscar = ''
+                buscarNome = '',
+                buscarModelo = ''
             } = req.query as any
 
-            const query = queryLoja(buscar,precoMin,precoMax,fabricante, idLoja)
+            const query = queryLoja(buscarNome,buscarModelo,precoMin,precoMax,fabricante, idLoja)
 
             const options = {
                 page,
                 limit,
-                select: '',
+                select: {lojas: { $elemMatch: { idLoja: idLoja }}},
                 sort: ordenar
             }
 
@@ -66,14 +69,14 @@ class LojaController {
             const idLoja = req.headers.idloja
             const { id } = req.params
 
-            const model = (await switchModel(req.params.model))!
+            const model: PaginateModel<IProduto> = (await switchModel(req.params.model))!
 
             const produto =  await model.findOne({
                 $and: [
                     { _id: id },
                     { lojas: { $elemMatch: { idLoja: idLoja } } }
                 ]
-            }).populate('lojas.idLoja')
+            }, {lojas: { $elemMatch: { idLoja: idLoja }}}).populate('lojas.idLoja')
             
             return res.json(produto)
             
@@ -88,7 +91,7 @@ class LojaController {
             const jsonProdutos: any[] = JSON.parse(req.body.jsonProdutos)
             const idLoja = req.headers.idloja?.toString()!
 
-            const model = (await switchModel(req.params.model))!
+            const model: PaginateModel<IProduto> = (await switchModel(req.params.model))!
 
             let produtos = []
 
@@ -153,7 +156,7 @@ class LojaController {
             const idLoja = req.headers.idloja
             const { id } = req.params
 
-            const model = (await switchModel(req.params.model))!
+            const model: PaginateModel<IProduto> = (await switchModel(req.params.model))!
 
             await model.updateOne(
                 { $and: [
@@ -188,7 +191,7 @@ class LojaController {
             const idLoja: any = req.headers.idloja
             const { id } = req.params
             
-            const model = (await switchModel(req.params.model))!
+            const model: PaginateModel<IProduto> = (await switchModel(req.params.model))!
 
             const numArrayLojas = await model.countDocuments( { $and: [ { _id: id }, { 'lojas.1': {$exists: true} } ] } )
 

@@ -7,19 +7,19 @@ import { promisify } from 'util'
 import { IArmazenamento } from './interfaces/produtoInterface'
 
 const ArmazenamentoSchema = new Schema<IArmazenamento>({
-    imagem: String,
-    nome: String,
-    modelo: String,
-    fabricante: String,
-    serie: String,
-    tipo: String,
-    interface: String,
-    formato: String,
-    buffer_cache: String,
-    rpm: Number,
-    capacidade: Number,
-    intellipower: Boolean,
-    hibrido: Boolean,
+    imagem: { type: String, select: true},
+    nome: { type: String, select: true},
+    modelo: { type: String, select: true},
+    fabricante: { type: String, select: true},
+    serie: { type: String, select: true},
+    tipo: { type: String, select: true},
+    interface: { type: String, select: true},
+    formato: { type: String, select: true},
+    buffer_cache: { type: String, select: true},
+    rpm: { type: Number, select: true},
+    capacidade: { type: Number, select: true},
+    intellipower: { type: Boolean, select: true},
+    hibrido: { type: Boolean, select: true},
     lojas:[
         {
             idLoja: {
