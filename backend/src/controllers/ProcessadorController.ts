@@ -1,10 +1,6 @@
 import { Request, Response, Router } from 'express'
-import multer from 'multer'
-
-import uploadConfig from '../config/multer'
 
 import Processador from '../models/Processador'
-import { IProcessador } from '../models/interfaces/produtoInterface'
 
 import getFilters from './utils/getFilters'
 import { queryProcessador } from './utils/queries'
@@ -20,9 +16,6 @@ class ProcessadorController {
     public initializeRoutes() {
         this.routes.get(`${this.path}`, this.index)
         this.routes.get(`${this.path}/:id`, this.show)
-        this.routes.post(`${this.path}`, multer(uploadConfig('processadores')).array('files'), this.store)
-        this.routes.put(`${this.path}/:id`, this.update)
-        this.routes.delete(`${this.path}/:id`, this.destroy)
     }
 
     public async index (req: Request, res: Response): Promise<Response> {
@@ -78,33 +71,6 @@ class ProcessadorController {
             const processador =  await Processador.findOne({ _id: id }).populate('lojas.idLoja')
             
             return res.json(processador)
-        } catch (err) {
-            return res.send(`Ocorreu um erro na requisição: ${err}`)
-        }
-    }
-
-    public async store (req: Request, res: Response): Promise<Response> {
-        try {
-
-            return res.json('')
-        } catch (err) {
-            return res.send(`Ocorreu um erro na requisição: ${err}`)
-        }
-    }
-
-    public async update (req: Request, res: Response): Promise<Response> {
-        try {
-
-            return res.json('')
-        } catch (err) {
-            return res.send(`Ocorreu um erro na requisição: ${err}`)
-        }
-    }
-
-    public async destroy (req: Request, res: Response): Promise<Response> {
-        try {
-
-            return res.json('')
         } catch (err) {
             return res.send(`Ocorreu um erro na requisição: ${err}`)
         }
