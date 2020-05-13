@@ -18,9 +18,9 @@ const MemoriaSchema = new Schema<IMemoria>({
     cor: { type: String, select: true},
     voltagem: { type: Number, select: true},
     cas_latency: { type: Number, select: true},
-    suporte_ecc: { type: Number, select: true},
-    registrada: { type: Number, select: true},
-    dissipador: { type: Number, select: true},
+    suporte_ecc: { type: Boolean, select: true},
+    registrada: { type: Boolean, select: true},
+    dissipador: { type: Boolean, select: true},
     lojas:[
         {
             idLoja: {

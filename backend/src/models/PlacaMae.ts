@@ -33,7 +33,7 @@ const PlacaMaeSchema = new Schema<IPlacaMae>({
     usb_3: { type: Number, select: true},
     usb_31: { type: Number, select: true},
     usb_typec: { type: Boolean, select: true},
-    Mae_onboard: { type: Boolean, select: true},
+    video_onboard: { type: Boolean, select: true},
     suporte_ecc: { type: Boolean, select: true},
     rede_wireless: { type: Boolean, select: true},
     bluetooth: { type: Boolean, select: true},

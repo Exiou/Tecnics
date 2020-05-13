@@ -45,7 +45,7 @@ export const queryProcessador = (buscar: string,precoMin: number,precoMax: numbe
     return query
 }
 
-exports.queryPlacaVideo = (precoMin: any,precoMax: any,memoriaMin: any,memoriaMax: any,clockMin: any,clockMax: any,comprimentoMin: any,comprimentoMax: any,dviMin: any,dviMax: any,hdmiMin: any,hdmiMax: any,mhdmiMin: any,mhdmiMax: any,displayMin: any,displayMax: any,mdisplayMin: any,mdisplayMax: any,slotMin: any,slotMax: any,consumoMin: any,consumoMax: any,fanless: string,watercooler: string,gsync: string,fabricante: string,serie: string,chipset: string,interfacepv: string,crossfire: string,cor: string,buscar: any) => {
+export const queryPlacaVideo = (precoMin: any,precoMax: any,memoriaMin: any,memoriaMax: any,clockMin: any,clockMax: any,comprimentoMin: any,comprimentoMax: any,dviMin: any,dviMax: any,hdmiMin: any,hdmiMax: any,mhdmiMin: any,mhdmiMax: any,displayMin: any,displayMax: any,mdisplayMin: any,mdisplayMax: any,slotMin: any,slotMax: any,consumoMin: any,consumoMax: any,fanless: string,watercooler: string,gsync: string,fabricante: string,serie: string,chipset: string,interfacepv: string,crossfire: string,cor: string,buscar: any) => {
 
     let query = {
         $and: [
@@ -87,7 +87,7 @@ exports.queryPlacaVideo = (precoMin: any,precoMax: any,memoriaMin: any,memoriaMa
     return query
 }
 
-exports.queryPlacaMae = (precoMin: any,precoMax: any,portasSata3Min: any,portasSata3Max: any,portasSata6Min: any,portasSata6Max: any,portasSataExpMin: any,portasSataExpMax: any,portasM2Min: any,portasM2Max: any,portasMSataMin: any,portasMSataMax: any,slotsRamMin: any,slotsRamMax: any,ramMaxMin: any,ramMaxMax: any,slotsPcieX16Min: any,slotsPcieX16Max: any,slotsPcieX4Min: any,slotsPcieX4Max: any,slotsPcieX1Min: any,slotsPcieX1Max: any,slotsPciMin: any,slotsPciMax: any,portasEthernetMin: any,portasEthernetMax: any,usb2Min: any,usb2Max: any,usb3Min: any,usb3Max: any,usb31Min: any,usb31Max: any,usbTypec: string,videoOnboard: string,suporteEcc: string,redeWireless: string,bluetooth: string,fabricante: string,socket: string,formato: string,chipset: string,crossfire: string,tipo_memoria: string,cor: string,buscar: any) => {
+export const queryPlacaMae = (precoMin: any,precoMax: any,portasSata3Min: any,portasSata3Max: any,portasSata6Min: any,portasSata6Max: any,portasSataExpMin: any,portasSataExpMax: any,portasM2Min: any,portasM2Max: any,portasMSataMin: any,portasMSataMax: any,slotsRamMin: any,slotsRamMax: any,ramMaxMin: any,ramMaxMax: any,slotsPcieX16Min: any,slotsPcieX16Max: any,slotsPcieX4Min: any,slotsPcieX4Max: any,slotsPcieX1Min: any,slotsPcieX1Max: any,slotsPciMin: any,slotsPciMax: any,portasEthernetMin: any,portasEthernetMax: any,usb2Min: any,usb2Max: any,usb3Min: any,usb3Max: any,usb31Min: any,usb31Max: any,usbTypec: string,videoOnboard: string,suporteEcc: string,redeWireless: string,bluetooth: string,fabricante: string,socket: string,formato: string,chipset: string,crossfire: string,tipo_memoria: string,cor: string,buscar: any) => {
 
     let query = {
         $and: [
@@ -142,7 +142,7 @@ exports.queryPlacaMae = (precoMin: any,precoMax: any,portasSata3Min: any,portasS
     return query
 }
 
-exports.queryMemoria = (precoMin: any,precoMax: any,voltagemMin: any,voltagemMax: any,cas_latencyMin: any,cas_latencyMax: any,suporte_ecc: string,registrada: string,dissipador: string,fabricante: string,velocidade: string,tipo: string,capacidade: string,cor: string,buscar: any) => {
+export const queryMemoria = (precoMin: any,precoMax: any,voltagemMin: any,voltagemMax: any,cas_latencyMin: any,cas_latencyMax: any,suporte_ecc: string,registrada: string,dissipador: string,fabricante: string,velocidade: string,tipo: string,capacidade: string,cor: string,buscar: any) => {
     let query = {
         $and: [
             { nome: { $regex: `${buscar}`, $options: 'i' } },
@@ -166,7 +166,7 @@ exports.queryMemoria = (precoMin: any,precoMax: any,voltagemMin: any,voltagemMax
     return query
 }
 
-exports.queryGabinete = (precoMin: any,precoMax: any,baia_externa_525Min: any,baia_externa_525Max: any,baia_externa_350Min: any,baia_externa_350Max: any,baia_interna_350Min: any,baia_interna_350Max: any,baia_interna_250Min: any,baia_interna_250Max: any,fonte: string,janela_lateral: string,painel_frontal_usb3: string,filtro_removivel: string,fabricante: string,tipo: string,cor: string,buscar: any) => {
+export const queryGabinete = (precoMin: any,precoMax: any,baia_externa_525Min: any,baia_externa_525Max: any,baia_externa_350Min: any,baia_externa_350Max: any,baia_interna_350Min: any,baia_interna_350Max: any,baia_interna_250Min: any,baia_interna_250Max: any,fonte: string,janela_lateral: string,painel_frontal_usb3: string,filtro_removivel: string,fabricante: string,tipo: string,cor: string,buscar: any) => {
     let query = {
         $and: [
             { nome: { $regex: `${buscar}`, $options: 'i' } },
@@ -193,7 +193,7 @@ exports.queryGabinete = (precoMin: any,precoMax: any,baia_externa_525Min: any,ba
     return query
 }
 
-exports.queryFonte = (precoMin: any,precoMax: any,potenciaMin: any,potenciaMax: any,fanless: string,modular: string,fabricante: string,tipo: string,certificado: string,buscar: any) => {
+export const queryFonte = (precoMin: any,precoMax: any,potenciaMin: any,potenciaMax: any,fanless: string,modular: string,fabricante: string,tipo: string,certificado: string,buscar: any) => {
     let query = {
         $and: [
             { nome: { $regex: `${buscar}`, $options: 'i' } },
@@ -212,7 +212,7 @@ exports.queryFonte = (precoMin: any,precoMax: any,potenciaMin: any,potenciaMax: 
     return query
 }
 
-exports.queryArmazenamento = (precoMin: any,precoMax: any,capacidadeMin: any,capacidadeMax: any,intellipower: string,hibrido: string,fabricante: string,tipo: string,interfacea: string,formato: string,buffer_cache: string,buscar: any) => {
+export const queryArmazenamento = (precoMin: any,precoMax: any,capacidadeMin: any,capacidadeMax: any,intellipower: string,hibrido: string,fabricante: string,tipo: string,interfaceam: string,formato: string,buffer_cache: string,buscar: any) => {
     let query = {
         $and: [
             { nome: { $regex: `${buscar}`, $options: 'i' } },
@@ -224,7 +224,7 @@ exports.queryArmazenamento = (precoMin: any,precoMax: any,capacidadeMin: any,cap
             { hibrido: { $in: parseStringAsArray(hibrido) }},
             { fabricante: { $in: parseStringAsArray(fabricante) }},
             { tipo: { $in: parseStringAsArray(tipo) }},
-            { interface: { $in: parseStringAsArray(interfacea) }},
+            { interface: { $in: parseStringAsArray(interfaceam) }},
             { formato: { $in: parseStringAsArray(formato) }},
             { buffer_cache: { $in: parseStringAsArray(buffer_cache) }},
         ]
@@ -233,7 +233,7 @@ exports.queryArmazenamento = (precoMin: any,precoMax: any,capacidadeMin: any,cap
     return query
 }
 
-exports.queryCooler = (precoMin: any,precoMax: any,alturaMin: any,alturaMax: any,fanless: string,fabricante: string,rolamento: string,socket: string,radiador: string,cor: string,buscar: any) => {
+export const queryCooler = (precoMin: any,precoMax: any,alturaMin: any,alturaMax: any,fanless: string,fabricante: string,rolamento: string,socket: string,radiador: string,cor: string,buscar: any) => {
     let query = {
         $and: [
             { nome: { $regex: `${buscar}`, $options: 'i' } },
