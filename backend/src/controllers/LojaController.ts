@@ -88,62 +88,58 @@ class LojaController {
     public async store (req: Request, res: Response): Promise<Response> {
         try {
 
-            const jsonProdutos: any[] = JSON.parse(req.body.jsonProdutos)
+            const produto = JSON.parse(req.body.produto)
             const idLoja = req.headers.idloja?.toString()!
 
             const model: PaginateModel<IProduto> = (await switchModel(req.params.model))!
 
-            let produtos = []
+            if(produto.lojas){
+                let verificaModelo = await model.countDocuments({ modelo: produto.modelo })
+                let verificaIdLoja = await model.countDocuments({
+                    $and: [
+                        { modelo: `${produto.modelo}`},
+                        { lojas: { $elemMatch: { idLoja: { $eq: `${idLoja}`} } } }
+                    ]
+                })
+                
+                produto.lojas[0].idLoja = idLoja
 
-            for await (let produto of jsonProdutos){
-                if(produto.lojas){
-                    let verificaModelo = await model.countDocuments({ modelo: produto.modelo })
-                    let verificaIdLoja = await model.countDocuments({
-                        $and: [
-                            { modelo: `${produto.modelo}`},
-                            { lojas: { $elemMatch: { idLoja: { $eq: `${idLoja}`} } } }
-                        ]
-                    })
-                    
-                    produto.lojas[0].idLoja = idLoja
+                if(verificaModelo == 0)return res.json(await model.create(produto))
 
-                    if(verificaModelo == 0) produtos.push(await model.create(produto))
-
-                    else if(verificaModelo == 1 && verificaIdLoja == 0) {
-                        produtos.push(
-                            await model.findOneAndUpdate(
-                                {
-                                    $and: [
-                                        { modelo: produto.modelo },
-                                        { lojas: { $elemMatch: { idLoja: { $ne: idLoja} } } }
-                                    ]
-                                },
-                                {
-                                    $push: {
-                                        lojas: {
-                                            $each: [{
-                                                idLoja,
-                                                preco: produto.lojas[0].preco,
-                                                urlProduto: produto.lojas[0].urlProduto
-                                            }],
-                                            $sort: { preco: 1 }
-                                        }
+                else if(verificaModelo == 1 && verificaIdLoja == 0) {
+                   return res.json(
+                        await model.findOneAndUpdate(
+                            {
+                                $and: [
+                                    { modelo: produto.modelo },
+                                    { lojas: { $elemMatch: { idLoja: { $ne: idLoja} } } }
+                                ]
+                            },
+                            {
+                                $push: {
+                                    lojas: {
+                                        $each: [{
+                                            idLoja,
+                                            preco: produto.lojas[0].preco,
+                                            urlProduto: produto.lojas[0].urlProduto
+                                        }],
+                                        $sort: { preco: 1 }
                                     }
-                                },
-                                { new: true }
-                            )
+                                }
+                            },
+                            { new: true }
                         )
-                    }
-
-                    else if(verificaModelo == 1 && verificaIdLoja == 1) produtos.push('produto já cadastrado pela loja')
-
-                    else{
-                        produtos.push('algo está errado no banco de dados')
-                    }
+                    )
                 }
-            }
 
-            return res.json(produtos)
+                else if(verificaModelo == 1 && verificaIdLoja == 1)return res.json('produto já cadastrado pela loja')
+
+                else{
+                   return res.json('algo está errado no banco de dados')
+                }
+            }else {           
+                return res.json('algo está errado no banco de dados')
+            }
         } catch (err) {
             return res.send(`Ocorreu um erro na requisição: ${err}`)
         }
