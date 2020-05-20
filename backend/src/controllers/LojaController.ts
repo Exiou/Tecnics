@@ -1,13 +1,14 @@
-import { Request, Response, Router } from 'express'
+import { Request, Response, Router, NextFunction } from 'express'
 import multer from 'multer'
 
 import uploadConfig from '../config/multer'
 
 import switchModel from './utils/switchModel'
-import getFilters from './utils/getFilters'
 import { queryLoja } from './utils/queries'
 import { PaginateModel } from 'mongoose'
 import { IProduto } from '../models/interfaces/produtoInterface'
+import HttpException from '../exceptions/HttpException'
+import modelSpecs from './utils/modelSpecs'
 
 class LojaController {
     public path = '/lojas'
@@ -25,27 +26,26 @@ class LojaController {
         this.routes.delete(`${this.path}/:model/:id`, this.destroy)
     }
 
-    public async index (req: Request, res: Response): Promise<Response> {
+    public async index (req: Request, res: Response, next: NextFunction) {
         try {
 
             const idLoja = req.headers.idloja
 
             const model: PaginateModel<IProduto> = (await switchModel(req.params.model))!
 
-            const filters = await getFilters(model, ['fabricante'])
+            const { filters, paths } = await modelSpecs(model)
 
-            const { 
-                page= 1,
+            const {
+                page = 1,
                 limit = 10,
                 precoMin = 0,
                 precoMax = 50000,
-                fabricante = filters.fabricante,
-                ordenar = '',
                 buscarNome = '',
-                buscarModelo = ''
+                buscarModelo = '',
+                ordenar = ''
             } = req.query as any
 
-            const query = queryLoja(buscarNome,buscarModelo,precoMin,precoMax,fabricante, idLoja)
+            const query = queryLoja(req.query, paths, precoMin, precoMax, buscarNome, buscarModelo, idLoja)
 
             const options = {
                 page,
@@ -54,16 +54,17 @@ class LojaController {
                 sort: ordenar
             }
 
+
             const produtos = await model.paginate(query, options)
 
             return res.json({ produtos, filters })
 
         } catch (err) {
-            return res.send(`Ocorreu um erro na requisição: ${err}`)
+            next(new HttpException(404, `Ocorreu um erro na requisição: ${err}`))
         }
     }
 
-    public async show (req: Request, res: Response): Promise<Response> {
+    public async show (req: Request, res: Response, next: NextFunction) {
         try {
 
             const idLoja = req.headers.idloja
@@ -81,11 +82,11 @@ class LojaController {
             return res.json(produto)
             
         } catch (err) {
-            return res.send(`Ocorreu um erro na requisição: ${err}`)
+            next(new HttpException(404, `Ocorreu um erro na requisição: ${err}`))
         }
     }
 
-    public async store (req: Request, res: Response): Promise<Response> {
+    public async store (req: Request, res: Response, next: NextFunction) {
         try {
 
             const produto = JSON.parse(req.body.produto)
@@ -135,17 +136,17 @@ class LojaController {
                 else if(verificaModelo == 1 && verificaIdLoja == 1)return res.json('produto já cadastrado pela loja')
 
                 else{
-                   return res.json('algo está errado no banco de dados')
+                    next(new HttpException(500, `Ocorreu um erro na requisição: database error`))
                 }
             }else {           
-                return res.json('algo está errado no banco de dados')
+                next(new HttpException(500, `Ocorreu um erro na requisição: database error`))
             }
         } catch (err) {
-            return res.send(`Ocorreu um erro na requisição: ${err}`)
+            next(new HttpException(404, `Ocorreu um erro na requisição: ${err}`))
         }
     }
 
-    public async update (req: Request, res: Response): Promise<Response> {
+    public async update (req: Request, res: Response, next: NextFunction) {
         try {
 
             const { preco, urlProduto } = req.body
@@ -177,11 +178,11 @@ class LojaController {
             
             return res.json(produto)
         } catch (err) {
-            return res.send(`Ocorreu um erro na requisição: ${err}`)
+            next(new HttpException(404, `Ocorreu um erro na requisição: ${err}`))
         }
     }
 
-    public async destroy (req: Request, res: Response): Promise<Response> {
+    public async destroy (req: Request, res: Response, next: NextFunction) {
         try {
 
             const idLoja: any = req.headers.idloja
@@ -215,7 +216,7 @@ class LojaController {
 
             return res.json(produto)
         } catch (err) {
-            return res.send(`Ocorreu um erro na requisição: ${err}`)
+            next(new HttpException(404, `Ocorreu um erro na requisição: ${err}`))
         }
     }
 }

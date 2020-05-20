@@ -5,6 +5,7 @@ import path from 'path'
 import helmet from 'helmet'
 
 import routes from './routes'
+import errorMiddleWare from './middleware/ErrorMiddleware'
 
 class App {
     public app: express.Application
@@ -29,6 +30,8 @@ class App {
         this.app.use(express.urlencoded({ extended: true }))
         this.app.use(express.json())
         this.app.use('/arquivos', express.static(path.join(__dirname, '..', 'uploads')))
+
+        this.app.use(errorMiddleWare)
     }
 
     private database(): void {
