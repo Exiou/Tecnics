@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import api from './services/api'
+import React from 'react';
 
-import User from './components/User'
+import './global.css'
 
-interface IUser {
-  nome: string
-  email: string
-  senha: string
-}
+import Routes from './routes'
 
-function App() {
-  const [users, setUsers] = useState<IUser[]>([])
+export default function App() {
   
-  useEffect(() => {
-    api.get<IUser[]>('/users').then(response => {
-      setUsers(response.data)
-    })
-  })
   return (
-    <div className="App">
-      { users.map(user => <User key={user.email} user={user}/>) }
-    </div>
+    <Routes />
   );
 }
-
-export default App;
