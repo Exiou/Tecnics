@@ -6,6 +6,12 @@ footer {
     padding: 0px 252px 0px;
 }
 
+@media only screen and (max-width: 600px) {
+    footer {
+        padding: 0px;
+    }
+}
+
 footer a {
     float: right;
 }

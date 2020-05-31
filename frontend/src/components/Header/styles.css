@@ -6,6 +6,12 @@ header {
     padding: 0px 252px 0px 212px;
 }
 
+@media only screen and (max-width: 600px) {
+    header {
+        padding: 0px;
+    }
+}
+
 header a {
     float:left;
 }
