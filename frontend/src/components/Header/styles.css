@@ -1,0 +1,46 @@
+header {
+    background-color: #1c1c1c;
+    max-width: auto;
+    max-height: 132px;
+    overflow: hidden;
+    padding: 0px 252px 0px 212px;
+}
+
+header a {
+    float:left;
+}
+
+.header-right {
+    float: right;
+    margin-top: 43px;  
+}
+
+#tecnicsLogo {
+    width: 245px;
+    height: 132px;
+}
+
+#hamburgerButton {
+    margin: 0px;
+    border: none;
+    background-color: transparent;
+}
+
+.hamburger { 
+    filter: invert(77%) sepia(49%) saturate(809%) hue-rotate(78deg) brightness(96%) contrast(81%);
+    width: 45px;
+    height: 45px;
+
+}
+
+#avatarButton {
+    border: none;
+    background-color: transparent;
+    margin-right: 55px;
+}
+
+.avatar { 
+    filter: invert(77%) sepia(49%) saturate(809%) hue-rotate(78deg) brightness(96%) contrast(81%);
+    width: 45px;
+    height: 45px;
+}
