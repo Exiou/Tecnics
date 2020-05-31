@@ -1,0 +1,18 @@
+footer {
+    background-color: #1c1c1c;
+    max-width: auto;
+    min-height: 132px;
+    overflow: hidden;
+    padding: 0px 252px 0px;
+}
+
+footer a {
+    float: right;
+}
+
+footer a img {
+    min-width: 45px;
+    min-height: 45px;
+    margin: 43px 0px 0px 30px;
+    filter: invert(77%) sepia(49%) saturate(809%) hue-rotate(78deg) brightness(96%) contrast(81%);
+}
