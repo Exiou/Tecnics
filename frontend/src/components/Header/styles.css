@@ -4,6 +4,10 @@ header {
     max-height: 132px;
     overflow: hidden;
     padding: 0px 252px 0px 212px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -12,13 +16,23 @@ header {
     }
 }
 
-header a {
-    float:left;
+header h1 {
+    flex: auto;
+    color: #19D161;
+    font-size: 36px;
+    text-align: center;
+    line-height: 52px;
 }
 
-.header-right {
-    float: right;
-    margin-top: 43px;  
+header h1 img {
+    margin-left: 8px;
+}
+
+header nav {
+    width: 245px;
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: row wrap;
 }
 
 #tecnicsLogo {
@@ -27,7 +41,6 @@ header a {
 }
 
 #hamburgerButton {
-    margin: 0px;
     border: none;
     background-color: transparent;
 }
@@ -42,7 +55,7 @@ header a {
 #avatarButton {
     border: none;
     background-color: transparent;
-    margin-right: 55px;
+    margin-right: 25%;
 }
 
 .avatar { 
