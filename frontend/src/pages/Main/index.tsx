@@ -25,35 +25,35 @@ function App() {
       <Header />
 
       <div className="menu">
-          <Link className="button" to="/processadores">
+          <Link className="button" to="produtos/processadores">
             <img src={processadorIcon} alt="Processador Icon"/>
             <p>Processadores</p>
           </Link>
-          <Link className="button" to="/placas-video">
+          <Link className="button" to="produtos/placas-video">
             <img src={placaVideoIcon} alt="Placa de Vídeo Icon"/>
             <p>Placas de Vídeo</p>
           </Link>
-          <Link className="button" to="/placas-mae">
+          <Link className="button" to="produtos/placas-mae">
             <img src={placaMaeIcon} alt="Placa Mãe Icon"/>
             <p>Placas mãe</p>
           </Link>
-          <Link className="button" to="/memorias">
+          <Link className="button" to="produtos/memorias">
             <img src={memoriaIcon} alt="Memoria Icon"/>
             <p>Memórias</p>
           </Link>
-          <Link className="button" to="/gabinetes">
+          <Link className="button" to="produtos/gabinetes">
             <img src={gabineteIcon} alt="Gabinete Icon"/>
             <p>Gabinetes</p>
           </Link>
-          <Link className="button" to="/fontes">
+          <Link className="button" to="produtos/fontes">
             <img src={fonteIcon} alt="Fonte Icon"/>
             <p>Fontes</p>
           </Link>
-          <Link className="button" to="/coolers">
+          <Link className="button" to="produtos/coolers">
             <img src={coolerIcon} alt="Cooler Icon"/>
             <p>Coolers</p>
           </Link>
-          <Link className="button" to="/armazenamentos">
+          <Link className="button" to="produtos/armazenamentos">
             <img src={armazenamentoIcon} alt="Armazenamento Icon"/>
             <p>Armazenamentos</p>
           </Link>

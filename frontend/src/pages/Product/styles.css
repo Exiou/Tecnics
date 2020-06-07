@@ -1,0 +1,89 @@
+main {
+    margin: 100px 12.5vw 0px;
+    outline: 0;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+main .card {
+    display: flex;
+    flex-flow: row wrap;
+    align-self: flex-end;
+    background-color: #34eb7b;
+    border-radius: 10px;
+    min-width: 50vw;
+    height: 180px;
+    margin-bottom: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+main .card .product-image {
+    height: 150px;
+    width: 150px;
+    border: solid 3px #794CD9;
+    border-radius: 10px;
+    align-self: center;
+    margin-left: 48px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+main .card .props {
+    margin-left: 40px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+    width: 350px;
+}
+
+main .card .props h2 {
+    font-size: 36px;
+    color: #5124B2;
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+main .card .props h3 {
+    font-size: 28px;
+    color: #5E30BF;
+}
+
+main .card a {
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+    align-items: center;
+    margin: auto;
+    width: 200px;
+    height: 65px;
+    text-decoration: none;
+    background-color: #52FF95;
+    border: solid 2px #6B3DCC;
+    border-radius: 10px;
+    color: #5124B2;
+    font-size: 24px;
+    font-weight: 600;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+main .card a .plus-icon {
+    height: 30px;
+    width: 30px;
+    filter: invert(18%) sepia(79%) saturate(2721%) hue-rotate(251deg) brightness(86%) contrast(106%);
+}
+
+main .card button {
+    border: none;
+    height: 40px;
+    width: 50px;
+    background: #794CD9;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 10px 0px 20px;
+}
+
+main .card button .heart-icon {
+    height: 22.25px;
+    width: 25px;
+    filter: invert(82%) sepia(11%) saturate(2197%) hue-rotate(82deg) brightness(102%) contrast(101%);
+}
