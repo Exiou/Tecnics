@@ -24,16 +24,18 @@ interface Products {
   }[]
 }
 
-function App() {
+function Product() {
 
   let { product } = useParams()
 
   const [products, setProducts] = useState<Products[]>([])  
+  const [filters, setFilters] = useState<any>({})
 
   useEffect(() => {
     api.get(`/produtos/${product}`).then(response => {
-      console.log(response.data.produtos.docs)
+      console.log(response.data)
       setProducts(response.data.produtos.docs)
+      setFilters(response.data.filters)
     })
   }, [product])
 
@@ -43,36 +45,61 @@ function App() {
   })
   
   return (
-    <div className="App">
+    <div className="Product">
 
       <Header product={product} />
 
-      <main>
-        {products.map(product => (
-          <div className="card" key={product.modelo}>
-            <img className="product-image" src={product.imagem_url} alt={product.imagem}/>
+      <div id="page-list-products">
 
-            <div className="props">
-              <h2>{product.fabricante}</h2>
-              <h2>{product.nome}</h2>
-              <h3>{formatter.format(product.lojas[0].preco)}</h3>
+        <aside id="filters">
+          
+            <h2>Filtros</h2>
+
+            {
+              Object.keys(filters).map(key => (
+                <fieldset key={key}>
+                  <label>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+                  <div className="values">{filters[key].map((value: any) => (
+                    <div key={value} className="checkbox">
+                      <input type="checkbox" name={String(value)} id={String(value)} />
+                      <span>{String(value)}</span>
+                    </div>
+                  ))}</div>
+                </fieldset>
+              ))
+            }
+      
+        </aside>
+
+        <main>
+          {products.map(product => (
+            <div className="card" key={product.modelo}>
+              <img className="product-image" src={product.imagem_url} alt={product.imagem}/>
+
+              <div className="props">
+                <h2>{product.fabricante}</h2>
+                <h2>{product.nome}</h2>
+                <h3>{formatter.format(product.lojas[0].preco)}</h3>
+              </div>
+
+              <Link to={`/${product._id}`} >
+                <p>Detalhes</p>
+                <img className="plus-icon" src={plusIcon} alt="Plus Icon"/>
+              </Link>
+
+              <button>
+                <img className="heart-icon" src={heartIcon} alt="Heart Icon"/>
+              </button>
+              
             </div>
+          ))}
+        </main>
+      </div>
 
-            <Link to={`/${product._id}`} >
-              <p>Detalhes</p>
-              <img className="plus-icon" src={plusIcon} alt="Plus Icon"/>
-            </Link>
-
-            <button>
-              <img className="heart-icon" src={heartIcon} alt="Heart Icon"/>
-            </button>
-            
-          </div>
-        ))}
-      </main>
+        
       
     </div>
   );
 }
 
-export default App;
+export default Product;
