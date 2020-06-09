@@ -17,10 +17,10 @@ import fonteIcon from '../../assets/svgs/fonte.svg'
 import coolerIcon from '../../assets/svgs/cooler.svg'
 import armazenamentoIcon from '../../assets/svgs/armazenamento.svg'
 
-function App() {
+function Main() {
   
   return (
-    <div className="App">
+    <div className="Main">
 
       <Header />
 
@@ -65,4 +65,4 @@ function App() {
   );
 }
 
-export default App;
+export default Main;
