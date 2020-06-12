@@ -55,6 +55,20 @@ function Product() {
           
             <h2>Filtros</h2>
 
+            <fieldset>
+              <label>Preço - R$</label>
+              <div className="price-values">
+                <div className="range">
+                  <input className="range-min-price" type="range" name="min-price" id="min-price" defaultValue="0" />
+                  <input className="range-max-price" type="range" name="max-price" id="max-price" defaultValue="100" />
+                </div>
+                <div className="text">
+                  <input className="text-input text-min-price" inputMode="numeric" placeholder="Mínimo" type="number" name="min-price" id="min-price"/>
+                  <input className="text-input text-max-price" inputMode="numeric" placeholder="Máximo" type="number" name="max-price" id="max-price"/>
+                </div>
+              </div>
+            </fieldset>
+
             {
               Object.keys(filters).map(key => (
                 <fieldset key={key}>
