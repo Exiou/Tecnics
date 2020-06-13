@@ -1,6 +1,4 @@
 //importa essa funçãozinha que transforma uma string em array
-import parseStringAsArray from './parseStringAsArray'
-
 export const queryLoja = (queries: any, paths: any, precoMin: number, precoMax: number, buscarNome: any, buscarModelo: any, idLoja: any) => {
     let query: any = {
         $and: [
@@ -16,7 +14,7 @@ export const queryLoja = (queries: any, paths: any, precoMin: number, precoMax: 
         if(queries[`${path.keys}`]){
             if(path.types == 'String' || 'Boolean'){
                 const filter = JSON.parse(`{ "${path.keys}": { "$in": [] } }`)
-                filter[`${path.keys}`]['$in'] = parseStringAsArray(queries[`${path.keys}`])
+                filter[`${path.keys}`]['$in'] = queries[`${path.keys}`]
                 query.$and.push(filter)
             }
         }
@@ -39,7 +37,7 @@ export const queryProduto = (queries: any, paths: any, precoMin: number, precoMa
         if(queries[`${path.keys}`]){
             if(path.types == 'String' || 'Boolean'){
                 const filter = JSON.parse(`{ "${path.keys}": { "$in": [] } }`)
-                filter[`${path.keys}`]['$in'] = parseStringAsArray(queries[`${path.keys}`])
+                filter[`${path.keys}`]['$in'] = queries[`${path.keys}`]
                 query.$and.push(filter)
             }
         }
