@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import api from '../../services/api'
 
@@ -30,6 +30,7 @@ function Product() {
 
   const [products, setProducts] = useState<Products[]>([])  
   const [filters, setFilters] = useState<any>({})
+  const [selectedFilters, setSelectedFilters] = useState<any>({})
 
   useEffect(() => {
     api.get(`/produtos/${product}`).then(response => {
@@ -43,6 +44,36 @@ function Product() {
     style: 'currency',
     currency: 'BRL'
   })
+
+  useEffect(() => {
+    console.log(selectedFilters)
+    api.get(`/produtos/${product}`, {
+      params: selectedFilters
+    }).then(response => {
+      setProducts(response.data.produtos.docs)
+    })
+  }, [product, selectedFilters])
+
+  function handleSelectFilter(event: ChangeEvent<HTMLInputElement>, key: any) {    
+    if (selectedFilters[key] === undefined || selectedFilters[key] === ''){
+      setSelectedFilters({
+        ...selectedFilters,
+        [key]: [event.target.name]
+      })
+    }else{
+      if(selectedFilters[key].includes(event.target.name)){
+        setSelectedFilters({
+          ...selectedFilters,
+          [key]: selectedFilters[key].filter((val: any)=> val !== event.target.name)
+        })
+      }else {
+        setSelectedFilters({
+          ...selectedFilters,
+          [key]: [...selectedFilters[key], event.target.name]
+        })
+      }
+    }
+  }
   
   return (
     <div className="Product">
@@ -75,7 +106,7 @@ function Product() {
                   <label>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
                   <div className="values">{filters[key].map((value: any) => (
                     <div key={value} className="checkbox">
-                      <input type="checkbox" name={String(value)} id={String(value)} />
+                      <input type="checkbox" onChange={(e) => handleSelectFilter(e, key)} name={String(value)} id={String(value)} />
                       <span>{String(value)}</span>
                     </div>
                   ))}</div>
