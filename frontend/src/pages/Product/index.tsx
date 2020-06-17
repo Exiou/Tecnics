@@ -8,6 +8,9 @@ import './styles.css'
 
 import plusIcon from '../../assets/svgs/plus.svg'
 import heartIcon from '../../assets/svgs/heart.svg'
+import searchIcon from '../../assets/svgs/search.svg'
+import gridIcon from '../../assets/svgs/grid.svg'
+import listIcon from '../../assets/svgs/list.svg'
 
 interface Products {
   _id: string
@@ -171,33 +174,57 @@ function Product() {
       
         </aside>
 
-        <main>
-          {products.map(product => (
-            <div className="card" key={product.modelo}>
-              <img className="product-image" src={product.imagem_url} alt={product.imagem}/>
-
-              <div className="props">
-                <h2>{product.fabricante}</h2>
-                <h2>{product.nome}</h2>
-                <h3>{formatter.format(product.lojas[0].preco)}</h3>
-              </div>
-
-              <Link to={`/${product._id}`} >
-                <p>Detalhes</p>
-                <img className="plus-icon" src={plusIcon} alt="Plus Icon"/>
-              </Link>
-
-              <button>
-                <img className="heart-icon" src={heartIcon} alt="Heart Icon"/>
-              </button>
-              
+        <div id="main">
+          <section id="options">
+            <div id="search">
+              <span><img src={searchIcon} alt="Lupa" id="search-icon" /></span>
+              <input type="text" name="search" id="search-input" placeholder="Pesquisar por nome" />
             </div>
-          ))}
-        </main>
-      </div>
+            <div id="limit-sort">
+              <div>
+                <label htmlFor="">Itens por página: </label>
+                <select name="limit" id="limit-select">
+                  <option value="36">36</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor="">Ordenar por:</label>
+                <select name="sort" id="sort-select">
+                  <option value="preco">Preço</option>
+                </select>
+              </div>
+            </div>
+            <div id="card-styles">
+              <img src={gridIcon} alt="Grid Icon"/>
+              <img src={listIcon} alt="List Icon"/>
+            </div>
+          </section>
 
-        
-      
+          <main>
+            {products.map(product => (
+              <div className="card" key={product.modelo}>
+                <img className="product-image" src={product.imagem_url} alt={product.imagem}/>
+
+                <div className="props">
+                  <h2>{product.fabricante}</h2>
+                  <h2>{product.nome}</h2>
+                  <h3>{formatter.format(product.lojas[0].preco)}</h3>
+                </div>
+
+                <Link to={`/${product._id}`} >
+                  <p>Detalhes</p>
+                  <img className="plus-icon" src={plusIcon} alt="Plus Icon"/>
+                </Link>
+
+                <button>
+                  <img className="heart-icon" src={heartIcon} alt="Heart Icon"/>
+                </button>
+                
+              </div>
+            ))}
+          </main>
+        </div>
+      </div>
     </div>
   );
 }

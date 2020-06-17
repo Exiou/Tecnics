@@ -58,7 +58,7 @@ input[type=number] {
 .price-values .text {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 10px;
 }
 
@@ -155,8 +155,84 @@ input[type=number] {
     vertical-align: top;
 }
 
-main {
+#options {
     margin-top: 100px;
+    min-width: 50vw;
+    height: 60px;
+    display: flex;
+    flex-flow: row wrap;
+    background: #363636;
+    border-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#options #search {
+    max-width: 270px;
+    height: 40px;
+    background-color: #19D161;
+    box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+#options #search span {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 5px 0 0 5px;
+    border:none;
+}
+
+#options #search-icon {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+    vertical-align: middle;
+    filter: invert(17%) sepia(49%) saturate(4801%) hue-rotate(254deg) brightness(81%) contrast(111%);
+}
+
+#options #search-input {
+    background: none;
+    border: none;
+    height: 36px;
+    width: 225px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: left;
+    color: #4619A6;
+    margin-left: 5px;
+}
+
+#options #limit-sort {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#options #limit-sort div label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: #19D161;
+}
+
+#options #card-styles {
+    display: flex;
+    flex-flow: row wrap;
+    width: 50px;
+    justify-content: space-between;
+}
+
+#options #card-styles img {
+    width: 20px;
+    height: 20px;
+    filter: invert(34%) sepia(66%) saturate(1913%) hue-rotate(238deg) brightness(96%) contrast(87%);
+}
+
+main {
+    margin-top: 30px;
     display: flex;
     flex-flow: column wrap;
 }
