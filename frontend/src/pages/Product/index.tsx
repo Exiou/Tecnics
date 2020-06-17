@@ -74,6 +74,51 @@ function Product() {
       }
     }
   }
+
+  const formatFilter = {
+    formatLabel(key: string): string {
+      switch (key) {
+        case 'familia':
+          return 'Família';
+        case 'serie':
+          return 'Série';
+        case 'graficos_integrados':
+          return 'Gráficos integrados';
+        case 'nucleo':
+          return 'Núcleo';
+        case 'frequencia':
+          return 'Frequência';
+        case 'frequencia_turbo':
+          return 'Frequência turbo';
+        case 'virtualizacao':
+          return 'Virtualização';
+        case 'tipo_memoria':
+          return 'Tipo da memória';
+        case 'tamanho_memoria':
+          return 'Tamanho da memória';
+        case 'ram_max':
+          return 'RAM Máxima';
+        case 'modulo':
+          return 'Módulo';
+        case 'formato_placa_mae':
+          return 'Formato da placa mãe';
+        case 'potencia_fonte':
+          return 'Potência da fonte';
+        case 'filtro_removivel':
+          return 'Filtro removível';
+        case 'saida':
+          return 'Saída';
+        case 'potencia':
+          return 'Potência';
+        case 'eficiencia':
+          return 'Eficiência';
+        case 'hibrido':
+          return 'Híbrido';
+        default:
+          return key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+      }
+    }
+  }
   
   return (
     <div className="Product">
@@ -103,7 +148,7 @@ function Product() {
             {
               Object.keys(filters).map(key => (
                 <fieldset key={key}>
-                  <label>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+                  <label>{formatFilter.formatLabel(key)}</label>
                   <div className="values">{filters[key].map((value: any) => (
                     <div key={value} className="checkbox">
                       <input type="checkbox" onChange={(e) => handleSelectFilter(e, key)} name={String(value)} id={String(value)} />
