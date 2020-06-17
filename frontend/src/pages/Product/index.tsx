@@ -117,6 +117,16 @@ function Product() {
         default:
           return key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
       }
+    },
+    formatValue(value: string) {
+      switch (value) {
+        case 'true':
+          return 'Sim';
+        case 'false':
+          return 'Não';      
+        default:
+          return value;
+      }
     }
   }
   
@@ -152,7 +162,7 @@ function Product() {
                   <div className="values">{filters[key].map((value: any) => (
                     <div key={value} className="checkbox">
                       <input type="checkbox" onChange={(e) => handleSelectFilter(e, key)} name={String(value)} id={String(value)} />
-                      <span>{String(value)}</span>
+                      <span>{formatFilter.formatValue(String(value))}</span>
                     </div>
                   ))}</div>
                 </fieldset>
