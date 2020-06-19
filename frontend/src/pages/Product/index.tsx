@@ -1,5 +1,6 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
 import { Link, useParams } from 'react-router-dom'
+import { DebounceInput } from 'react-debounce-input'
 import api from '../../services/api'
 
 import Header from '../../components/Header'
@@ -33,7 +34,7 @@ function Product() {
 
   const [products, setProducts] = useState<Products[]>([])  
   const [filters, setFilters] = useState<any>({})
-  const [selectedFilters, setSelectedFilters] = useState<any>({})
+  const [selectedFilters, setSelectedFilters] = useState<any>({precoMin: '0', precoMax: '5000'})
 
   useEffect(() => {
     api.get(`/produtos/${product}`).then(response => {
@@ -83,6 +84,18 @@ function Product() {
       ...selectedFilters,
       [event.target.name]: event.target.value
     })
+  }
+
+  function handlePrice(event: ChangeEvent<HTMLInputElement>) {
+
+    if(event.target.value === ""){
+      delete selectedFilters[event.target.name]
+    }else {
+      setSelectedFilters({
+        ...selectedFilters,
+        [event.target.name]: event.target.value
+      })
+    }
   }
 
   const formatFilter = {
@@ -155,12 +168,52 @@ function Product() {
               <label>Preço - R$</label>
               <div className="price-values">
                 <div className="range">
-                  <input className="range-min-price" type="range" name="min-price" id="min-price" defaultValue="0" />
-                  <input className="range-max-price" type="range" name="max-price" id="max-price" defaultValue="100" />
+                  <DebounceInput
+                    className="range-min-price"
+                    type="range"
+                    name="precoMin"
+                    id="min-price"
+                    min="0"
+                    max="5000"
+                    value={selectedFilters.precoMin}
+                    onChange={handlePrice}
+                    debounceTimeout={300}
+                  />
+                  <DebounceInput
+                    className="range-max-price"
+                    type="range"
+                    name="precoMax"
+                    id="max-price"
+                    min="0"
+                    max="5000"
+                    value={selectedFilters.precoMax}
+                    onChange={handlePrice}
+                    debounceTimeout={300}
+                  />
                 </div>
                 <div className="text">
-                  <input className="text-input text-min-price" inputMode="numeric" placeholder="Mínimo" type="number" name="min-price" id="min-price"/>
-                  <input className="text-input text-max-price" inputMode="numeric" placeholder="Máximo" type="number" name="max-price" id="max-price"/>
+                  <DebounceInput
+                    className="text-input text-min-price"
+                    inputMode="numeric"
+                    placeholder="Mínimo"
+                    type="number"
+                    name="precoMin"
+                    id="min-price"
+                    value={selectedFilters.precoMin}
+                    onChange={handlePrice}
+                    debounceTimeout={300}
+                  />
+                  <DebounceInput
+                    className="text-input text-max-price"
+                    inputMode="numeric"
+                    placeholder="Máximo"
+                    type="number"
+                    name="precoMax"
+                    id="max-price"
+                    value={selectedFilters.precoMax}
+                    onChange={handlePrice}
+                    debounceTimeout={300}
+                  />
                 </div>
               </div>
             </fieldset>
@@ -185,7 +238,14 @@ function Product() {
           <section id="options">
             <div id="search">
               <span><img src={searchIcon} alt="Lupa" id="search-icon" /></span>
-              <input type="text" name="buscarNome" id="search-input" placeholder="Pesquisar por nome" onChange={handleOptions} />
+              <DebounceInput
+                type="text"
+                name="buscarNome"
+                id="search-input"
+                placeholder="Pesquisar por nome"
+                onChange={handleOptions}
+                debounceTimeout={300}
+              />
             </div>
             <div id="limit-sort">
               <div>
