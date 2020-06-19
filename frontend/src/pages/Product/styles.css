@@ -215,7 +215,7 @@ input[type=number] {
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
-    margin-right: 15px;
+    margin-right: 5px;
 }
 
 #options #limit-sort div label {

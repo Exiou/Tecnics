@@ -78,6 +78,13 @@ function Product() {
     }
   }
 
+  function handleOptions(event: ChangeEvent<HTMLInputElement|HTMLSelectElement>) {
+    setSelectedFilters({
+      ...selectedFilters,
+      [event.target.name]: event.target.value
+    })
+  }
+
   const formatFilter = {
     formatLabel(key: string): string {
       switch (key) {
@@ -178,12 +185,12 @@ function Product() {
           <section id="options">
             <div id="search">
               <span><img src={searchIcon} alt="Lupa" id="search-icon" /></span>
-              <input type="text" name="search" id="search-input" placeholder="Pesquisar por nome" />
+              <input type="text" name="buscarNome" id="search-input" placeholder="Pesquisar por nome" onChange={handleOptions} />
             </div>
             <div id="limit-sort">
               <div>
                 <label htmlFor="">Itens por página: </label>
-                <select name="limit" id="limit-select" defaultValue="24">
+                <select name="limit" id="limit-select" defaultValue="24" onChange={handleOptions}>
                   <option value="12">12</option>
                   <option value="24">24</option>
                   <option value="36">36</option>
@@ -192,10 +199,10 @@ function Product() {
               </div>
               <div>
                 <label htmlFor="">Ordenar por:</label>
-                <select name="sort" id="sort-select" defaultValue="">
+                <select name="ordenar" id="sort-select" defaultValue="" onChange={handleOptions}>
                   <option value="">---</option>
-                  <option value="preco">Maior preço</option>
-                  <option value="-preco">Menor preço</option>
+                  <option value="lojas.preco">Preço crescente</option>
+                  <option value="-lojas.preco">Preço decrescente</option>
                 </select>
               </div>
             </div>
