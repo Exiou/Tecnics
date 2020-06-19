@@ -28,7 +28,7 @@ class ProdutoController {
 
             const {
                 page = 1,
-                limit = 10,
+                limit = 24,
                 precoMin = 0,
                 precoMax = 50000,
                 buscarNome = '',

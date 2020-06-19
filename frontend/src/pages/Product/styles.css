@@ -85,7 +85,7 @@ input[type=number] {
 }
 
 #page-list-products {
-    margin: 0px 13vw 0px;
+    margin: 100px 13vw 0px;
     outline: 0;
     display: flex;
     flex-flow: row wrap;
@@ -93,7 +93,6 @@ input[type=number] {
 }
 
 #filters {
-    margin-top: 100px;
     width: 18vw;
     display: flex;
     flex-flow: column wrap;
@@ -156,7 +155,6 @@ input[type=number] {
 }
 
 #options {
-    margin-top: 100px;
     min-width: 50vw;
     height: 60px;
     display: flex;
@@ -208,14 +206,36 @@ input[type=number] {
 #options #limit-sort {
     display: flex;
     flex-flow: row wrap;
+    width: 25vw;
+    justify-content: flex-start;
+}
+
+#options #limit-sort div {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 15px;
 }
 
 #options #limit-sort div label {
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 16px;
     color: #19D161;
+}
+
+#options #limit-sort div select {
+    border: none;
+    background: none;
+    color: #885CE5;
+    text-decoration-line: underline;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 #options #card-styles {

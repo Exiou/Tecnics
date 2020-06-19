@@ -183,14 +183,19 @@ function Product() {
             <div id="limit-sort">
               <div>
                 <label htmlFor="">Itens por página: </label>
-                <select name="limit" id="limit-select">
+                <select name="limit" id="limit-select" defaultValue="24">
+                  <option value="12">12</option>
+                  <option value="24">24</option>
                   <option value="36">36</option>
+                  <option value="48">48</option>
                 </select>
               </div>
               <div>
                 <label htmlFor="">Ordenar por:</label>
-                <select name="sort" id="sort-select">
-                  <option value="preco">Preço</option>
+                <select name="sort" id="sort-select" defaultValue="">
+                  <option value="">---</option>
+                  <option value="preco">Maior preço</option>
+                  <option value="-preco">Menor preço</option>
                 </select>
               </div>
             </div>
