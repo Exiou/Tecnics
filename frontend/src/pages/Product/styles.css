@@ -155,7 +155,7 @@ input[type=number] {
 }
 
 #options {
-    min-width: 50vw;
+    min-width: 52.5vw;
     height: 60px;
     display: flex;
     flex-flow: row wrap;
@@ -263,7 +263,7 @@ main .card {
     align-self: flex-end;
     background-color: #34eb7b;
     border-radius: 10px;
-    min-width: 50vw;
+    min-width: 52.5vw;
     height: 180px;
     margin-bottom: 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
