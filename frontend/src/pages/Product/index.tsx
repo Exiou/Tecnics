@@ -10,8 +10,10 @@ import './styles.css'
 import plusIcon from '../../assets/svgs/plus.svg'
 import heartIcon from '../../assets/svgs/heart.svg'
 import searchIcon from '../../assets/svgs/search.svg'
-import gridIcon from '../../assets/svgs/grid.svg'
-import listIcon from '../../assets/svgs/list.svg'
+import emptyGridIcon from '../../assets/svgs/empty_grid.svg'
+import fillGridIcon from '../../assets/svgs/fill_grid.svg'
+import emptyListIcon from '../../assets/svgs/empty_list.svg'
+import fillListIcon from '../../assets/svgs/fill_list.svg'
 
 interface Products {
   _id: string
@@ -35,6 +37,7 @@ function Product() {
   const [products, setProducts] = useState<Products[]>([])  
   const [filters, setFilters] = useState<any>({})
   const [selectedFilters, setSelectedFilters] = useState<any>({precoMin: '0', precoMax: '5000'})
+  const [cardStyle, setCardStyle] = useState<string>('card list')
 
   useEffect(() => {
     api.get(`/produtos/${product}`).then(response => {
@@ -95,6 +98,14 @@ function Product() {
         ...selectedFilters,
         [event.target.name]: event.target.value
       })
+    }
+  }
+
+  function handleCardStyle(className: string) {
+    if(className === 'gridButton'){
+      setCardStyle('card grid')
+    }else {
+      setCardStyle('card list')
     }
   }
 
@@ -267,14 +278,24 @@ function Product() {
               </div>
             </div>
             <div id="card-styles">
-              <img src={gridIcon} alt="Grid Icon"/>
-              <img src={listIcon} alt="List Icon"/>
+              <button onClick={() => handleCardStyle('gridButton')} >
+                <img
+                  src={ cardStyle === 'card grid' ? fillGridIcon : emptyGridIcon }
+                  alt="Grid Icon"
+                />
+              </button>
+              <button onClick={() => handleCardStyle('listButton')} >
+                <img
+                  src={ cardStyle === 'card list' ? fillListIcon : emptyListIcon }
+                  alt="List Icon"
+                />
+              </button>
             </div>
           </section>
 
           <main>
             {products.map(product => (
-              <div className="card" key={product.modelo}>
+              <div className={cardStyle} key={product.modelo}>
                 <img className="product-image" src={product.imagem_url} alt={product.imagem}/>
 
                 <div className="props">
