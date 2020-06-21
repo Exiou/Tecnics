@@ -14,6 +14,8 @@ import emptyGridIcon from '../../assets/svgs/empty_grid.svg'
 import fillGridIcon from '../../assets/svgs/fill_grid.svg'
 import emptyListIcon from '../../assets/svgs/empty_list.svg'
 import fillListIcon from '../../assets/svgs/fill_list.svg'
+import rightArrowIcon from '../../assets/svgs/right_arrow.svg'
+import leftArrowIcon from '../../assets/svgs/left_arrow.svg'
 
 interface Products {
   _id: string
@@ -30,20 +32,44 @@ interface Products {
   }[]
 }
 
+interface Prices {
+  precoMin: string
+  precoMax: string
+}
+
+interface Pagination {
+  totalDocs?: number
+  limit?: number
+  totalPages?: number
+  page?: number
+  pagingCounter?: number
+  hasPrevPage?: boolean
+  hasNextPage?: boolean
+  prevPage?: number
+  nextPage?: number
+}
+
 function Product() {
 
-  let { product } = useParams()
+  const { product } = useParams()
 
   const [products, setProducts] = useState<Products[]>([])  
   const [filters, setFilters] = useState<any>({})
-  const [selectedFilters, setSelectedFilters] = useState<any>({precoMin: '0', precoMax: '5000'})
+  const [selectedFilters, setSelectedFilters] = useState<any>({})
+  const [prices, setPrices] = useState<Prices>({precoMin: '0', precoMax: '5000'})
+  const [pagination, setPagination] = useState<Pagination>({})
   const [cardStyle, setCardStyle] = useState<string>('card list')
 
   useEffect(() => {
     api.get(`/produtos/${product}`).then(response => {
       console.log(response.data)
-      setProducts(response.data.produtos.docs)
       setFilters(response.data.filters)
+      
+      const { docs, ...pagination} = response.data.produtos
+      
+      setProducts(docs)
+      setPagination(pagination)
+      
     })
   }, [product])
 
@@ -53,13 +79,20 @@ function Product() {
   })
 
   useEffect(() => {
-    console.log(selectedFilters)
     api.get(`/produtos/${product}`, {
-      params: selectedFilters
+      params: {
+        ...selectedFilters,
+        ...prices,
+        limit: pagination.limit,
+        page: pagination.page
+      }
     }).then(response => {
-      setProducts(response.data.produtos.docs)
+      const { docs, ...pagination} = response.data.produtos
+      
+      setProducts(docs)
+      setPagination(pagination)
     })
-  }, [product, selectedFilters])
+  }, [product, selectedFilters, prices, pagination.limit,pagination.page])
 
   function handleSelectFilter(event: ChangeEvent<HTMLInputElement>, key: any) {    
     if (selectedFilters[key] === undefined || selectedFilters[key] === ''){
@@ -83,20 +116,38 @@ function Product() {
   }
 
   function handleOptions(event: ChangeEvent<HTMLInputElement|HTMLSelectElement>) {
-    setSelectedFilters({
-      ...selectedFilters,
-      [event.target.name]: event.target.value
-    })
-  }
-
-  function handlePrice(event: ChangeEvent<HTMLInputElement>) {
-
-    if(event.target.value === ""){
-      delete selectedFilters[event.target.name]
+    if(event.target.name === 'limit') {
+      setPagination({
+        ...pagination,
+        limit: +event.target.value
+      })
     }else {
       setSelectedFilters({
         ...selectedFilters,
         [event.target.name]: event.target.value
+      })
+    }
+  }
+
+  function handlePrice(event: ChangeEvent<HTMLInputElement>) {
+
+    const { name, value } = event.target
+    
+
+    if(name === "precoMin" &&  value === ""){
+      setPrices({
+        ...prices,
+        precoMin: "0"
+      })
+    } else if(name === "precoMax" &&  value === ""){
+      setPrices({
+        ...prices,
+        precoMax: "5000"
+      })
+    }else {
+      setPrices({
+        ...prices,
+        [name]: value
       })
     }
   }
@@ -186,7 +237,7 @@ function Product() {
                     id="min-price"
                     min="0"
                     max="5000"
-                    value={selectedFilters.precoMin}
+                    value={prices.precoMin}
                     onChange={handlePrice}
                     debounceTimeout={300}
                   />
@@ -197,7 +248,7 @@ function Product() {
                     id="max-price"
                     min="0"
                     max="5000"
-                    value={selectedFilters.precoMax}
+                    value={prices.precoMax}
                     onChange={handlePrice}
                     debounceTimeout={300}
                   />
@@ -210,7 +261,7 @@ function Product() {
                     type="number"
                     name="precoMin"
                     id="min-price"
-                    value={selectedFilters.precoMin}
+                    value={prices.precoMin}
                     onChange={handlePrice}
                     debounceTimeout={300}
                   />
@@ -221,7 +272,7 @@ function Product() {
                     type="number"
                     name="precoMax"
                     id="max-price"
-                    value={selectedFilters.precoMax}
+                    value={prices.precoMax}
                     onChange={handlePrice}
                     debounceTimeout={300}
                   />
@@ -260,7 +311,7 @@ function Product() {
             </div>
             <div id="limit-sort">
               <div>
-                <label htmlFor="">Itens por página: </label>
+                <label>Itens por página: </label>
                 <select name="limit" id="limit-select" defaultValue="24" onChange={handleOptions}>
                   <option value="12">12</option>
                   <option value="24">24</option>
@@ -269,14 +320,14 @@ function Product() {
                 </select>
               </div>
               <div>
-                <label htmlFor="">Ordenar por:</label>
+                <label>Ordenar por:</label>
                 <select name="ordenar" id="sort-select" defaultValue="" onChange={handleOptions}>
                   <option value="">---</option>
                   <option value="lojas.preco">Preço crescente</option>
                   <option value="-lojas.preco">Preço decrescente</option>
                 </select>
               </div>
-            </div>
+            </div>            
             <div id="card-styles">
               <button onClick={() => handleCardStyle('gridButton')} >
                 <img
@@ -292,6 +343,10 @@ function Product() {
               </button>
             </div>
           </section>
+
+          <div id="results">
+            <label>Resultados: <span>{pagination.totalDocs}</span></label>
+          </div>
 
           <main>
             {products.map(product => (
@@ -316,6 +371,22 @@ function Product() {
               </div>
             ))}
           </main>
+
+          <div id="pagination">
+            <button disabled={pagination.page === 1} onClick={() => {
+                setPagination({...pagination, page: pagination.page! - 1})
+            }}>
+              <img src={leftArrowIcon} alt=""/>
+              <span>Anterior</span>
+            </button>
+
+            <button disabled={pagination.page === pagination.totalPages} onClick={() => {
+                setPagination({...pagination, page: pagination.page! + 1})
+            }}>
+              <span>Próxima</span>
+              <img src={rightArrowIcon} alt=""/>
+            </button>
+          </div>
         </div>
       </div>
     </div>
