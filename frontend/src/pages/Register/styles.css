@@ -1,0 +1,137 @@
+#main {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#main img {
+    width: 642px;
+    height: 344px;
+}
+
+section {
+    background: #19D161;
+    box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 565px;
+    height: 600px;
+    padding-top: 2%;
+    text-align: center;
+}
+
+section form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    height: 80%;
+}
+
+section form h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #5124B3;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+section form #field-group {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    height: 50%;
+    width: 100%;
+}
+
+section a {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #794CD9;
+}
+
+section form #field-group fieldset {
+    background: #34EB7B;
+    border: 2px solid #6B3DCC;
+    box-sizing: border-box;
+    box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    align-self: center;
+    min-width: 75%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+
+section form #field-group fieldset span {
+    display: inline-block;
+    min-height: 40px;
+    height: 100%;
+    width: 10%;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 5px 0 0 5px;
+    border:none;
+}
+
+
+section form #field-group fieldset span img {
+    width: 25px;
+    height: 25px;
+    margin-left: 10%;
+    vertical-align: middle;
+    filter: invert(8%) sepia(81%) saturate(6851%) hue-rotate(263deg) brightness(97%) contrast(96%);
+}
+
+section form #field-group fieldset button {
+    outline: none;
+    overflow: hidden;
+    border: none;
+    background: none;
+    width: 20%;
+} 
+
+section form #field-group fieldset button:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+section form #field-group fieldset button label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #4619A6;
+}
+
+section form #field-group fieldset input {
+    background: none;
+    border: none;
+    width: 70%;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #4619A6;
+    margin-left: 10px;
+}
+
+section form #submit {
+    width: 200px;
+    height: 60px;
+    background: #52FF95;
+    border: 2px solid #6B3DCC;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    align-self: center;
+}
+
+section form #submit h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: #5124B3;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+
