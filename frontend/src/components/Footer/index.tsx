@@ -12,16 +12,16 @@ const Footer: React.FC = () => {
   return (
     <div className="Footer">
         <footer>
-          <a href="a">
+          <a href="/">
             <img src={whatsappIcon} alt="Whatsapp Icon" height={16} width={16} />
           </a>
-          <a href="a">
+          <a href="https://twitter.com/exiouuu">
             <img src={twitterIcon} alt="Twitter Icon" height={16} width={16} />
           </a>
-          <a href="a">
+          <a href="/">
             <img src={facebookIcon} alt="Facebook Icon" height={16} width={16} />
           </a>
-          <a href="a">
+          <a href="https://github.com/Exiou">
             <img src={githubIcon} alt="Github Icon" height={16} width={16} />
           </a>
         </footer>

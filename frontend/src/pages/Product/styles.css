@@ -1,9 +1,9 @@
-input[type=range] {
+.Product input[type=range] {
     background: 0;
     width: 50%;
 }
 
-input[type=range]::-moz-range-track {
+.Product input[type=range]::-moz-range-track {
     width: 100%;
     height: 2px;
     cursor: pointer;
@@ -11,7 +11,7 @@ input[type=range]::-moz-range-track {
     text-align: start;
 }
 
-input[type=range]::-moz-range-thumb {
+.Product input[type=range]::-moz-range-thumb {
     border: 0;
     height: 25px;
     width: 20px;
@@ -20,49 +20,49 @@ input[type=range]::-moz-range-thumb {
     cursor: pointer;
 }
 
-input[type=range].range-min-price::-moz-range-track {
+.Product input[type=range].range-min-price::-moz-range-track {
     background: #45FF8D;
 }
 
-input[type=range].range-min-price::-moz-range-thumb {
+.Product input[type=range].range-min-price::-moz-range-thumb {
     filter: invert(42%) sepia(99%) saturate(3793%) hue-rotate(241deg) brightness(87%) contrast(96%);
 }
 
-input[type=range].range-max-price::-moz-range-track {
+.Product input[type=range].range-max-price::-moz-range-track {
     background: #794CD9;
 }
 
-input[type=range].range-max-price::-moz-range-thumb {
+.Product input[type=range].range-max-price::-moz-range-thumb {
     filter: invert(83%) sepia(26%) saturate(1117%) hue-rotate(78deg) brightness(103%) contrast(101%);
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button,
-input[type=number] { 
+.Product input[type=number]::-webkit-inner-spin-button, 
+.Product input[type=number]::-webkit-outer-spin-button,
+.Product input[type=number] { 
   -webkit-appearance: none; 
   -moz-appearance: textfield;
   appearance: textfield;
   margin: 0; 
 }
 
-.price-values {
+.Product .price-values {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
 }
 
-.price-values .range {
+.Product .price-values .range {
     margin-top: 25px;
 }
 
-.price-values .text {
+.Product .price-values .text {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     margin-top: 10px;
 }
 
-.price-values .text-input{
+.Product .price-values .text-input{
     width: 35%;
     height: 35px;
     border-radius: 5px;
@@ -74,17 +74,17 @@ input[type=number] {
 }
 
 
-.price-values .text-min-price{
+.Product .price-values .text-min-price{
     background: #25DE6D;
     color: #794CD9;
 }
 
-.price-values .text-max-price{
+.Product .price-values .text-max-price{
     background: #5E30BF;
     color: #45FF8D;
 }
 
-#page-list-products {
+.Product #page-list-products {
     margin: 100px 13vw 50px;
     outline: 0;
     display: flex;
@@ -92,7 +92,7 @@ input[type=number] {
     justify-content: space-between;
 }
 
-#filters {
+.Product #filters {
     width: 18vw;
     display: flex;
     flex-flow: column nowrap;
@@ -107,11 +107,11 @@ input[type=number] {
     scrollbar-width: none;
 }
 
-#filters::-webkit-scrollbar {
+.Product #filters::-webkit-scrollbar {
     display: none;
   }
 
-#filters h2 {
+.Product #filters h2 {
     color: #19D161;
     text-align: center;
     font-size: 24px;
@@ -120,26 +120,26 @@ input[type=number] {
     
 }
 
-#filters fieldset {
+.Product #filters fieldset {
     margin: 0 10px 30px;
     border: 0;
 }
 
-#filters fieldset label {
+.Product #filters fieldset label {
     color: #34EB7B;
     font-size: 20px;
     font-weight: bold;
 }
 
-#filters fieldset .values {
+.Product #filters fieldset .values {
     margin-top: 24px;
 }
 
-#filters fieldset .values .checkbox {
+.Product #filters fieldset .values .checkbox {
     height: 30px;
 }
 
-#filters fieldset .values .checkbox input[type=checkbox] {
+.Product #filters fieldset .values .checkbox input[type=checkbox] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -149,16 +149,16 @@ input[type=number] {
     border-radius: 5px;
 }
 
-#filters fieldset .values .checkbox input[type=checkbox]:checked{
+.Product #filters fieldset .values .checkbox input[type=checkbox]:checked{
     transition: 200ms;
     background-color: #52FF95;
 }
 
-#filters fieldset .values .checkbox input[type=checkbox]:hover{
+.Product #filters fieldset .values .checkbox input[type=checkbox]:hover{
     border: 4px solid #885CE5;
 }
 
-#filters fieldset .values .checkbox span {
+.Product #filters fieldset .values .checkbox span {
     margin-left: 10px;
     color: #34EB7B;
     font-size: 18px;
@@ -166,12 +166,12 @@ input[type=number] {
     vertical-align: top;
 }
 
-#main {
+.Product #main {
     display: flex;
     flex-flow: column nowrap;
 }
 
-#options {
+.Product #options {
     min-width: 52.5vw;
     height: 60px;
     display: flex;
@@ -182,7 +182,7 @@ input[type=number] {
     align-items: center;
 }
 
-#options #search {
+.Product #options #search {
     max-width: 270px;
     height: 40px;
     background-color: #19D161;
@@ -190,7 +190,7 @@ input[type=number] {
     border-radius: 5px;
 }
 
-#options #search span {
+.Product #options #search span {
     display: inline-block;
     height: 40px;
     width: 40px;
@@ -199,7 +199,7 @@ input[type=number] {
     border:none;
 }
 
-#options #search-icon {
+.Product #options #search-icon {
     height: 20px;
     width: 20px;
     margin-left: 10px;
@@ -207,7 +207,7 @@ input[type=number] {
     filter: invert(17%) sepia(49%) saturate(4801%) hue-rotate(254deg) brightness(81%) contrast(111%);
 }
 
-#options #search-input {
+.Product #options #search-input {
     background: none;
     border: none;
     height: 36px;
@@ -220,14 +220,14 @@ input[type=number] {
     margin-left: 5px;
 }
 
-#options #limit-sort {
+.Product #options #limit-sort {
     display: flex;
     flex-flow: row wrap;
     width: 25vw;
     justify-content: flex-start;
 }
 
-#options #limit-sort div {
+.Product #options #limit-sort div {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
@@ -235,14 +235,14 @@ input[type=number] {
     margin-right: 5px;
 }
 
-#options #limit-sort div label {
+.Product #options #limit-sort div label {
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     color: #19D161;
 }
 
-#options #limit-sort div select {
+.Product #options #limit-sort div select {
     border: none;
     background: none;
     color: #885CE5;
@@ -256,25 +256,25 @@ input[type=number] {
     cursor: pointer;
 }
 
-#options #card-styles {
+.Product #options #card-styles {
     display: flex;
     flex-flow: row wrap;
     width: 50px;
     justify-content: space-between;
 }
 
-#options #card-styles button{
+.Product #options #card-styles button{
     background: none;
     border: none;
 }
 
-#options #card-styles button img {
+.Product #options #card-styles button img {
     width: 20px;
     height: 20px;
     filter: invert(34%) sepia(66%) saturate(1913%) hue-rotate(238deg) brightness(96%) contrast(87%);
 }
 
-#results {
+.Product #results {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
@@ -282,18 +282,18 @@ input[type=number] {
     margin-top: 5px;
 }
 
-#results label {
+.Product #results label {
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     color: #19D161;
 }
 
-#results label span {
+.Product #results label span {
     font-weight: 500;
 }
 
-main {
+.Product main {
     margin-top: 15px;
     display: flex;
     flex-flow: row wrap;
@@ -301,13 +301,13 @@ main {
     justify-content: space-between;
 }
 
-main .card {
+.Product main .card {
     border-radius: 10px;
     background-color: #34eb7b;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-main .card.list {
+.Product main .card.list {
     display: flex;
     flex-flow: row wrap;
     align-self: flex-end;
@@ -316,7 +316,7 @@ main .card.list {
     margin-bottom: 30px;
 }
 
-main .card.list .product-image {
+.Product main .card.list .product-image {
     height: 150px;
     width: 150px;
     border: solid 3px #794CD9;
@@ -326,7 +326,7 @@ main .card.list .product-image {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-main .card.list .props {
+.Product main .card.list .props {
     margin-left: 40px;
     display: flex;
     flex-flow: column wrap;
@@ -335,7 +335,7 @@ main .card.list .props {
     width: 350px;
 }
 
-main .card.list .props h2 {
+.Product main .card.list .props h2 {
     font-size: 36px;
     color: #5124B2;
     max-height: 50px;
@@ -343,12 +343,12 @@ main .card.list .props h2 {
     text-overflow: clip;
 }
 
-main .card.list .props h3 {
+.Product main .card.list .props h3 {
     font-size: 28px;
     color: #5E30BF;
 }
 
-main .card a {
+.Product main .card a {
     display: flex;
     justify-content: space-around;
     align-self: center;
@@ -366,13 +366,13 @@ main .card a {
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
 }
 
-main .card a .plus-icon {
+.Product main .card a .plus-icon {
     height: 30px;
     width: 30px;
     filter: invert(18%) sepia(79%) saturate(2721%) hue-rotate(251deg) brightness(86%) contrast(106%);
 }
 
-main .card.list button {
+.Product main .card.list button {
     border: none;
     height: 40px;
     width: 50px;
@@ -381,13 +381,13 @@ main .card.list button {
     border-radius: 0px 10px 0px 20px;
 }
 
-main .card.list button .heart-icon {
+.Product main .card.list button .heart-icon {
     height: 22.25px;
     width: 25px;
     filter: invert(82%) sepia(11%) saturate(2197%) hue-rotate(82deg) brightness(102%) contrast(101%);
 }
 
-main .card.grid {
+.Product main .card.grid {
     display: flex;
     flex-flow: column nowrap;
     flex: auto;
@@ -397,7 +397,7 @@ main .card.grid {
     margin: 0 5px 30px;
 }
 
-main .card.grid .product-image {
+.Product main .card.grid .product-image {
     height: 150px;
     width: 150px;
     border: solid 3px #794CD9;
@@ -406,7 +406,7 @@ main .card.grid .product-image {
     margin-top: 20px;
 }
 
-main .card.grid .props {
+.Product main .card.grid .props {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -414,7 +414,7 @@ main .card.grid .props {
     width: 200px;
 }
 
-main .card.grid .props h2 {
+.Product main .card.grid .props h2 {
     font-size: 30px;
     color: #5124B2;
     max-height: 50px;
@@ -422,12 +422,12 @@ main .card.grid .props h2 {
     text-overflow: clip;
 }
 
-main .card.grid .props h3 {
+.Product main .card.grid .props h3 {
     font-size: 32px;
     color: #5E30BF;
 }
 
-main .card.grid button {
+.Product main .card.grid button {
     border: none;
     height: 32px;
     width: 40px;
@@ -439,13 +439,13 @@ main .card.grid button {
 
 
 
-main .card.grid button .heart-icon {
+.Product main .card.grid button .heart-icon {
     height: 20px;
     width: 18px;
     filter: invert(82%) sepia(11%) saturate(2197%) hue-rotate(82deg) brightness(102%) contrast(101%);
 }
 
-#pagination {
+.Product #pagination {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -455,12 +455,12 @@ main .card.grid button .heart-icon {
     align-items: center;
 }
 
-#pagination img {
+.Product #pagination img {
     margin: 0 10px 0;
     filter: invert(71%) sepia(75%) saturate(1776%) hue-rotate(86deg) brightness(92%) contrast(84%);
 }
 
-#pagination button {
+.Product #pagination button {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -475,15 +475,15 @@ main .card.grid button .heart-icon {
     margin: 0 10px 0;
 }
 
-#pagination button:hover,
-#pagination button:focus {
+.Product #pagination button:hover,
+.Product #pagination button:focus {
     text-decoration: underline;
     font-weight: 700;
     transform: translateY(-0.25em);
 }
 
-#pagination button:disabled,
-#pagination button:disabled:hover{
+.Product #pagination button:disabled,
+.Product #pagination button:disabled:hover{
     text-decoration: none;
     font-weight: 500;
     opacity: 0;

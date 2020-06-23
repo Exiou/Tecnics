@@ -1,5 +1,5 @@
 import React, { FormEvent, useState, FocusEvent } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import api from '../../services/api'
 
@@ -11,6 +11,8 @@ import mailIcon from '../../assets/svgs/mail.svg'
 import passwordIcon from '../../assets/svgs/password.svg'
 
 function Register() {
+
+    const history = useHistory()
 
     const [formData, setFormData] = useState({
         name: '',
@@ -36,9 +38,13 @@ function Register() {
         data.append('email', email)
         data.append('senha', password)
 
-        await api.post('/users', data)
+        const response = await api.post('/users', data)
 
-        alert('cadastrou')
+        if (response.data === "Email já cadastrado" ) {
+            return alert('Email já cadastrado')
+        }
+
+        history.push('/')
     }
 
     return (
