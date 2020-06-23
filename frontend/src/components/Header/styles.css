@@ -3,7 +3,7 @@ header {
     max-width: auto;
     max-height: 132px;
     overflow: hidden;
-    padding: 0px 13vw 0px 11vw;
+    padding: 0px 12vw 0px 10.5vw;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -31,7 +31,7 @@ header h1 img {
 header nav {
     width: 245px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     flex-flow: row wrap;
 }
 
@@ -62,4 +62,13 @@ header nav {
     filter: invert(77%) sepia(49%) saturate(809%) hue-rotate(78deg) brightness(96%) contrast(81%);
     width: 45px;
     height: 45px;
+}
+
+.text {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #25DE6D;
 }

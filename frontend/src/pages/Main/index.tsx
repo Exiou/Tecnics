@@ -1,5 +1,4 @@
 import React from 'react';
-//import api from './services/api'
 
 import { Link } from 'react-router-dom'
 
@@ -22,7 +21,7 @@ function Main() {
   return (
     <div className="Main">
 
-      <Header />
+      <Header signedUp={false} />
 
       <div className="menu">
           <Link className="button" to="produtos/processadores">
