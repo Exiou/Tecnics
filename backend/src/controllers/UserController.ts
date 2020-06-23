@@ -17,7 +17,7 @@ class UserController {
   public initializeRoutes() {
     this.routes.get(`${this.path}`, this.index)
     this.routes.get(`${this.path}/:userid`, this.show)
-    this.routes.post(`${this.path}`, multer(uploadConfig('users')).single('file'), this.store)
+    this.routes.post(`${this.path}`, this.store)
     this.routes.put(`${this.path}/:userid`, multer(uploadConfig('users')).single('file'), this.update)
     this.routes.delete(`${this.path}/:userid`, this.destroy)
   }
@@ -54,7 +54,7 @@ class UserController {
         senha
       } = req.body
 
-      const imagem = req.file.filename
+      const imagem = 'defaultUserImage.png'
 
       const verificaUser = await User.findOne({email})
 
