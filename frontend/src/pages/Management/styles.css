@@ -1,0 +1,271 @@
+.Management #page-management-products {
+    margin: 45px 13vw 50px;
+    outline: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.Management #options {
+    width: 75vw;
+    height: 60px;
+    display: flex;
+    flex-flow: row wrap;
+    background: #363636;
+    border-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Management #options #search {
+    max-width: 270px;
+    height: 40px;
+    background-color: #19D161;
+    box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.Management #options #search span {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 5px 0 0 5px;
+    border:none;
+}
+
+.Management #options #search-icon {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+    vertical-align: middle;
+    filter: invert(17%) sepia(49%) saturate(4801%) hue-rotate(254deg) brightness(81%) contrast(111%);
+}
+
+.Management #options #search-input {
+    background: none;
+    border: none;
+    height: 36px;
+    width: 225px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: left;
+    color: #4619A6;
+    margin-left: 5px;
+}
+
+.Management #options #limit-sort {
+    display: flex;
+    flex-flow: row wrap;
+    width: 25vw;
+    justify-content: flex-start;
+}
+
+.Management #options #limit-sort div {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 5px;
+}
+
+.Management #options #limit-sort div label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #19D161;
+}
+
+.Management #options #limit-sort div select {
+    border: none;
+    background: none;
+    color: #885CE5;
+    text-decoration-line: underline;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.Management #options #add-product a {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 180px;
+    height: 35px;
+    background: #52FF95;
+    border: 2px solid #6B3DCC;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #5124B3;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+}
+
+.Management #options #add-product a img {
+    width: 25px;
+    height: 25px;
+    filter: invert(12%) sepia(94%) saturate(5212%) hue-rotate(261deg) brightness(77%) contrast(90%);
+}
+
+.Management main {
+    margin-top: 15px;
+    width: 75vw;
+}
+
+.Management main table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 5px;
+    width: 100%;
+    background: linear-gradient(#6B3DCC, #45FF8D);
+}
+
+.Management main table tbody tr:nth-child(odd) {
+    background: #34eb7b;
+}
+
+.Management main table tbody tr:nth-child(even) {
+    background: #45FF8D;
+}
+
+.Management main table tbody tr:last-child {
+    background: none;
+}
+
+.Management main .table-head {
+    box-shadow: inset 0px 4px 15px rgba(0, 0, 0, 0.25);
+    height: 50px;
+}
+
+.Management main .table-head th {
+    font-size: 18px;
+    color: #25DE6D;
+}
+
+.Management main .card {
+    height: 100px;
+}
+
+.Management main .card .product-image {
+    height: 80px;
+    width: 80px;
+    border: solid 3px #794CD9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.Management main .card td {
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    max-width: 200px;
+}
+
+.Management main .card td h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: #5124B3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Management main .card .actions {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
+}
+
+.Management main .card .actions button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+    background: #52FF95;
+    border: 2px solid #6B3DCC;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.Management main .card .actions button img {
+    width: 15px;
+    height: 15px;
+}
+
+.Management main .card .actions button#editar {
+    color: #5124B3;
+}
+
+.Management main .card .actions button#editar img {
+    filter: invert(12%) sepia(94%) saturate(5212%) hue-rotate(261deg) brightness(77%) contrast(90%);
+}
+
+.Management main .card .actions button#excluir {
+    color: #B32424;
+}
+
+.Management main .card .actions button#excluir img {
+    filter: invert(19%) sepia(48%) saturate(4655%) hue-rotate(347deg) brightness(87%) contrast(91%);
+}
+
+.Management #pagination {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    background: #363636;
+    border-radius: 10px;
+    width: 75vw;
+    height: 50px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.Management #pagination img {
+    margin: 0 10px 0;
+    filter: invert(71%) sepia(75%) saturate(1776%) hue-rotate(86deg) brightness(92%) contrast(84%);
+}
+
+.Management #pagination button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    text-decoration: none;
+    background: none;
+    border: none;
+    color: #19D161;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    margin: 0 10px 0;
+}
+
+.Management #pagination button:hover,
+.Management #pagination button:focus {
+    text-decoration: underline;
+    font-weight: 700;
+    transform: translateY(-0.25em);
+}
+
+.Management #pagination button:disabled,
+.Management #pagination button:disabled:hover{
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0;
+    transform: none;
+    cursor: default;
+}
