@@ -32,17 +32,13 @@ function Register() {
 
         const { name, email, password } = formData
 
-        const data = new FormData()
+        const response = await api.post('/users', {
+            'nome': name,
+            'email': email,
+            'senha': password
+        })
 
-        data.append('nome', name)
-        data.append('email', email)
-        data.append('senha', password)
-
-        const response = await api.post('/users', data)
-
-        if (response.data === "Email já cadastrado" ) {
-            return alert('Email já cadastrado')
-        }
+        if(response.data === 'Email já cadastrado') return alert('Email já cadastrado!')
 
         history.push('/')
     }
@@ -68,6 +64,7 @@ function Register() {
                                     id="name"
                                     placeholder="Nome"
                                     onBlur={handleInput}
+                                    required
                                 />
                             </fieldset>
 
@@ -81,6 +78,7 @@ function Register() {
                                     id="email"
                                     placeholder="Email"
                                     onBlur={handleInput}
+                                    required
                                 />
                             </fieldset>
 
@@ -94,6 +92,8 @@ function Register() {
                                     id="password"
                                     placeholder="Senha"
                                     onBlur={handleInput}
+                                    required
+                                    minLength={6}
                                 />
                                 <button type="button" onClick={() => {
                                     if(toggleShowPassword === 'password'){
