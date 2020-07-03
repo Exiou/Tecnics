@@ -48,12 +48,17 @@ function Management() {
 
     const [products, setProducts] = useState<Products[]>([])
     const [pagination, setPagination] = useState<Pagination>({})
+    const [selectedFilters, setSelectedFilters] = useState<any>({})
 
     useEffect(() => {
-        api.get(`/produtos/${product}`, {
+        api.get(`/lojas/${product}`, {
           params: {
+            ...selectedFilters,
             limit: pagination.limit,
             page: pagination.page
+          },
+          headers: {
+            idloja: '5e4c3a618241ac59f5892829'
           }
         }).then(response => {
           const { docs, ...pagination} = response.data.produtos
@@ -61,7 +66,7 @@ function Management() {
           setProducts(docs)
           setPagination(pagination)
         })
-      }, [product, pagination.limit, pagination.page])
+      }, [product, pagination.limit, pagination.page, selectedFilters])
 
 
     function handleOptions(event: ChangeEvent<HTMLInputElement|HTMLSelectElement>) {
@@ -71,11 +76,28 @@ function Management() {
                 limit: +event.target.value
             })
         }else {
-            setPagination({
-                ...pagination,
+            setSelectedFilters({
+                ...selectedFilters,
                 [event.target.name]: event.target.value
             })
         }
+        console.log(selectedFilters)
+
+    }
+
+    function handleDelete(id: string) {
+        try {
+            api.delete(`/lojas/${product}/${id}`, {
+                headers: {
+                    idloja: '5e4c3a618241ac59f5892829'
+                }
+            })
+
+            setProducts(products.filter(product => product._id !== id))
+        }catch(err){
+            alert('Erro ao deletar produto. Tente novamente!')
+        }
+
     }
 
     const formatter = new Intl.NumberFormat('pt-br', {
@@ -164,7 +186,7 @@ function Management() {
                                             <img src={editIcon} alt="Planilha"/>
                                             Editar
                                         </button>
-                                        <button id="excluir">
+                                        <button id="excluir" onClick={() => handleDelete(product._id)}>
                                             <img src={deleteIcon} alt="Lixeira"/>
                                             Excluir
                                         </button>
