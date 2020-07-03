@@ -21,7 +21,7 @@ function Main() {
   return (
     <div className="Main">
 
-      <Header signedUp={false} />
+      <Header />
 
       <div className="menu">
           <Link className="button" to="produtos/processadores">

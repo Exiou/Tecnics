@@ -108,7 +108,7 @@ function Management() {
     return (
         <div className="Management">
 
-            <Header signedUp={true} product={product} />
+            <Header product={product} />
 
             <div id="page-management-products" >
 

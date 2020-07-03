@@ -218,7 +218,7 @@ function Product() {
   return (
     <div className="Product">
 
-      <Header signedUp={false} product={product} />
+      <Header product={product} />
 
       <div id="page-list-products">
 

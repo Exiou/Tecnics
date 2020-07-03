@@ -10,11 +10,12 @@ import avatarIcon from '../../assets/svgs/avatar.svg'
 import downArrow from '../../assets/svgs/down-arrow.svg'
 
 interface Props {
-    signedUp: boolean
     product?: string
 }
 
-const Header: React.FC<Props> = ({ signedUp, product }) => {
+const Header: React.FC<Props> = ({ product }) => {
+
+    const userId = localStorage.getItem('userId')
   
   return (
     <div className="Header">
@@ -26,7 +27,7 @@ const Header: React.FC<Props> = ({ signedUp, product }) => {
                 : ''
             }
             {
-                signedUp ? (
+                userId ? (
                     <nav>
                         <Link to="/profile" id="avatarButton">
                             <img className="avatar" src={avatarIcon} alt="Avatar Icon"/>
