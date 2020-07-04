@@ -33,23 +33,12 @@ header nav {
     display: flex;
     justify-content: space-around;
     flex-flow: row wrap;
+    align-items: center;
 }
 
 #tecnicsLogo {
     width: 245px;
     height: 132px;
-}
-
-#hamburgerButton {
-    border: none;
-    background-color: transparent;
-}
-
-.hamburger { 
-    filter: invert(77%) sepia(49%) saturate(809%) hue-rotate(78deg) brightness(96%) contrast(81%);
-    width: 45px;
-    height: 45px;
-
 }
 
 #avatarButton {
