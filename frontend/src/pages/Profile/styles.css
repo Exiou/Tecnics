@@ -1,0 +1,228 @@
+.Profile #main {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.Profile #main #left-side {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-self: start;
+    height: 100%;
+    width: 45vw;
+}
+
+.Profile #main #left-side img {
+    width: 321px;
+    height: 172px;
+}
+
+.Profile #main #left-side #favorites {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+
+.Profile #main #left-side #favorites h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    color: #0EC455;
+    margin-left: 55px;
+}
+
+.Profile #main #left-side #favorites p {
+    margin-top: 25%;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    align-self: center;
+    text-align: center;
+    color: #BDBDBD;
+}
+
+.Profile section {
+    background: #19D161;
+    box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 565px;
+    height: 600px;
+    padding-top: 2%;
+    text-align: center;
+}
+
+.Profile section form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    height: 80%;
+}
+
+.Profile section form #form-head {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12.5%;
+}
+
+.Profile section form #form-head h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    color: #5124B3;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.Profile section form #form-head #image-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+}
+
+.Profile section form #user-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 25%;
+}
+
+.Profile section form #field-group {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    height: 50%;
+    width: 100%;
+}
+
+.Profile section a {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #794CD9;
+}
+
+.Profile section form #field-group fieldset {
+    background: #34EB7B;
+    border: 2px solid #6B3DCC;
+    box-sizing: border-box;
+    box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    align-self: center;
+    min-width: 75%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+
+.Profile section form #field-group fieldset span {
+    display: inline-block;
+    min-height: 40px;
+    height: 100%;
+    width: 10%;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 5px 0 0 5px;
+    border:none;
+}
+
+
+.Profile section form #field-group fieldset span img {
+    width: 25px;
+    height: 25px;
+    margin-left: 10%;
+    vertical-align: middle;
+    filter: invert(8%) sepia(81%) saturate(6851%) hue-rotate(263deg) brightness(97%) contrast(96%);
+}
+
+.Profile section form #field-group fieldset button {
+    outline: none;
+    overflow: hidden;
+    border: none;
+    background: none;
+    width: 20%;
+} 
+
+.Profile section form #field-group fieldset button:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.Profile section form #field-group fieldset button label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #4619A6;
+}
+
+.Profile section form #field-group fieldset input {
+    background: none;
+    border: none;
+    width: 70%;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #4619A6;
+    margin-left: 10px;
+}
+
+.Profile section form #submit {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 190px;
+    height: 60px;
+    background: #52FF95;
+    border: 2px solid #6B3DCC;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    align-self: center;
+}
+
+.Profile section form #submit h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: #5124B3;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.Profile section form #submit img {
+    width: 25px;
+    height: 25px;
+    filter: invert(12%) sepia(94%) saturate(5212%) hue-rotate(261deg) brightness(77%) contrast(90%);
+}
+
+[type="file"] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    white-space: nowrap;
+    width: 1px;
+}
+
+[type="file"] + label {
+    border-radius: 5px;
+    color: #4619A6;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+[type="file"]:focus + label,
+[type="file"] + label:hover {
+    opacity: 80%;
+}
+
+[type="file"]:focus + label {
+    outline: none;
+}

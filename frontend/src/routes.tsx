@@ -5,7 +5,9 @@ import Main from './pages/Main'
 import Product from './pages/Product'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Profile from './pages/Profile'
 import Management from './pages/Management'
+
 
 export default function Routes(){
   return (
@@ -15,6 +17,7 @@ export default function Routes(){
             <Route path="/produtos/:product" exact component={Product}/>
             <Route path="/users/register" exact component={Register}/>
             <Route path="/users/login" exact component={Login}/>
+            <Route path="/users/profile" exact component={Profile}/>
             <Route path="/lojas/:product" exact component={Management}/>
         </Switch>
     </Router>

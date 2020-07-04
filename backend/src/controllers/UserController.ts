@@ -85,13 +85,17 @@ class UserController {
       senha
     } = req.body
 
-    const imagem = req.file.filename
+    let imagem = undefined
+
+    if (req.file) imagem = req.file.filename
 
     const updateUser = await User.findOneAndUpdate({ _id: userid }, {
       nome,
       imagem,
       email,
       senha
+    }, {
+      omitUndefined: true
     })
 
     return res.json(updateUser)
