@@ -14,7 +14,11 @@ interface Props {
 
 const Header: React.FC<Props> = ({ product }) => {
 
-    const userId = localStorage.getItem('userId')    
+    const userId = localStorage.getItem('userId')
+    
+    function format(name: string) {
+        return name.replace('emorias', 'emórias').replace('-video', ' de vídeo').replace('-mae', ' mãe')
+    }
   
     return (
         <div className="Header">
@@ -22,7 +26,11 @@ const Header: React.FC<Props> = ({ product }) => {
                 <Link to="/" className="logo">
                     <img id="tecnicsLogo" src={tecnicsLogo} alt="Tecnics Logo" />
                 </Link>
-                { product ? <h1>{product.charAt(0).toUpperCase() + product.slice(1)}<img src={downArrow} alt="down arrow"/></h1>
+                { product ?
+                    <h1>
+                        {format(product.charAt(0).toUpperCase() + product.slice(1))}
+                        <img src={downArrow} alt="down arrow"/>
+                    </h1>
                     : ''
                 }
                 {
