@@ -49,6 +49,7 @@ function Management() {
     const [products, setProducts] = useState<Products[]>([])
     const [pagination, setPagination] = useState<Pagination>({})
     const [selectedFilters, setSelectedFilters] = useState<any>({})
+    const [editedPrice, setEditedPrice] = useState<number>(0)
 
     useEffect(() => {
         api.get(`/lojas/${product}`, {
@@ -85,9 +86,9 @@ function Management() {
 
     }
 
-    function handleDelete(id: string) {
+    async function handleDelete(id: string) {
         try {
-            api.delete(`/lojas/${product}/${id}`, {
+            await api.delete(`/lojas/${product}/${id}`, {
                 headers: {
                     idloja: '5e4c3a618241ac59f5892829'
                 }
@@ -100,10 +101,21 @@ function Management() {
 
     }
 
-    const formatter = new Intl.NumberFormat('pt-br', {
-        style: 'currency',
-        currency: 'BRL'
-      })
+    async function handleEdit(id: string){
+        try {
+            await api.put(`/lojas/${product}/${id}`, {
+                preco: editedPrice
+            }, {
+                headers: {
+                    idloja: '5e4c3a618241ac59f5892829'
+                }
+            })
+            
+            alert('O produto foi atualizado com sucesso!')
+        } catch (err) {
+            alert('Erro ao editar produto. Tente novamente!')
+        }
+    }
 
     return (
         <div className="Management">
@@ -179,10 +191,16 @@ function Management() {
                                         <h2>{product.modelo}</h2>
                                     </td>
                                     <td className="preco">
-                                        <h2>{formatter.format(product.lojas[0].preco)}</h2>
+                                        <input
+                                            type="text"
+                                            name="nome"
+                                            id="nome"
+                                            defaultValue={product.lojas[0].preco}
+                                            onBlur={(e) => setEditedPrice(+e.target.value)}
+                                        />
                                     </td>
                                     <td className="actions">
-                                        <button id="editar">
+                                        <button id="editar" onClick={() => handleEdit(product._id)} >
                                             <img src={editIcon} alt="Planilha"/>
                                             Editar
                                         </button>
