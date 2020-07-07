@@ -1,6 +1,7 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import { Link, useParams } from 'react-router-dom'
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import { useParams } from 'react-router-dom'
 import { DebounceInput } from 'react-debounce-input'
+import Dropzone from '../../components/Dropzone'
 
 import api from '../../services/api'
 
@@ -12,6 +13,8 @@ import rightArrowIcon from '../../assets/svgs/right_arrow.svg'
 import leftArrowIcon from '../../assets/svgs/left_arrow.svg'
 import editIcon from '../../assets/svgs/edit.svg'
 import deleteIcon from '../../assets/svgs/delete.svg'
+import uploadIcon from '../../assets/svgs/upload.svg'
+import closeIcon from '../../assets/svgs/close.svg'
 
 import './styles.css'
 
@@ -50,6 +53,9 @@ function Management() {
     const [pagination, setPagination] = useState<Pagination>({})
     const [selectedFilters, setSelectedFilters] = useState<any>({})
     const [editedPrice, setEditedPrice] = useState<number>(0)
+    const [selectedImages, setSelectedImages] = useState<File[]>()
+    const [productJson, setProductJson] = useState<string>()
+    const [toggleModal, setToggleModal] = useState<string>('hide')
 
     useEffect(() => {
         api.get(`/lojas/${product}`, {
@@ -117,6 +123,27 @@ function Management() {
         }
     }
 
+    async function handleAddProduct(event: FormEvent){
+        event.preventDefault()
+
+        if(productJson && selectedImages) {
+            const data = new FormData()
+
+            selectedImages.map(image => data.append('files', image))
+            data.append('produto', productJson)
+
+            await api.post(`/lojas/${product}`, data,
+            {
+                headers: {
+                    idloja: '5e4c3a618241ac59f5892829'
+                }
+            })
+
+            alert('Produtos cadastrados com sucesso! Recarregue a página e eles aparecerão aqui!')
+            setToggleModal('hide')
+        }
+    }
+
     return (
         <div className="Management">
 
@@ -156,12 +183,16 @@ function Management() {
                         </div>
                     </div>
                     <div id="add-product">
-                        <Link to="">
-                            Adicionar produto
+                        <button onClick={() => setToggleModal('')}>
+                            Adicionar produtos
                             <img src={plusIcon} alt="Mais"/>
-                        </Link>
+                        </button>
                     </div>
                 </section>
+
+                <div id="results">
+                    <label>Resultados: <span>{pagination.totalDocs}</span></label>
+                </div>
 
                 <main>
                     <table role="presentation">
@@ -230,6 +261,25 @@ function Management() {
                         <span>Próxima</span>
                         <img src={rightArrowIcon} alt=""/>
                     </button>
+                </div>
+
+                <div id="modal" className={toggleModal}>
+                    <form onSubmit={handleAddProduct}>
+                        <button id="hide-button" onClick={() => setToggleModal('hide')}>
+                            <img src={closeIcon} alt="X"/>
+                        </button>
+                        <Dropzone onFileUploaded={setSelectedImages} />
+                        <textarea
+                            placeholder="Coloque as informações dos produtos aqui!"
+                            name="produtos"
+                            id="produtos"
+                            onBlur={(e) => setProductJson(e.target.value)}
+                        />
+                        <button id="submit" type="submit">
+                            Enviar
+                            <img src={uploadIcon} alt="^"/>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
     margin: 45px 13vw 50px;
     outline: 0;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: space-between;
 }
 
@@ -91,7 +91,7 @@
     cursor: pointer;
 }
 
-.Management #options #add-product a {
+.Management #options #add-product button {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
@@ -109,10 +109,29 @@
     text-decoration: none;
 }
 
-.Management #options #add-product a img {
+.Management #options #add-product button img {
     width: 25px;
     height: 25px;
     filter: invert(12%) sepia(94%) saturate(5212%) hue-rotate(261deg) brightness(77%) contrast(90%);
+}
+
+.Management #results {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    align-self: flex-end;
+    margin-top: 5px;
+}
+
+.Management #results label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #19D161;
+}
+
+.Management #results label span {
+    font-weight: 500;
 }
 
 .Management main {
@@ -279,4 +298,82 @@
     opacity: 0;
     transform: none;
     cursor: default;
+}
+
+.Management #modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    transition: 400ms;
+}
+
+.Management #modal form {
+    position: fixed;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 75vw;
+    height: 720px;
+    background: #0EC455;
+    border-radius: 5px;
+    top: 7.5%;
+    left: 13.1%;
+}
+
+.Management #modal #hide-button {
+    position: fixed;
+    top: 80px;
+    right: 220px;
+    background: none;
+    border: none;
+}
+
+.Management #modal #hide-button img {
+    width: 25px;
+    height: 25px;
+}
+
+.Management #modal form textarea {
+    resize: none;
+    padding: 10px;
+    width: 970px;
+    height: 250px;
+    background: #19D161;
+    box-shadow: 0px 3px 4px inset rgba(0, 0, 0, 0.25);
+    border: 5px solid #6B3DCC;
+    border-radius: 10px;
+    color: #4619A6;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.Management #modal form #submit {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    background: #34EB7B;
+    border: 2px solid #6B3DCC;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color: #5124B3;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.Management #modal form button img {
+    width: 50px;
+    height: 50px;
+    filter: invert(13%) sepia(59%) saturate(5702%) hue-rotate(258deg) brightness(81%) contrast(104%)
+}
+
+.Management #modal.hide {
+    display: none;
 }
