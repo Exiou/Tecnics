@@ -54,7 +54,7 @@
     color: #794CD9;
 }
 
-.Register section form #field-group fieldset {
+.Register section form #field-group .input-field {
     background: #34EB7B;
     border: 2px solid #6B3DCC;
     box-sizing: border-box;
@@ -67,7 +67,7 @@
     justify-content: flex-start;
 }
 
-.Register section form #field-group fieldset span {
+.Register section form #field-group .input-field span {
     display: inline-block;
     min-height: 40px;
     height: 100%;
@@ -78,7 +78,7 @@
 }
 
 
-.Register section form #field-group fieldset span img {
+.Register section form #field-group .input-field span img {
     width: 25px;
     height: 25px;
     margin-left: 10%;
@@ -86,7 +86,7 @@
     filter: invert(8%) sepia(81%) saturate(6851%) hue-rotate(263deg) brightness(97%) contrast(96%);
 }
 
-.Register section form #field-group fieldset button {
+.Register section form #field-group .input-field button {
     outline: none;
     overflow: hidden;
     border: none;
@@ -94,18 +94,18 @@
     width: 20%;
 } 
 
-.Register section form #field-group fieldset button:hover {
+.Register section form #field-group .input-field button:hover {
     background: rgba(0, 0, 0, 0.08);
 }
 
-.Register section form #field-group fieldset button label {
+.Register section form #field-group .input-field button label {
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     color: #4619A6;
 }
 
-.Register section form #field-group fieldset input {
+.Register section form #field-group .input-field input {
     background: none;
     border: none;
     width: 70%;

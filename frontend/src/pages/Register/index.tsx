@@ -54,7 +54,7 @@ function Register() {
 
                         <div id="field-group">
 
-                            <fieldset>
+                            <div className="input-field">
                                 <span>
                                     <img src={userIcon} alt=""/>
                                 </span>
@@ -66,9 +66,9 @@ function Register() {
                                     onBlur={handleInput}
                                     required
                                 />
-                            </fieldset>
+                            </div>
 
-                            <fieldset>
+                            <div className="input-field">
                                 <span>
                                     <img src={mailIcon} alt=""/>
                                 </span>
@@ -80,9 +80,9 @@ function Register() {
                                     onBlur={handleInput}
                                     required
                                 />
-                            </fieldset>
+                            </div>
 
-                            <fieldset>
+                            <div className="input-field">
                                 <span>
                                     <img src={passwordIcon} alt=""/>
                                 </span>
@@ -104,7 +104,7 @@ function Register() {
                                 }}>
                                     <label>{toggleShowPassword === 'password' ? 'Mostrar' : 'Esconder'}</label>
                                 </button>
-                            </fieldset>
+                            </div>
 
                         </div>
 

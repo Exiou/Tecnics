@@ -46,7 +46,7 @@ function Login() {
 
                         <div id="field-group">
 
-                            <fieldset>
+                            <div className="input-field">
                                 <span>
                                     <img src={userIcon} alt=""/>
                                 </span>
@@ -57,9 +57,9 @@ function Login() {
                                     placeholder="Nome"
                                     onBlur={handleInput}
                                 />
-                            </fieldset>
+                            </div>
 
-                            <fieldset>
+                            <div className="input-field">
                                 <span>
                                     <img src={passwordIcon} alt=""/>
                                 </span>
@@ -79,7 +79,7 @@ function Login() {
                                 }}>
                                     <label>{toggleShowPassword === 'password' ? 'Mostrar' : 'Esconder'}</label>
                                 </button>
-                            </fieldset>
+                            </div>
 
                         </div>
 

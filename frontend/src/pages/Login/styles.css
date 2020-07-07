@@ -27,7 +27,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-evenly;
-    height: 80%;
+    height: 75%;
 }
 
 .Login section form h1 {
@@ -43,7 +43,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-evenly;
-    height: 50%;
+    height: 40%;
     width: 100%;
 }
 
@@ -54,7 +54,7 @@
     color: #794CD9;
 }
 
-.Login section form #field-group fieldset {
+.Login section form #field-group .input-field {
     background: #34EB7B;
     border: 2px solid #6B3DCC;
     box-sizing: border-box;
@@ -67,7 +67,7 @@
     justify-content: flex-start;
 }
 
-.Login section form #field-group fieldset span {
+.Login section form #field-group .input-field span {
     display: inline-block;
     min-height: 40px;
     height: 100%;
@@ -78,7 +78,7 @@
 }
 
 
-.Login section form #field-group fieldset span img {
+.Login section form #field-group .input-field span img {
     width: 25px;
     height: 25px;
     margin-left: 10%;
@@ -86,7 +86,7 @@
     filter: invert(8%) sepia(81%) saturate(6851%) hue-rotate(263deg) brightness(97%) contrast(96%);
 }
 
-.Login section form #field-group fieldset button {
+.Login section form #field-group .input-field button {
     outline: none;
     overflow: hidden;
     border: none;
@@ -94,18 +94,18 @@
     width: 20%;
 } 
 
-.Login section form #field-group fieldset button:hover {
+.Login section form #field-group .input-field button:hover {
     background: rgba(0, 0, 0, 0.08);
 }
 
-.Login section form #field-group fieldset button label {
+.Login section form #field-group .input-field button label {
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     color: #4619A6;
 }
 
-.Login section form #field-group fieldset input {
+.Login section form #field-group .input-field input {
     background: none;
     border: none;
     width: 70%;

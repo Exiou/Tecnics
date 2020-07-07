@@ -103,7 +103,7 @@ function Profile() {
 
                         <div id="field-group">
 
-                            <fieldset>
+                            <div className="input-field">
                                 <span>
                                     <img src={userIcon} alt=""/>
                                 </span>
@@ -114,9 +114,9 @@ function Profile() {
                                     defaultValue={formData.nome}
                                     onBlur={handleInput}
                                 />
-                            </fieldset>
+                            </div>
 
-                            <fieldset>
+                            <div className="input-field">
                                 <span>
                                     <img src={mailIcon} alt=""/>
                                 </span>
@@ -127,9 +127,9 @@ function Profile() {
                                     defaultValue={formData.email}
                                     onBlur={handleInput}
                                 />
-                            </fieldset>
+                            </div>
 
-                            <fieldset>
+                            <div className="input-field">
                                 <span>
                                     <img src={passwordIcon} alt=""/>
                                 </span>
@@ -149,7 +149,7 @@ function Profile() {
                                 }}>
                                     <label>{toggleShowPassword === 'password' ? 'Mostrar' : 'Esconder'}</label>
                                 </button>
-                            </fieldset>
+                            </div>
 
                         </div>
 

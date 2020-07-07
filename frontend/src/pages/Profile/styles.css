@@ -110,7 +110,7 @@
     color: #794CD9;
 }
 
-.Profile section form #field-group fieldset {
+.Profile section form #field-group .input-field {
     background: #34EB7B;
     border: 2px solid #6B3DCC;
     box-sizing: border-box;
@@ -123,7 +123,7 @@
     justify-content: flex-start;
 }
 
-.Profile section form #field-group fieldset span {
+.Profile section form #field-group .input-field span {
     display: inline-block;
     min-height: 40px;
     height: 100%;
@@ -134,7 +134,7 @@
 }
 
 
-.Profile section form #field-group fieldset span img {
+.Profile section form #field-group .input-field span img {
     width: 25px;
     height: 25px;
     margin-left: 10%;
@@ -142,7 +142,7 @@
     filter: invert(8%) sepia(81%) saturate(6851%) hue-rotate(263deg) brightness(97%) contrast(96%);
 }
 
-.Profile section form #field-group fieldset button {
+.Profile section form #field-group .input-field button {
     outline: none;
     overflow: hidden;
     border: none;
@@ -150,18 +150,19 @@
     width: 20%;
 } 
 
-.Profile section form #field-group fieldset button:hover {
+.Profile section form #field-group .input-field button:hover {
     background: rgba(0, 0, 0, 0.08);
 }
 
-.Profile section form #field-group fieldset button label {
+.Profile section form #field-group .input-field button label {
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     color: #4619A6;
 }
 
-.Profile section form #field-group fieldset input {
+.Profile section form #field-group .input-field input {
+    flex: 1;
     background: none;
     border: none;
     width: 70%;
