@@ -141,7 +141,7 @@ function Detail() {
                                 Object.entries(productSpecs)
                                 .filter(
                                     ([key, value]: [string, any]) =>
-                                    key !== '_id' && key !== 'imagem' && key !== 'imagem_url' && key !== 'id'
+                                    key !== '_id' && key !== 'imagem' && key !== 'imagem_url' && key !== 'id' && key !== '__v'
                                 )
                                 .map(([key, value]: [string, any]) => (
                                     <tr key={key}>

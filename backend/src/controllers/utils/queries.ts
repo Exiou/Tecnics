@@ -1,11 +1,9 @@
 //importa essa funçãozinha que transforma uma string em array
-export const queryLoja = (queries: any, paths: any, precoMin: number, precoMax: number, buscarNome: any, buscarModelo: any, idLoja: any) => {
+export const queryLoja = (queries: any, paths: any, buscarNome: any, buscarModelo: any, idLoja: any) => {
     let query: any = {
         $and: [
             { nome: { $regex: `${buscarNome}`, $options: 'i' } },
             { modelo: { $regex: `${buscarModelo}`, $options: 'i' } },
-            { lojas: { $elemMatch: { preco: { $gte: precoMin }}}},
-            { lojas: { $elemMatch: { preco: { $lte: precoMax }}}},
             { lojas: { $elemMatch: { idLoja: { $eq: idLoja } } } },
         ]
     }
