@@ -121,11 +121,11 @@
 }
 
 .Management main table {
+    border: 2px solid #6B3DCC;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 5px;
     width: 100%;
-    background: linear-gradient(#6B3DCC, #45FF8D);
 }
 
 .Management main table tbody tr:nth-child(odd) {
@@ -136,12 +136,8 @@
     background: #45FF8D;
 }
 
-.Management main table tbody tr:last-child {
-    background: none;
-}
-
 .Management main .table-head {
-    box-shadow: inset 0px 4px 15px rgba(0, 0, 0, 0.25);
+    background: #6B3DCC;
     height: 50px;
 }
 

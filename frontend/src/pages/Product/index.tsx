@@ -349,17 +349,17 @@ function Product() {
           </div>
 
           <main>
-            {products.map(product => (
-              <div className={cardStyle} key={product.modelo}>
-                <img className="product-image" src={product.imagem_url} alt={product.imagem}/>
+            {products.map(productData => (
+              <div className={cardStyle} key={productData.modelo}>
+                <img className="product-image" src={productData.imagem_url} alt={productData.imagem}/>
 
                 <div className="props">
-                  <h2>{product.fabricante}</h2>
-                  <h2>{product.nome}</h2>
-                  <h3>{formatter.format(product.lojas[0].preco)}</h3>
+                  <h2>{productData.fabricante}</h2>
+                  <h2>{productData.nome}</h2>
+                  <h3>{formatter.format(productData.lojas[0].preco)}</h3>
                 </div>
 
-                <Link to={`/${product._id}`} >
+                <Link to={`${product}/${productData._id}`} >
                   <p>Detalhes</p>
                   <img className="plus-icon" src={plusIcon} alt="Plus Icon"/>
                 </Link>
