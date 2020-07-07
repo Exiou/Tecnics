@@ -3,6 +3,8 @@ import { useDropzone } from 'react-dropzone'
 
 import './styles.css'
 
+import imageIcon from '../../assets/svgs/image.svg'
+
 interface Props {
   onFileUploaded: (file: File[]) => void
 }
@@ -30,7 +32,7 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
           ? <img src={selectedFileUrl} alt="Images" />
           :
           <div>
-            <img src="" alt="" />
+            <img src={imageIcon} alt="Images" />
             <span>
               <strong>Arraste</strong> as imagens até aqui
               <br />
