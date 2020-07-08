@@ -326,8 +326,8 @@
 
 .Management #modal #hide-button {
     position: fixed;
-    top: 80px;
-    right: 220px;
+    top: 10%;
+    left: 14%;
     background: none;
     border: none;
 }
