@@ -3,7 +3,11 @@ footer {
     max-width: auto;
     min-height: 132px;
     overflow: hidden;
-    padding: 0px 252px 0px;
+    padding: 0px 13vw 0px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -12,13 +16,17 @@ footer {
     }
 }
 
-footer a {
-    float: right;
-}
-
 footer a img {
     min-width: 45px;
     min-height: 45px;
-    margin: 43px 0px 0px 30px;
+    margin: 0px 0px 0px 30px;
     filter: invert(77%) sepia(49%) saturate(809%) hue-rotate(78deg) brightness(96%) contrast(81%);
+}
+
+footer button {
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: #19D161;
+    text-decoration: underline;
 }

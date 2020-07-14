@@ -49,6 +49,8 @@ function Management() {
 
     const { product } = useParams()
 
+    const idloja = localStorage.getItem('idloja')
+
     const [products, setProducts] = useState<Products[]>([])
     const [pagination, setPagination] = useState<Pagination>({})
     const [selectedFilters, setSelectedFilters] = useState<any>({})
@@ -65,7 +67,7 @@ function Management() {
             page: pagination.page
           },
           headers: {
-            idloja: '5e4c3a618241ac59f5892829'
+            idloja
           }
         }).then(response => {
           const { docs, ...pagination} = response.data.produtos
@@ -73,7 +75,7 @@ function Management() {
           setProducts(docs)
           setPagination(pagination)
         })
-      }, [product, pagination.limit, pagination.page, selectedFilters])
+      }, [product, pagination.limit, pagination.page, selectedFilters, idloja])
 
 
     function handleOptions(event: ChangeEvent<HTMLInputElement|HTMLSelectElement>) {
@@ -96,7 +98,7 @@ function Management() {
         try {
             await api.delete(`/lojas/${product}/${id}`, {
                 headers: {
-                    idloja: '5e4c3a618241ac59f5892829'
+                    idloja
                 }
             })
 
@@ -113,7 +115,7 @@ function Management() {
                 preco: editedPrice
             }, {
                 headers: {
-                    idloja: '5e4c3a618241ac59f5892829'
+                    idloja
                 }
             })
             
