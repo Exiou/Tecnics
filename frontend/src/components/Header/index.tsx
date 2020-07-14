@@ -1,12 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React, { ChangeEvent } from 'react';
+import { Link, useHistory } from 'react-router-dom'
 
 
 import './styles.css'
 
 import tecnicsLogo from '../../assets/tecnics-logo.png'
 import avatarIcon from '../../assets/svgs/avatar.svg'
-import downArrow from '../../assets/svgs/down-arrow.svg'
 
 interface Props {
     product?: string
@@ -14,10 +13,14 @@ interface Props {
 
 const Header: React.FC<Props> = ({ product }) => {
 
+    const history = useHistory()
+
     const userId = localStorage.getItem('userId')
-    
-    function format(name: string) {
-        return name.replace('emorias', 'emórias').replace('-video', ' de vídeo').replace('-mae', ' mãe')
+
+    async function handleSelectProduct(event: ChangeEvent<HTMLSelectElement>){
+        const { value } = event.target
+
+        if (value) history.push(`./${value}`)
     }
   
     return (
@@ -27,10 +30,17 @@ const Header: React.FC<Props> = ({ product }) => {
                     <img id="tecnicsLogo" src={tecnicsLogo} alt="Tecnics Logo" />
                 </Link>
                 { product ?
-                    <h1>
-                        {format(product.charAt(0).toUpperCase() + product.slice(1))}
-                        <img src={downArrow} alt="down arrow"/>
-                    </h1>
+                    <select name="selectProduct" id="selectProduct" onChange={handleSelectProduct}>
+                        <option value="">Selecionar Produto</option>
+                        <option value="processadores">Processadores</option>
+                        <option value="placas-video">Placas de vídeo</option>
+                        <option value="placas-mae">Placas mãe</option>
+                        <option value="memorias">Memórias</option>
+                        <option value="gabinetes">Gabinetes</option>
+                        <option value="fontes">Fontes</option>
+                        <option value="coolers">Coolers</option>
+                        <option value="armazenamentos">Armazenamentos</option>
+                    </select>
                     : ''
                 }
                 {

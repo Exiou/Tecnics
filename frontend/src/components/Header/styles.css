@@ -16,16 +16,18 @@ header {
     }
 }
 
-header h1 {
-    flex: auto;
+header select {
+    border: none;
+    background: none;
     color: #19D161;
-    font-size: 36px;
-    text-align: center;
-    line-height: 52px;
-}
-
-header h1 img {
-    margin-left: 8px;
+    font-style: normal;
+    font-size: 24px;
+    font-weight: 500;
+    text-decoration: underline;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
 }
 
 header nav {
