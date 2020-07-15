@@ -47,12 +47,12 @@ const PlacaVideoSchema = new Schema<IPlacaVideo>({
 PlacaVideoSchema.plugin(mongoosePaginate)
 
 PlacaVideoSchema.virtual('imagem_url').get(function(this: any)  {
-    return `http://192.168.1.100:3333/arquivos/placa-videos/${this.imagem}`
+    return `http://192.168.1.100:3333/arquivos/placas-video/${this.imagem}`
 })
 
 PlacaVideoSchema.pre('remove', function(this: Document | any) {
 return promisify(fs.unlink)(
-    path.resolve(__dirname,'..','..','uploads','placa-videos',this.imagem)
+    path.resolve(__dirname,'..','..','uploads','placas-video',this.imagem)
 )
 })
 
