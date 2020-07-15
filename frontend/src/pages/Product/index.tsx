@@ -56,7 +56,7 @@ function Product() {
   const [products, setProducts] = useState<Products[]>([])  
   const [filters, setFilters] = useState<any>({})
   const [selectedFilters, setSelectedFilters] = useState<any>({})
-  const [prices, setPrices] = useState<Prices>({precoMin: '0', precoMax: '5000'})
+  const [prices, setPrices] = useState<Prices>({precoMin: '0', precoMax: '50000'})
   const [pagination, setPagination] = useState<Pagination>({})
   const [cardStyle, setCardStyle] = useState<string>('card list')
 
@@ -247,7 +247,7 @@ function Product() {
                     name="precoMax"
                     id="max-price"
                     min="0"
-                    max="5000"
+                    max="50000"
                     value={prices.precoMax}
                     onChange={handlePrice}
                     debounceTimeout={300}
