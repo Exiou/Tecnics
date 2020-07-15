@@ -1,21 +1,11 @@
 //importa essa funçãozinha que transforma uma string em array
-export const queryLoja = (queries: any, paths: any, buscarNome: any, buscarModelo: any, idLoja: any) => {
+export const queryLoja = (buscarNome: any, buscarModelo: any, idLoja: any) => {
     let query: any = {
         $and: [
             { nome: { $regex: `${buscarNome}`, $options: 'i' } },
             { modelo: { $regex: `${buscarModelo}`, $options: 'i' } },
             { lojas: { $elemMatch: { idLoja: { $eq: idLoja } } } },
         ]
-    }
-
-    for (const path of paths) {
-        if(queries[`${path.keys}`]){
-            if(path.types == 'String' || 'Boolean'){
-                const filter = JSON.parse(`{ "${path.keys}": { "$in": [] } }`)
-                filter[`${path.keys}`]['$in'] = queries[`${path.keys}`]
-                query.$and.push(filter)
-            }
-        }
     }
 
     return query

@@ -33,7 +33,6 @@ class LojaController {
 
             const model: PaginateModel<IProduto> = (await switchModel(req.params.model))!
 
-            const { filters, paths } = await modelSpecs(model)
 
             const {
                 page = 1,
@@ -43,7 +42,7 @@ class LojaController {
                 ordenar = ''
             } = req.query as any
 
-            const query = queryLoja(req.query, paths, buscarNome, buscarModelo, idLoja)
+            const query = queryLoja(buscarNome, buscarModelo, idLoja)
 
             const options = {
                 page,
@@ -55,7 +54,7 @@ class LojaController {
 
             const produtos = await model.paginate(query, options)
 
-            return res.json({ produtos, filters })
+            return res.json({ produtos })
 
         } catch (err) {
             next(new HttpException(404, `Ocorreu um erro na requisição: ${err}`))
