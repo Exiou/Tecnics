@@ -267,7 +267,7 @@ function Management() {
 
                 <div id="modal" className={toggleModal}>
                     <form onSubmit={handleAddProduct}>
-                        <button id="hide-button" onClick={() => setToggleModal('hide')}>
+                        <button type="button" id="hide-button" onClick={() => setToggleModal('hide')}>
                             <img src={closeIcon} alt="X"/>
                         </button>
                         <Dropzone onFileUploaded={setSelectedImages} />
