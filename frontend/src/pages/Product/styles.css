@@ -298,7 +298,7 @@
     display: flex;
     flex-flow: row wrap;
     max-width: 52.5vw;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .Product main .card {
@@ -479,7 +479,6 @@
 .Product #pagination button:focus {
     text-decoration: underline;
     font-weight: 700;
-    transform: translateY(-0.25em);
 }
 
 .Product #pagination button:disabled,

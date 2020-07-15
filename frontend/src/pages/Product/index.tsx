@@ -1,6 +1,7 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import { DebounceInput } from 'react-debounce-input'
+import ReactLoading from 'react-loading'
 import api from '../../services/api'
 
 import Header from '../../components/Header'
@@ -59,8 +60,10 @@ function Product() {
   const [prices, setPrices] = useState<Prices>({precoMin: '0', precoMax: '50000'})
   const [pagination, setPagination] = useState<Pagination>({})
   const [cardStyle, setCardStyle] = useState<string>('card list')
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     api.get(`/produtos/${product}`).then(response => {
       console.log(response.data)
       setFilters(response.data.filters)
@@ -69,7 +72,7 @@ function Product() {
       
       setProducts(docs)
       setPagination(pagination)
-      
+      setLoading(false)
     })
   }, [product])
 
@@ -349,44 +352,56 @@ function Product() {
           </div>
 
           <main>
-            {products.map(productData => (
-              <div className={cardStyle} key={productData.modelo}>
-                <img className="product-image" src={productData.imagem_url} alt={productData.imagem}/>
-
-                <div className="props">
-                  <h2>{productData.fabricante}</h2>
-                  <h2>{productData.nome}</h2>
-                  <h3>{formatter.format(productData.lojas[0].preco)}</h3>
+            {
+              loading
+              ?
+              <ReactLoading type={'spinningBubbles'} color={'#19D161'} />
+              :
+              products.map(productData => (
+                <div className={cardStyle} key={productData.modelo}>
+                  <img className="product-image" src={productData.imagem_url} alt={productData.imagem}/>
+  
+                  <div className="props">
+                    <h2>{productData.fabricante}</h2>
+                    <h2>{productData.nome}</h2>
+                    <h3>{formatter.format(productData.lojas[0].preco)}</h3>
+                  </div>
+  
+                  <Link to={`${product}/${productData._id}`} >
+                    <p>Detalhes</p>
+                    <img className="plus-icon" src={plusIcon} alt="Plus Icon"/>
+                  </Link>
+  
+                  <button>
+                    <img className="heart-icon" src={heartIcon} alt="Heart Icon"/>
+                  </button>
+                  
                 </div>
-
-                <Link to={`${product}/${productData._id}`} >
-                  <p>Detalhes</p>
-                  <img className="plus-icon" src={plusIcon} alt="Plus Icon"/>
-                </Link>
-
-                <button>
-                  <img className="heart-icon" src={heartIcon} alt="Heart Icon"/>
-                </button>
-                
-              </div>
-            ))}
+              ))
+            }
           </main>
 
-          <div id="pagination">
-            <button disabled={pagination.page === 1} onClick={() => {
-                setPagination({...pagination, page: pagination.page! - 1})
-            }}>
-              <img src={leftArrowIcon} alt=""/>
-              <span>Anterior</span>
-            </button>
+          {
+            loading
+            ?
+            ''
+            :
+            <div id="pagination">
+              <button disabled={pagination.page === 1} onClick={() => {
+                  setPagination({...pagination, page: pagination.page! - 1})
+              }}>
+                <img src={leftArrowIcon} alt=""/>
+                <span>Anterior</span>
+              </button>
 
-            <button disabled={pagination.page === pagination.totalPages} onClick={() => {
-                setPagination({...pagination, page: pagination.page! + 1})
-            }}>
-              <span>Próxima</span>
-              <img src={rightArrowIcon} alt=""/>
-            </button>
-          </div>
+              <button disabled={pagination.page === pagination.totalPages} onClick={() => {
+                  setPagination({...pagination, page: pagination.page! + 1})
+              }}>
+                <span>Próxima</span>
+                <img src={rightArrowIcon} alt=""/>
+              </button>
+            </div>
+          }
         </div>
       </div>
     </div>
