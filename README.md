@@ -39,7 +39,7 @@ yarn start
 
 Protótipo da interface web no Figma: https://www.figma.com/proto/oKmiMntD9A37sddVLmPqwF/Web
 
-Protótipo da interface mobile(não desenvolvida) no Fima: https://www.figma.com/proto/bgTEUO1wYeFQQUQiZ4lcjf/Mobile
+Protótipo da interface mobile(não desenvolvida) no Figma: https://www.figma.com/proto/bgTEUO1wYeFQQUQiZ4lcjf/Mobile
 
 ## Contato
 
