@@ -3,7 +3,7 @@
 
 Trabalho de Conclusão de Curso submetido ao corpo docente da Etec Francisco Garcia como parte dos requisitos necessários à obtenção do título de Técnico em Desenvolvimento de Sistemas.
 
-![](/.github/tecnics.png)
+![](/github/tecnics.png)
 
 ## Instalação
 
@@ -33,9 +33,9 @@ yarn start
 
 ## Exemplos de uso
 
-![](/.github/products.gif)
-![](/.github/stores.gif)
-![](/.github/profile.gif)
+![](/github/products.gif)
+![](/github/stores.gif)
+![](/github/profile.gif)
 
 Protótipo da interface web no Figma: https://www.figma.com/proto/oKmiMntD9A37sddVLmPqwF/Web
 
