@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, FocusEvent } from 'react';
+import React, { FormEvent, useState, FocusEvent } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import api from '../../services/api'
@@ -10,116 +10,115 @@ import userIcon from '../../assets/svgs/user.svg'
 import mailIcon from '../../assets/svgs/mail.svg'
 import passwordIcon from '../../assets/svgs/password.svg'
 
-function Register() {
+function Register () {
+  const history = useHistory()
 
-    const history = useHistory()
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  })
+  const [toggleShowPassword, setToggleShowPassword] = useState('password')
 
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
+  function handleInput (event: FocusEvent<HTMLInputElement>) {
+    const { name, value } = event.target
+
+    setFormData({ ...formData, [name]: value })
+  }
+
+  async function handleSubmit (event: FormEvent) {
+    event.preventDefault()
+
+    const { name, email, password } = formData
+
+    const response = await api.post('/users', {
+      nome: name,
+      email: email,
+      senha: password
     })
-    const [toggleShowPassword, setToggleShowPassword] = useState('password')
 
-    function handleInput(event: FocusEvent<HTMLInputElement>) {
-        const { name, value } = event.target
+    if (response.data === 'Email já cadastrado') return window.alert('Email já cadastrado!')
 
-        setFormData({ ...formData, [name]: value})
-    }
+    history.push('/')
+  }
 
-    async function handleSubmit(event: FormEvent) {
-        event.preventDefault()
+  return (
+    <div className="Register">
+      <div id="main">
+        <img src={tecnicsLogo} alt="Tecnics Logo"/>
 
-        const { name, email, password } = formData
+        <section>
+          <form onSubmit={handleSubmit}>
+            <h1>Insira seus dados</h1>
 
-        const response = await api.post('/users', {
-            'nome': name,
-            'email': email,
-            'senha': password
-        })
+            <div id="field-group">
 
-        if(response.data === 'Email já cadastrado') return alert('Email já cadastrado!')
+              <div className="input-field">
+                <span>
+                  <img src={userIcon} alt=""/>
+                </span>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Nome"
+                  onBlur={handleInput}
+                  required
+                />
+              </div>
 
-        history.push('/')
-    }
+              <div className="input-field">
+                <span>
+                  <img src={mailIcon} alt=""/>
+                </span>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                  onBlur={handleInput}
+                  required
+                />
+              </div>
 
-    return (
-        <div className="Register">
-            <div id="main">
-                <img src={tecnicsLogo} alt="Tecnics Logo"/>
+              <div className="input-field">
+                <span>
+                  <img src={passwordIcon} alt=""/>
+                </span>
+                <input
+                  type={toggleShowPassword}
+                  name="password"
+                  id="password"
+                  placeholder="Senha"
+                  onBlur={handleInput}
+                  required
+                  minLength={6}
+                />
+                <button type="button" onClick={() => {
+                  if (toggleShowPassword === 'password') {
+                    setToggleShowPassword('text')
+                  } else if (toggleShowPassword === 'text') {
+                    setToggleShowPassword('password')
+                  }
+                }}>
+                  <label>{toggleShowPassword === 'password' ? 'Mostrar' : 'Esconder'}</label>
+                </button>
+              </div>
 
-                <section>
-                    <form onSubmit={handleSubmit}>
-                        <h1>Insira seus dados</h1>
-
-                        <div id="field-group">
-
-                            <div className="input-field">
-                                <span>
-                                    <img src={userIcon} alt=""/>
-                                </span>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    placeholder="Nome"
-                                    onBlur={handleInput}
-                                    required
-                                />
-                            </div>
-
-                            <div className="input-field">
-                                <span>
-                                    <img src={mailIcon} alt=""/>
-                                </span>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Email"
-                                    onBlur={handleInput}
-                                    required
-                                />
-                            </div>
-
-                            <div className="input-field">
-                                <span>
-                                    <img src={passwordIcon} alt=""/>
-                                </span>
-                                <input
-                                    type={toggleShowPassword}
-                                    name="password"
-                                    id="password"
-                                    placeholder="Senha"
-                                    onBlur={handleInput}
-                                    required
-                                    minLength={6}
-                                />
-                                <button type="button" onClick={() => {
-                                    if(toggleShowPassword === 'password'){
-                                        setToggleShowPassword('text')
-                                    }else if(toggleShowPassword === 'text'){
-                                        setToggleShowPassword('password')
-                                    }
-                                }}>
-                                    <label>{toggleShowPassword === 'password' ? 'Mostrar' : 'Esconder'}</label>
-                                </button>
-                            </div>
-
-                        </div>
-
-                        <button type="submit" id="submit">
-                            <h2>Cadastrar</h2>
-                        </button>
-                    </form>
-
-                    <Link to="./login" >Já possui uma conta?</Link>
-                    <br/>
-                    <Link to="/" >Voltar para a página inicial</Link>
-                </section>
             </div>
-        </div>
-    );
+
+            <button type="submit" id="submit">
+              <h2>Cadastrar</h2>
+            </button>
+          </form>
+
+          <Link to="./login" >Já possui uma conta?</Link>
+          <br/>
+          <Link to="/" >Voltar para a página inicial</Link>
+        </section>
+      </div>
+    </div>
+  )
 }
 
-export default Register;
+export default Register

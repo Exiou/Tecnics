@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent } from 'react';
+import React, { useEffect, useState, ChangeEvent } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { DebounceInput } from 'react-debounce-input'
 import ReactLoading from 'react-loading'
@@ -50,14 +50,13 @@ interface Pagination {
   nextPage?: number
 }
 
-function Product() {
-
+function Product () {
   const { product } = useParams()
 
-  const [products, setProducts] = useState<Products[]>([])  
+  const [products, setProducts] = useState<Products[]>([])
   const [filters, setFilters] = useState<any>({})
   const [selectedFilters, setSelectedFilters] = useState<any>({})
-  const [prices, setPrices] = useState<Prices>({precoMin: '0', precoMax: '50000'})
+  const [prices, setPrices] = useState<Prices>({ precoMin: '0', precoMax: '50000' })
   const [pagination, setPagination] = useState<Pagination>({})
   const [cardStyle, setCardStyle] = useState<string>('card list')
   const [loading, setLoading] = useState(true)
@@ -67,16 +66,16 @@ function Product() {
     api.get(`/produtos/${product}`).then(response => {
       console.log(response.data)
       setFilters(response.data.filters)
-      
-      const { docs, ...pagination} = response.data.produtos
-      
+
+      const { docs, ...pagination } = response.data.produtos
+
       setProducts(docs)
       setPagination(pagination)
       setLoading(false)
     })
   }, [product])
 
-  let formatter = new Intl.NumberFormat('pt-br', {
+  const formatter = new Intl.NumberFormat('pt-br', {
     style: 'currency',
     currency: 'BRL'
   })
@@ -90,26 +89,26 @@ function Product() {
         page: pagination.page
       }
     }).then(response => {
-      const { docs, ...pagination} = response.data.produtos
-      
+      const { docs, ...pagination } = response.data.produtos
+
       setProducts(docs)
       setPagination(pagination)
     })
-  }, [product, selectedFilters, prices, pagination.limit,pagination.page])
+  }, [product, selectedFilters, prices, pagination.limit, pagination.page])
 
-  function handleSelectFilter(event: ChangeEvent<HTMLInputElement>, key: any) {    
-    if (selectedFilters[key] === undefined || selectedFilters[key] === ''){
+  function handleSelectFilter (event: ChangeEvent<HTMLInputElement>, key: any) {
+    if (selectedFilters[key] === undefined || selectedFilters[key] === '') {
       setSelectedFilters({
         ...selectedFilters,
         [key]: [event.target.name]
       })
-    }else{
-      if(selectedFilters[key].includes(event.target.name)){
+    } else {
+      if (selectedFilters[key].includes(event.target.name)) {
         setSelectedFilters({
           ...selectedFilters,
-          [key]: selectedFilters[key].filter((val: any)=> val !== event.target.name)
+          [key]: selectedFilters[key].filter((val: any) => val !== event.target.name)
         })
-      }else {
+      } else {
         setSelectedFilters({
           ...selectedFilters,
           [key]: [...selectedFilters[key], event.target.name]
@@ -118,13 +117,13 @@ function Product() {
     }
   }
 
-  function handleOptions(event: ChangeEvent<HTMLInputElement|HTMLSelectElement>) {
-    if(event.target.name === 'limit') {
+  function handleOptions (event: ChangeEvent<HTMLInputElement|HTMLSelectElement>) {
+    if (event.target.name === 'limit') {
       setPagination({
         ...pagination,
         limit: +event.target.value
       })
-    }else {
+    } else {
       setSelectedFilters({
         ...selectedFilters,
         [event.target.name]: event.target.value
@@ -132,22 +131,20 @@ function Product() {
     }
   }
 
-  function handlePrice(event: ChangeEvent<HTMLInputElement>) {
-
+  function handlePrice (event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target
-    
 
-    if(name === "precoMin" &&  value === ""){
+    if (name === 'precoMin' && value === '') {
       setPrices({
         ...prices,
-        precoMin: "0"
+        precoMin: '0'
       })
-    } else if(name === "precoMax" &&  value === ""){
+    } else if (name === 'precoMax' && value === '') {
       setPrices({
         ...prices,
-        precoMax: "5000"
+        precoMax: '5000'
       })
-    }else {
+    } else {
       setPrices({
         ...prices,
         [name]: value
@@ -155,69 +152,69 @@ function Product() {
     }
   }
 
-  function handleCardStyle(className: string) {
-    if(className === 'gridButton'){
+  function handleCardStyle (className: string) {
+    if (className === 'gridButton') {
       setCardStyle('card grid')
-    }else {
+    } else {
       setCardStyle('card list')
     }
   }
 
   const formatFilter = {
-    formatLabel(key: string): string {
+    formatLabel (key: string): string {
       switch (key) {
         case 'familia':
-          return 'Família';
+          return 'Família'
         case 'serie':
-          return 'Série';
+          return 'Série'
         case 'graficos_integrados':
-          return 'Gráficos integrados';
+          return 'Gráficos integrados'
         case 'nucleo':
-          return 'Núcleo';
+          return 'Núcleo'
         case 'frequencia':
-          return 'Frequência';
+          return 'Frequência'
         case 'frequencia_turbo':
-          return 'Frequência turbo';
+          return 'Frequência turbo'
         case 'virtualizacao':
-          return 'Virtualização';
+          return 'Virtualização'
         case 'tipo_memoria':
-          return 'Tipo da memória';
+          return 'Tipo da memória'
         case 'tamanho_memoria':
-          return 'Tamanho da memória';
+          return 'Tamanho da memória'
         case 'ram_max':
-          return 'RAM Máxima';
+          return 'RAM Máxima'
         case 'modulo':
-          return 'Módulo';
+          return 'Módulo'
         case 'formato_placa_mae':
-          return 'Formato da placa mãe';
+          return 'Formato da placa mãe'
         case 'potencia_fonte':
-          return 'Potência da fonte';
+          return 'Potência da fonte'
         case 'filtro_removivel':
-          return 'Filtro removível';
+          return 'Filtro removível'
         case 'saida':
-          return 'Saída';
+          return 'Saída'
         case 'potencia':
-          return 'Potência';
+          return 'Potência'
         case 'eficiencia':
-          return 'Eficiência';
+          return 'Eficiência'
         case 'hibrido':
-          return 'Híbrido';
+          return 'Híbrido'
         default:
-          return key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+          return key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')
       }
     },
-    formatValue(value: string) {
+    formatValue (value: string) {
       switch (value) {
         case 'true':
-          return 'Sim';
+          return 'Sim'
         case 'false':
-          return 'Não';      
+          return 'Não'
         default:
-          return value;
+          return value
       }
     }
   }
-  
+
   return (
     <div className="Product">
 
@@ -226,77 +223,77 @@ function Product() {
       <div id="page-list-products">
 
         <aside id="filters">
-          
-            <h2>Filtros</h2>
 
-            <fieldset>
-              <label>Preço - R$</label>
-              <div className="price-values">
-                <div className="range">
-                  <DebounceInput
-                    className="range-min-price"
-                    type="range"
-                    name="precoMin"
-                    id="min-price"
-                    min="0"
-                    max="5000"
-                    value={prices.precoMin}
-                    onChange={handlePrice}
-                    debounceTimeout={300}
-                  />
-                  <DebounceInput
-                    className="range-max-price"
-                    type="range"
-                    name="precoMax"
-                    id="max-price"
-                    min="0"
-                    max="50000"
-                    value={prices.precoMax}
-                    onChange={handlePrice}
-                    debounceTimeout={300}
-                  />
-                </div>
-                <div className="text">
-                  <DebounceInput
-                    className="text-input text-min-price"
-                    inputMode="numeric"
-                    placeholder="Mínimo"
-                    type="number"
-                    name="precoMin"
-                    id="min-price"
-                    value={prices.precoMin}
-                    onChange={handlePrice}
-                    debounceTimeout={300}
-                  />
-                  <DebounceInput
-                    className="text-input text-max-price"
-                    inputMode="numeric"
-                    placeholder="Máximo"
-                    type="number"
-                    name="precoMax"
-                    id="max-price"
-                    value={prices.precoMax}
-                    onChange={handlePrice}
-                    debounceTimeout={300}
-                  />
-                </div>
+          <h2>Filtros</h2>
+
+          <fieldset>
+            <label>Preço - R$</label>
+            <div className="price-values">
+              <div className="range">
+                <DebounceInput
+                  className="range-min-price"
+                  type="range"
+                  name="precoMin"
+                  id="min-price"
+                  min="0"
+                  max="5000"
+                  value={prices.precoMin}
+                  onChange={handlePrice}
+                  debounceTimeout={300}
+                />
+                <DebounceInput
+                  className="range-max-price"
+                  type="range"
+                  name="precoMax"
+                  id="max-price"
+                  min="0"
+                  max="50000"
+                  value={prices.precoMax}
+                  onChange={handlePrice}
+                  debounceTimeout={300}
+                />
               </div>
-            </fieldset>
+              <div className="text">
+                <DebounceInput
+                  className="text-input text-min-price"
+                  inputMode="numeric"
+                  placeholder="Mínimo"
+                  type="number"
+                  name="precoMin"
+                  id="min-price"
+                  value={prices.precoMin}
+                  onChange={handlePrice}
+                  debounceTimeout={300}
+                />
+                <DebounceInput
+                  className="text-input text-max-price"
+                  inputMode="numeric"
+                  placeholder="Máximo"
+                  type="number"
+                  name="precoMax"
+                  id="max-price"
+                  value={prices.precoMax}
+                  onChange={handlePrice}
+                  debounceTimeout={300}
+                />
+              </div>
+            </div>
+          </fieldset>
 
-            {
-              Object.keys(filters).map(key => (
-                <fieldset key={key}>
-                  <label>{formatFilter.formatLabel(key)}</label>
-                  <div className="values">{filters[key].map((value: any) => (
-                    <div key={value} className="checkbox">
-                      <input type="checkbox" onChange={(e) => handleSelectFilter(e, key)} name={String(value)} id={String(value)} />
-                      <span>{formatFilter.formatValue(String(value))}</span>
-                    </div>
-                  ))}</div>
-                </fieldset>
-              ))
-            }
-      
+          {
+            Object.keys(filters).map(key => (
+              <fieldset key={key}>
+                <label>{formatFilter.formatLabel(key)}</label>
+                <div className="values">{filters[key].map((value: any) => (
+                  <div key={value} className="checkbox">
+                    <input type="checkbox" onChange={(e) => handleSelectFilter(e, key)} name={String(value)} id={String(value)} />
+                    <span>{formatFilter.formatValue(String(value))}</span>
+                  </div>
+                ))}</div>
+              </fieldset>
+            ))
+          }
+
         </aside>
 
         <div id="main">
@@ -330,7 +327,7 @@ function Product() {
                   <option value="-lojas.preco">Preço decrescente</option>
                 </select>
               </div>
-            </div>            
+            </div>
             <div id="card-styles">
               <button onClick={() => handleCardStyle('gridButton')} >
                 <img
@@ -354,58 +351,54 @@ function Product() {
           <main>
             {
               loading
-              ?
-              <ReactLoading type={'spinningBubbles'} color={'#19D161'} />
-              :
-              products.map(productData => (
-                <div className={cardStyle} key={productData.modelo}>
-                  <img className="product-image" src={productData.imagem_url} alt={productData.imagem}/>
-  
-                  <div className="props">
-                    <h2>{productData.fabricante}</h2>
-                    <h2>{productData.nome}</h2>
-                    <h3>{formatter.format(productData.lojas[0].preco)}</h3>
+                ? <ReactLoading type={'spinningBubbles'} color={'#19D161'} />
+                : products.map(productData => (
+                  <div className={cardStyle} key={productData.modelo}>
+                    <img className="product-image" src={productData.imagem_url} alt={productData.imagem}/>
+
+                    <div className="props">
+                      <h2>{productData.fabricante}</h2>
+                      <h2>{productData.nome}</h2>
+                      <h3>{formatter.format(productData.lojas[0].preco)}</h3>
+                    </div>
+
+                    <Link to={`${product}/${productData._id}`} >
+                      <p>Detalhes</p>
+                      <img className="plus-icon" src={plusIcon} alt="Plus Icon"/>
+                    </Link>
+
+                    <button>
+                      <img className="heart-icon" src={heartIcon} alt="Heart Icon"/>
+                    </button>
+
                   </div>
-  
-                  <Link to={`${product}/${productData._id}`} >
-                    <p>Detalhes</p>
-                    <img className="plus-icon" src={plusIcon} alt="Plus Icon"/>
-                  </Link>
-  
-                  <button>
-                    <img className="heart-icon" src={heartIcon} alt="Heart Icon"/>
-                  </button>
-                  
-                </div>
-              ))
+                ))
             }
           </main>
 
           {
             loading
-            ?
-            ''
-            :
-            <div id="pagination">
-              <button disabled={pagination.page === 1} onClick={() => {
-                  setPagination({...pagination, page: pagination.page! - 1})
-              }}>
-                <img src={leftArrowIcon} alt=""/>
-                <span>Anterior</span>
-              </button>
+              ? ''
+              : <div id="pagination">
+                <button disabled={pagination.page === 1} onClick={() => {
+                  setPagination({ ...pagination, page: pagination.page! - 1 })
+                }}>
+                  <img src={leftArrowIcon} alt=""/>
+                  <span>Anterior</span>
+                </button>
 
-              <button disabled={pagination.page === pagination.totalPages} onClick={() => {
-                  setPagination({...pagination, page: pagination.page! + 1})
-              }}>
-                <span>Próxima</span>
-                <img src={rightArrowIcon} alt=""/>
-              </button>
-            </div>
+                <button disabled={pagination.page === pagination.totalPages} onClick={() => {
+                  setPagination({ ...pagination, page: pagination.page! + 1 })
+                }}>
+                  <span>Próxima</span>
+                  <img src={rightArrowIcon} alt=""/>
+                </button>
+              </div>
           }
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Product;
+export default Product

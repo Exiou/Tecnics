@@ -9,19 +9,18 @@ import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Management from './pages/Management'
 
-
-export default function Routes(){
+export default function Routes () {
   return (
     <Router>
-        <Switch>
-            <Route path="/" exact component={Main}/>
-            <Route path="/produtos/:product" exact component={Product}/>
-            <Route path="/produtos/:product/:productId" exact component={Detail}/>
-            <Route path="/users/register" exact component={Register}/>
-            <Route path="/users/login" exact component={Login}/>
-            <Route path="/users/profile" exact component={Profile}/>
-            <Route path="/lojas/:product" exact component={Management}/>
-        </Switch>
+      <Switch>
+        <Route path="/" exact component={Main}/>
+        <Route path="/produtos/:product" exact component={Product}/>
+        <Route path="/produtos/:product/:productId" exact component={Detail}/>
+        <Route path="/users/register" exact component={Register}/>
+        <Route path="/users/login" exact component={Login}/>
+        <Route path="/users/profile" exact component={Profile}/>
+        <Route path="/lojas/:product" exact component={Management}/>
+      </Switch>
     </Router>
   )
 }
