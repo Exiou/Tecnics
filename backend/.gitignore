@@ -116,3 +116,14 @@ uploads/coolers/*
 uploads/armazenamentos/*
 uploads/lojas/*
 uploads/users/*
+
+!uploads/processadores/.gitkeep
+!uploads/placas-video/.gitkeep
+!uploads/placas-mae/.gitkeep
+!uploads/memorias/.gitkeep
+!uploads/gabinetes/.gitkeep
+!uploads/fontes/.gitkeep
+!uploads/coolers/.gitkeep
+!uploads/armazenamentos/.gitkeep
+!uploads/lojas/.gitkeep
+!uploads/users/.gitkeep
