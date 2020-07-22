@@ -1,4 +1,4 @@
-import { Schema, model, Document, Query } from 'mongoose'
+import { Schema, model, Document } from 'mongoose'
 import fs from 'fs'
 import path from 'path'
 import { promisify } from 'util'
@@ -25,8 +25,8 @@ const UserSchema = new Schema<IUser>({
 }, {
   toJSON: { virtuals: true }
 })
-  
-UserSchema.virtual('imagem_url').get(function(this: any)  {
+
+UserSchema.virtual('imagem_url').get(function (this: any) {
   return `http://192.168.1.100:3333/arquivos/users/${this.imagem}`
 })
 
@@ -37,12 +37,12 @@ UserSchema.virtual('imagem_url').get(function(this: any)  {
 //   )
 // })
 
-UserSchema.pre('remove', function(this: Document | any) {
+UserSchema.pre('remove', function (this: Document | any) {
   return promisify(fs.unlink)(
-    path.resolve(__dirname,'..','..','uploads','users',this.imagem)
+    path.resolve(__dirname, '..', '..', 'uploads', 'users', this.imagem)
   )
 })
 
 const UserModel = model<IUser>('User', UserSchema)
-  
+
 export default UserModel

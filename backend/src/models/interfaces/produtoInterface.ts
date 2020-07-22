@@ -35,7 +35,7 @@ export interface IPlacaVideo extends IProduto {
     tipo_memoria: string,
     interface: string,
     sli_crossfire: string,
-    cor: string,   
+    cor: string,
     led_rgb: string,
     tamanho_memoria: number,
     core_clock: number,

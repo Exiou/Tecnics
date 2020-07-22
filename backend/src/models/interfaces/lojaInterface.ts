@@ -7,7 +7,6 @@ export interface ILoja extends Document {
     imagem_url: string
 }
 
-
 export interface ILojas {
     idLoja: string,
     preco: number,

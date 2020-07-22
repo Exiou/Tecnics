@@ -6,15 +6,14 @@ import uploadConfig from '../config/multer'
 import User from '../models/User'
 
 class UserController {
-
   public path = '/users'
   public routes = Router()
 
-  constructor() {
+  constructor () {
     this.initializeRoutes()
   }
 
-  public initializeRoutes() {
+  public initializeRoutes () {
     this.routes.get(`${this.path}`, this.index)
     this.routes.get(`${this.path}/:userid`, this.show)
     this.routes.post(`${this.path}`, this.store)
@@ -22,7 +21,7 @@ class UserController {
     this.routes.delete(`${this.path}/:userid`, this.destroy)
   }
 
-  public async index(req: Request, res: Response): Promise<Response> {
+  public async index (req: Request, res: Response): Promise<Response> {
     try {
       const users = await User.find()
 
@@ -34,9 +33,8 @@ class UserController {
 
   public async show (req: Request, res: Response): Promise<Response> {
     try {
-
       const { userid } = req.params
-      
+
       const user = await User.findOne({ _id: userid }).populate('favoritos.modelo')
 
       return res.json(user)
@@ -44,10 +42,9 @@ class UserController {
       return res.send(`Ocorreu um erro na requisição: ${err}`)
     }
   }
-  
+
   public async store (req: Request, res: Response): Promise<Response> {
     try {
-
       const {
         nome,
         email,
@@ -56,7 +53,7 @@ class UserController {
 
       const imagem = 'defaultUserImage.png'
 
-      const verificaUser = await User.findOne({email})
+      const verificaUser = await User.findOne({ email })
 
       if (verificaUser) {
         return res.json('Email já cadastrado')
@@ -70,13 +67,12 @@ class UserController {
       })
 
       return res.json(createUser)
-      
     } catch (err) {
       return res.send(`Ocorreu um erro na requisição: ${err}`)
     }
   }
 
-  public async update(req: Request, res: Response): Promise<Response> {
+  public async update (req: Request, res: Response): Promise<Response> {
     const { userid } = req.params
 
     const {
@@ -85,7 +81,7 @@ class UserController {
       senha
     } = req.body
 
-    let imagem = undefined
+    let imagem
 
     if (req.file) imagem = req.file.filename
 
@@ -101,11 +97,12 @@ class UserController {
     return res.json(updateUser)
   }
 
-  public async destroy(req: Request, res: Response): Promise<Response> {
+  public async destroy (req: Request, res: Response): Promise<Response> {
     const { userid } = req.params
 
     const deleteUser = await User.findOne({ _id: userid })
 
+    // eslint-disable-next-line no-unused-expressions
     deleteUser?.remove()
 
     return res.json(deleteUser)
