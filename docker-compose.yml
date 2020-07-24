@@ -1,0 +1,40 @@
+version: '2'
+
+services: 
+    frontend:
+        build:
+            context: "./frontend"
+            dockerfile: "Dockerfile"
+        stdin_open: true
+        volumes:
+            - ./frontend/src:/app/src
+        ports:
+            - "3000:3000"
+
+    backend:
+        build:
+            context: "./backend"
+            dockerfile: "Dockerfile"
+        volumes: 
+            - ./backend/src:/app/src
+        environment: 
+            - MONGOOSE_CONNECTION=mongodb://mongo:27017
+            - PORT=3333
+        ports: 
+            - "3333:3333"
+        links: 
+            - mongo
+        depends_on: 
+            - mongo
+
+    mongo:
+        image: mongo
+
+    mongoseed:
+        build:
+            context: "./database"
+            dockerfile: "Dockerfile"
+        links: 
+            - mongo
+
+    

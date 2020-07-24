@@ -1,0 +1,8 @@
+{
+    "_id": {
+        "$oid": "5e4c3a618241ac59f5892829"
+    },
+    "nome": "Kabum",
+    "imagem": "logo-kabum.png",
+    "urlSite": "https://www.kabum.com.br"
+}

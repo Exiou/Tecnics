@@ -117,6 +117,7 @@ uploads/armazenamentos/*
 uploads/lojas/*
 uploads/users/*
 
+!uploads/processadores/exemplo.jpg
 !uploads/processadores/.gitkeep
 !uploads/placas-video/.gitkeep
 !uploads/placas-mae/.gitkeep
@@ -126,4 +127,6 @@ uploads/users/*
 !uploads/coolers/.gitkeep
 !uploads/armazenamentos/.gitkeep
 !uploads/lojas/.gitkeep
+!uploads/lojas/logo-kabum.png
 !uploads/users/.gitkeep
+!uploads/users/defaultUserImage.png

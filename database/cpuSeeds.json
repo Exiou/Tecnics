@@ -1,0 +1,698 @@
+[
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i3-9100F",
+    "modelo": "nM2M3D",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce058cfa4e2af669ad17",
+        "preco": 568.16,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Ryzen 5 3400G",
+    "modelo": "rTD8a5",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad25",
+        "preco": 1228.8,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Ryzen 5 3600X",
+    "modelo": "HY265z",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad27",
+        "preco": 1764.59,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Ryzen 3 2200G",
+    "modelo": "mXMq94",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad29",
+        "preco": 741.06,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i9-9900K",
+    "modelo": "iuj2T6",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad2b",
+        "preco": 4352.82,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Ryzen 7 3700X",
+    "modelo": "cVD97m",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad2d",
+        "preco": 2544,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i5-9600KF",
+    "modelo": "Aw4yV8",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad31",
+        "preco": 1529.29,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i5-9600K",
+    "modelo": "pZG2j3",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad35",
+        "preco": 1805.66,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "FX-4300",
+    "modelo": "kw8R23",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad37",
+        "preco": 399.31,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Athlon 3000G",
+    "modelo": "AY4Bd4",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad39",
+        "preco": 454.43,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i5-3330",
+    "modelo": "rhAP28",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad3b",
+        "preco": 621,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Pentium Gold G5400",
+    "modelo": "AjW9s9",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad3d",
+        "preco": 458.64,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Ryzen 7 2700",
+    "modelo": "Ju35sZ",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad3f",
+        "preco": 458.64,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i5-7400",
+    "modelo": "fhy46t",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad41",
+        "preco": 458.64,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "A8 9600 APU",
+    "modelo": "kXAd54",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad43",
+        "preco": 378.71,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i3-4170",
+    "modelo": "tVRhSa",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad45",
+        "preco": 509.4,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Pentium G4560",
+    "modelo": "f4Lb5z",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad47",
+        "preco": 458.64,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i9-9900KF",
+    "modelo": "7NhM7X",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce068cfa4e2af669ad49",
+        "preco": 4117.53,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i3-8100",
+    "modelo": "HzA86m",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce078cfa4e2af669ad4b",
+        "preco": 886.35,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Ryzen 5 1600X",
+    "modelo": "rjJy73",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce078cfa4e2af669ad4d",
+        "preco": 458.64,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i5-8400",
+    "modelo": "oI2C5c",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce078cfa4e2af669ad4f",
+        "preco": 1455.1,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Core i7-8700K",
+    "modelo": "jqx653",
+    "fabricante": "Intel",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce078cfa4e2af669ad51",
+        "preco": 458.64,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Ryzen 7 1700",
+    "modelo": "pD76qU",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce078cfa4e2af669ad53",
+        "preco": 458.64,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  },
+  {
+    "imagem": "exemplo.jpg",
+    "nome": "Athlon 200GE",
+    "modelo": "syG968",
+    "fabricante": "AMD",
+    "serie": "Core-i3",
+    "familia": "Coffe Lake Refresh",
+    "socket": "LGA 1151",
+    "graficos_integrados": "Não possui",
+    "nucleo": 4,
+    "frequencia": 3.6,
+    "frequencia_turbo": 4.2,
+    "consumo": 65,
+    "arquitetura": 64,
+    "thread": 4,
+    "litografia": 14,
+    "cooler_incluso": true,
+    "multithreading": false,
+    "suporte_ecc": true,
+    "virtualizacao": true,
+    "lojas": [
+      {
+        "_id": "5f04ce078cfa4e2af669ad55",
+        "preco": 539.99,
+        "urlProduto": "https://www.pichau.com.br/hardware/processadores/processador-intel-core-i3-9100-quad-core-3-6ghz-4-2ghz-turbo-6mb-cache-lga1151-bx80684i39100f",
+        "idLoja": "5e4c3a618241ac59f5892829"
+      }
+    ]
+  }
+]
