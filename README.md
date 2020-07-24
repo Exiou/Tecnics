@@ -7,6 +7,22 @@ Trabalho de Conclusão de Curso submetido ao corpo docente da Etec Francisco Gar
 
 ## Instalação
 
+### Docker
+
+Certifique-se de ter o **[Docker](https://www.docker.com/)** instalado em sua máquina
+
+Execute o comando no terminal:
+
+```sh
+docker-compose up
+```
+
+Será criado um banco de dados local populado com alguns processadores e uma loja de id ```5e4c3a618241ac59f5892829```
+
+O **frontend** pode ser acessado em ```http://localhost:3000```
+
+### Manualmente
+
 Defina as variáveis ambiente baseadas no ```.env.example```
 
 ```sh
@@ -37,9 +53,9 @@ yarn start
 ![](/github/stores.gif)
 ![](/github/profile.gif)
 
-Protótipo da interface web no Figma: https://www.figma.com/proto/oKmiMntD9A37sddVLmPqwF/Web
+[Protótipo da interface web no Figma](https://www.figma.com/proto/oKmiMntD9A37sddVLmPqwF/Web)
 
-Protótipo da interface mobile(não desenvolvida) no Figma: https://www.figma.com/proto/bgTEUO1wYeFQQUQiZ4lcjf/Mobile
+[Protótipo da interface mobile (ainda não desenvolvida) no Figma](https://www.figma.com/proto/bgTEUO1wYeFQQUQiZ4lcjf/Mobile)
 
 ## Contato
 
