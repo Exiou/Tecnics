@@ -137,6 +137,7 @@
 .Management main {
     margin-top: 15px;
     width: 75vw;
+    margin-bottom: 30px;
 }
 
 .Management main table {
@@ -250,54 +251,6 @@
 
 .Management main .card .actions button#excluir img {
     filter: invert(19%) sepia(48%) saturate(4655%) hue-rotate(347deg) brightness(87%) contrast(91%);
-}
-
-.Management #pagination {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    background: #363636;
-    border-radius: 10px;
-    width: 75vw;
-    height: 50px;
-    align-items: center;
-    margin-top: 30px;
-}
-
-.Management #pagination img {
-    margin: 0 10px 0;
-    filter: invert(71%) sepia(75%) saturate(1776%) hue-rotate(86deg) brightness(92%) contrast(84%);
-}
-
-.Management #pagination button {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    text-decoration: none;
-    background: none;
-    border: none;
-    color: #19D161;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    text-align: center;
-    margin: 0 10px 0;
-}
-
-.Management #pagination button:hover,
-.Management #pagination button:focus {
-    text-decoration: underline;
-    font-weight: 700;
-    transform: translateY(-0.25em);
-}
-
-.Management #pagination button:disabled,
-.Management #pagination button:disabled:hover{
-    text-decoration: none;
-    font-weight: 500;
-    opacity: 0;
-    transform: none;
-    cursor: default;
 }
 
 .Management #modal {

@@ -6,11 +6,10 @@ import Dropzone from '../../components/Dropzone'
 import api from '../../services/api'
 
 import Header from '../../components/Header'
+import Pagination from '../../components/Pagination'
 
 import plusIcon from '../../assets/svgs/plus.svg'
 import searchIcon from '../../assets/svgs/search.svg'
-import rightArrowIcon from '../../assets/svgs/right_arrow.svg'
-import leftArrowIcon from '../../assets/svgs/left_arrow.svg'
 import editIcon from '../../assets/svgs/edit.svg'
 import deleteIcon from '../../assets/svgs/delete.svg'
 import uploadIcon from '../../assets/svgs/upload.svg'
@@ -245,21 +244,7 @@ function Management () {
 
         </main>
 
-        <div id="pagination">
-          <button disabled={pagination.page === 1} onClick={() => {
-            setPagination({ ...pagination, page: pagination.page! - 1 })
-          }}>
-            <img src={leftArrowIcon} alt=""/>
-            <span>Anterior</span>
-          </button>
-
-          <button disabled={pagination.page === pagination.totalPages} onClick={() => {
-            setPagination({ ...pagination, page: pagination.page! + 1 })
-          }}>
-            <span>Próxima</span>
-            <img src={rightArrowIcon} alt=""/>
-          </button>
-        </div>
+        <Pagination pagination={pagination} setPagination={setPagination} />
 
         <div id="modal" className={toggleModal}>
           <form onSubmit={handleAddProduct}>

@@ -6,6 +6,7 @@ import api from '../../services/api'
 
 import Header from '../../components/Header'
 import Filter from '../../components/Filter'
+import Pagination from '../../components/Pagination'
 
 import './styles.css'
 
@@ -16,8 +17,6 @@ import emptyGridIcon from '../../assets/svgs/empty_grid.svg'
 import fillGridIcon from '../../assets/svgs/fill_grid.svg'
 import emptyListIcon from '../../assets/svgs/empty_list.svg'
 import fillListIcon from '../../assets/svgs/fill_list.svg'
-import rightArrowIcon from '../../assets/svgs/right_arrow.svg'
-import leftArrowIcon from '../../assets/svgs/left_arrow.svg'
 
 interface Products {
   _id: string
@@ -34,7 +33,7 @@ interface Products {
   }[]
 }
 
-interface Pagination {
+interface IPagination {
   totalDocs?: number
   limit?: number
   totalPages?: number
@@ -52,7 +51,7 @@ function Product () {
   const [products, setProducts] = useState<Products[]>([])
   const [selectedFilters, setSelectedFilters] = useState<any>({})
   const [prices, setPrices] = useState({ precoMin: '0', precoMax: '50000' })
-  const [pagination, setPagination] = useState<Pagination>({ limit: 24, page: 1 })
+  const [pagination, setPagination] = useState<IPagination>({ limit: 24, page: 1 })
   const [cardStyle, setCardStyle] = useState<string>('card list')
   const [loading, setLoading] = useState(true)
 
@@ -241,21 +240,7 @@ function Product () {
           {
             loading
               ? ''
-              : <div id="pagination">
-                <button disabled={pagination.page === 1} onClick={() => {
-                  setPagination({ ...pagination, page: pagination.page! - 1 })
-                }}>
-                  <img src={leftArrowIcon} alt=""/>
-                  <span>Anterior</span>
-                </button>
-
-                <button disabled={pagination.page === pagination.totalPages} onClick={() => {
-                  setPagination({ ...pagination, page: pagination.page! + 1 })
-                }}>
-                  <span>Próxima</span>
-                  <img src={rightArrowIcon} alt=""/>
-                </button>
-              </div>
+              : <Pagination pagination={pagination} setPagination={setPagination} />
           }
         </div>
       </div>
