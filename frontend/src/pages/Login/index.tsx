@@ -29,6 +29,8 @@ function Login () {
 
     const response = await api.post('/sessions', formData)
 
+    if (response.data.error) return window.alert(response.data.error)
+
     window.localStorage.setItem('userId', response.data._id)
 
     history.push('/')
