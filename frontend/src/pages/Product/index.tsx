@@ -11,7 +11,8 @@ import Pagination from '../../components/Pagination'
 import './styles.css'
 
 import plusIcon from '../../assets/svgs/plus.svg'
-import heartIcon from '../../assets/svgs/heart.svg'
+import emptyHeartIcon from '../../assets/svgs/empty_heart.svg'
+import filledHeartIcon from '../../assets/svgs/filled_heart.svg'
 import searchIcon from '../../assets/svgs/search.svg'
 import emptyGridIcon from '../../assets/svgs/empty_grid.svg'
 import fillGridIcon from '../../assets/svgs/fill_grid.svg'
@@ -48,12 +49,15 @@ interface IPagination {
 function Product () {
   const { product } = useParams()
 
+  const userid = window.localStorage.getItem('userId')
+
   const [products, setProducts] = useState<Products[]>([])
   const [selectedFilters, setSelectedFilters] = useState<any>({})
   const [prices, setPrices] = useState({ precoMin: '0', precoMax: '50000' })
   const [pagination, setPagination] = useState<IPagination>({ limit: 24, page: 1 })
   const [cardStyle, setCardStyle] = useState<string>('card list')
   const [loading, setLoading] = useState(true)
+  const [favoritos, setFavoritos] = useState([''])
 
   useEffect(() => {
     setLoading(true)
@@ -73,6 +77,20 @@ function Product () {
       setLoading(false)
     })
   }, [product, selectedFilters, prices, pagination.limit, pagination.page])
+
+  useEffect(() => {
+    if (userid) {
+      api.get(`/users/${userid}`)
+        .then(response => {
+          const favoritosID = response.data.favoritos.map((favorito: any) => {
+            if (favorito.produto) {
+              return favorito.produto._id
+            }
+          })
+          setFavoritos(favoritosID)
+        })
+    }
+  }, [userid])
 
   function handleSelectFilter (event: ChangeEvent<HTMLInputElement>, key: any) {
     if (selectedFilters[key] === undefined || selectedFilters[key] === '') {
@@ -229,7 +247,15 @@ function Product () {
                     </Link>
 
                     <button>
-                      <img className="heart-icon" src={heartIcon} alt="Heart Icon"/>
+                      <img
+                        className="heart-icon"
+                        src={
+                          favoritos.includes(productData._id)
+                            ? filledHeartIcon
+                            : emptyHeartIcon
+                        }
+                        alt="Heart Icon"
+                      />
                     </button>
 
                   </div>
