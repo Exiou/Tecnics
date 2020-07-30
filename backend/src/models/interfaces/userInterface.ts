@@ -5,6 +5,9 @@ export default interface IUser extends Document {
     imagem: string
     email: string
     senha: string
-    favoritos?: Schema.Types.ObjectId
+    favoritos: [{
+      produto: Schema.Types.ObjectId,
+      modelo: string
+    }]
     imagem_url: string
   }

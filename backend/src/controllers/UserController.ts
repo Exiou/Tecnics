@@ -35,7 +35,7 @@ class UserController {
     try {
       const { userid } = req.params
 
-      const user = await User.findOne({ _id: userid }).populate('favoritos.modelo')
+      const user = await User.findOne({ _id: userid }).populate('favoritos.produto')
 
       return res.json(user)
     } catch (err) {

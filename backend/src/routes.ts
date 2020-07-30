@@ -1,5 +1,6 @@
 import UserController from './controllers/UserController'
 import SessionController from './controllers/SessionController'
+import FavoriteController from './controllers/FavoriteController'
 import ProdutoController from './controllers/ProdutoController'
 import LojaController from './controllers/LojaController'
 import Loja from './models/Loja'
@@ -10,6 +11,7 @@ Loja
 const routes = [
   UserController.routes,
   SessionController.routes,
+  FavoriteController.routes,
   ProdutoController.routes,
   LojaController.routes
 ]
