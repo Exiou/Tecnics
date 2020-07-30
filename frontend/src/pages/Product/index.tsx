@@ -156,6 +156,60 @@ function Product () {
     }
   }
 
+  async function handleFavorites (id: string) {
+    if (userid) {
+      let modelo = ''
+      switch (product) {
+        case 'processadores':
+          modelo = 'Processador'
+          break
+        case 'placas-video':
+          modelo = 'PlacaVideo'
+          break
+        case 'placas-mae':
+          modelo = 'PlacaMae'
+          break
+        case 'memorias':
+          modelo = 'Memoria'
+          break
+        case 'gabinetes':
+          modelo = 'Gabinete'
+          break
+        case 'fontes':
+          modelo = 'Fonte'
+          break
+        case 'coolers':
+          modelo = 'Cooler'
+          break
+        case 'armazenamentos':
+          modelo = 'Armazenamento'
+          break
+        default:
+          break
+      }
+      if (favoritos.includes(id)) {
+        await api.delete(`/favoritos/${id}`, {
+          headers: {
+            userid
+          }
+        })
+        setFavoritos(favoritos.filter(productId => productId !== id))
+      } else {
+        await api.put(`/favoritos/${id}`, {}, {
+          params: {
+            modelo
+          },
+          headers: {
+            userid
+          }
+        })
+        setFavoritos([...favoritos, id])
+      }
+    } else {
+      window.alert('Você precisa estar logado para adicionar um produto aos seus favoritos!')
+    }
+  }
+
   const formatter = new Intl.NumberFormat('pt-br', {
     style: 'currency',
     currency: 'BRL'
@@ -246,7 +300,7 @@ function Product () {
                       <img className="plus-icon" src={plusIcon} alt="Plus Icon"/>
                     </Link>
 
-                    <button>
+                    <button onClick={() => handleFavorites(productData._id)}>
                       <img
                         className="heart-icon"
                         src={
